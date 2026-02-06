@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+</head>
+<body>
+
+<nav>
+    <h4>Node MySQL Login</h4>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+    </ul>
+</nav>
+
+<div class="container mt-4">
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h1>Your rooms</h1>
+        <ul class="list-group list-group-flush">
+            {{#each rooms}}
+                <li><a href="/rooms?roomId={{rooms.id}}">{{rooms.name}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+{{#if user }}
+    <h4>Logged in as {{user}}</h4>
+{{/if}}
+
+</body>
+</html>
