@@ -4,32 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Backend login and registration">
-      <change afterPath="$PROJECT_DIR$/readMe.md" afterDir="false" />
+    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Added simple readMe for development purposes">
+      <change afterPath="$PROJECT_DIR$/model/service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbHandler/dbHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/dbHandler/dbHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/authentication.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Herotech1105"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Herotech1105&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Herotech1105/StudiShip",
-    "accountId": "8c001d5f-a0d9-403f-8b17-136be7157c67"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Herotech1105/StudiShip&quot;,
+    &quot;accountId&quot;: &quot;8c001d5f-a0d9-403f-8b17-136be7157c67&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -42,6 +51,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Node.js.controller.js.executor": "Run",
+    "Node.js.service.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -84,7 +94,11 @@
       <workItem from="1770208361772" duration="9000" />
       <workItem from="1770367374736" duration="21000" />
       <workItem from="1770370121323" duration="1413000" />
-      <workItem from="1770371564495" duration="2006000" />
+      <workItem from="1770371564495" duration="3005000" />
+      <workItem from="1770636562458" duration="944000" />
+      <workItem from="1770644112958" duration="10000" />
+      <workItem from="1770718247268" duration="385000" />
+      <workItem from="1770792182134" duration="2056000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -110,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770372615745</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added simple readMe for development purposes">
+      <option name="closed" value="true" />
+      <created>1770373735665</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770373735665</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +142,7 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Update workspace to git" />
     <MESSAGE value="Backend login and registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Backend login and registration" />
+    <MESSAGE value="Added simple readMe for development purposes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added simple readMe for development purposes" />
   </component>
 </project>

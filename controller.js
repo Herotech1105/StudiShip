@@ -18,7 +18,8 @@ controller.listen(5000, () => {
     console.log("server started on port 5000")
 })
 
-
+const Service = require("./model/service")
+const service = new Service()
 
 controller.get("/", (req, res) => {
     const user = req.cookies["user"]
@@ -40,11 +41,10 @@ controller.get("/login", (req, res) => {
     res.render("login")
 })
 
-const {authenticateRegistration, authenticateLogin} = require("./model/authentication")
 controller.post("/auth/register", (req, res) => {
-    return authenticateRegistration(req, res)
+    return service.register(req, res)
 })
 
 controller.post("/auth/login", (req, res) => {
-    return authenticateLogin(req, res)
+    return service.login(req, res)
 })
