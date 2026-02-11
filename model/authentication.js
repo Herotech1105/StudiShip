@@ -15,10 +15,8 @@ function authenticateLogin(req, res, db) {
                     name: name
                 })
             } else {
-                res.cookie('user', name)
-                return res.render('index', {
-                    user: name
-                })
+                res.cookie('user', name, {signed: true, httpOnly: true})
+                return res.redirect("/")
             }
 
         } catch (err) {
@@ -59,10 +57,8 @@ function authenticateRegistration(req, res, db) {
                         password: password
                     }, () => {
                     })
-                    res.cookie('user', name)
-                    return res.render('index', {
-                        user: name
-                    })
+                    res.cookie('user', name, {signed: true, httpOnly: true})
+                    return res.redirect("/")
                 }
             })
         }

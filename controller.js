@@ -3,7 +3,7 @@ const express = require("express")
 const controller = express()
 
 const cookieParser = require("cookie-parser")
-controller.use(cookieParser())
+controller.use(cookieParser("secret"))
 
 controller.set("view engine", 'hbs')
 
@@ -22,7 +22,7 @@ const Service = require("./model/service")
 const service = new Service()
 
 controller.get("/", (req, res) => {
-    const user = req.cookies["user"]
+    const user = req.signedCookies["user"]
     if (user) {
         res.render("index", {
             user: user
