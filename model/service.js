@@ -1,6 +1,4 @@
 class Service {
-    db
-
     constructor() {
         const DbHandler = require("../dbHandler/dbHandler");
         this.db = new DbHandler();
@@ -19,6 +17,11 @@ class Service {
     dashboard(req, res) {
         const {dashboardWithRoomList} = require("./roomManager")
         return dashboardWithRoomList(req, res, this.db.connection)
+    }
+
+    room(req, res) {
+        const {room} = require("./roomManager")
+        return room(req, res, this.db.connection);
     }
 
 }

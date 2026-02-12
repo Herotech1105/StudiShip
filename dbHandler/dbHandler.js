@@ -1,5 +1,4 @@
 class DbHandler {
-    connection
 
     constructor() {
         const dotenv = require("dotenv")

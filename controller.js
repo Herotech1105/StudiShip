@@ -35,6 +35,10 @@ controller.get("/dashboard", (req, res) => {
     return service.dashboard(req, res)
 })
 
+controller.get("/rooms", (req, res) => {
+    return service.room(req, res)
+})
+
 controller.get("/register", (req, res) => {
     res.render("register")
 })
