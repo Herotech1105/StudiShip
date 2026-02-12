@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Added service layer to backend">
+    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Backend: Implementation for reaching room by id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/authentication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/roomManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/roomManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/room.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room.hbs" afterDir="false" />
     </list>
+    <list id="62586ea4-dbc9-45a0-bad9-33ecef5674b4" name="Unversioned Files" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +38,12 @@
     &quot;accountId&quot;: &quot;8c001d5f-a0d9-403f-8b17-136be7157c67&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/model/roomManager.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -48,6 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Node.js.controller.js.executor": "Run",
     "Node.js.service.js.executor": "Run",
@@ -65,7 +72,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   },
@@ -75,6 +83,14 @@
     ]
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="controller.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="controller.js" working-dir="$PROJECT_DIR$">
+      <EXTENSION ID="com.intellij.javascript.debugger.execution.StartBrowserRunConfigurationExtension">
+        <browser with-js-debugger="true" />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -85,6 +101,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="" />
+      <changelist id="62586ea4-dbc9-45a0-bad9-33ecef5674b4" name="Unversioned Files" comment="" />
       <created>1770208188498</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -97,7 +114,10 @@
       <workItem from="1770636562458" duration="944000" />
       <workItem from="1770644112958" duration="10000" />
       <workItem from="1770718247268" duration="385000" />
-      <workItem from="1770792182134" duration="4173000" />
+      <workItem from="1770792182134" duration="11625000" />
+      <workItem from="1770885395851" duration="459000" />
+      <workItem from="1770887635399" duration="4723000" />
+      <workItem from="1770893294770" duration="12940000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -139,11 +159,56 @@
       <option name="project" value="LOCAL" />
       <updated>1770794622370</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Changed Cookies to signed">
+      <option name="closed" value="true" />
+      <created>1770796715000</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770796715000</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Backend: dashboard now shows list of rooms user is part of">
+      <option name="closed" value="true" />
+      <created>1770902779814</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1770902779814</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Backend: Implementation for reaching room by id">
+      <option name="closed" value="true" />
+      <created>1770904694252</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1770904694252</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="8235f3ca-7520-4a7d-9863-a375d842586e" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="8235f3ca-7520-4a7d-9863-a375d842586e">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
@@ -151,6 +216,9 @@
     <MESSAGE value="Backend login and registration" />
     <MESSAGE value="Added simple readMe for development purposes" />
     <MESSAGE value="Added service layer to backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added service layer to backend" />
+    <MESSAGE value="Changed Cookies to signed" />
+    <MESSAGE value="Backend: dashboard now shows list of rooms user is part of" />
+    <MESSAGE value="Backend: Implementation for reaching room by id" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backend: Implementation for reaching room by id" />
   </component>
 </project>
