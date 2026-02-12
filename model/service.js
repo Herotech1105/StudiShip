@@ -16,6 +16,11 @@ class Service {
         return authenticateRegistration(req, res, this.db.connection);
     }
 
+    dashboard(req, res) {
+        const {dashboardWithRoomList} = require("./roomManager")
+        return dashboardWithRoomList(req, res, this.db.connection)
+    }
+
 }
 
 module.exports = Service

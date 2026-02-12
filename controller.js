@@ -24,13 +24,15 @@ const service = new Service()
 controller.get("/", (req, res) => {
     const user = req.signedCookies["user"]
     if (user) {
-        res.render("index", {
-            user: user
-        })
+        res.redirect("/dashboard")
     } else {
         res.render("index")
     }
 
+})
+
+controller.get("/dashboard", (req, res) => {
+    return service.dashboard(req, res)
 })
 
 controller.get("/register", (req, res) => {

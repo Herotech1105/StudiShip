@@ -17,11 +17,13 @@
 </nav>
 
 <div class="container mt-4">
-    <div class="mt-4 p-5 bg-primary text-white rounded">
+    <div>
         <h1>Your rooms</h1>
-        <ul class="list-group list-group-flush">
+        <ul>
             {{#each rooms}}
-                <li><a href="/rooms?roomId={{rooms.id}}">{{rooms.name}}</a></li>
+                <li><a class="" href="/rooms?roomId={{{this.id}}}">{{this.name}}</a></li>
+            {{else}}
+                <p>You are not part of any groups</p>
             {{/each}}
         </ul>
     </div>
