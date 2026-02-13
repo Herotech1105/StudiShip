@@ -22,17 +22,7 @@ const Service = require("./model/service")
 const service = new Service()
 
 controller.get("/", (req, res) => {
-    const user = req.signedCookies["user"]
-    if (user) {
-        res.redirect("/dashboard")
-    } else {
-        res.render("index")
-    }
-
-})
-
-controller.get("/dashboard", (req, res) => {
-    return service.dashboard(req, res)
+    service.frontPage(req, res)
 })
 
 controller.get("/rooms", (req, res) => {

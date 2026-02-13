@@ -4,24 +4,35 @@ class Service {
         this.db = new DbHandler();
     }
 
+    frontPage(req, res) {
+        const user = req.signedCookies["user"]
+        if (user) {
+            const {dashboardWithRoomList} = require("./roomManager")
+            dashboardWithRoomList(req, res, this.db.connection)
+        } else {
+            res.render("index")
+        }
+    }
+
     login(req, res) {
         const {authenticateLogin} = require("./authentication")
-        return authenticateLogin(req, res, this.db.connection);
+        authenticateLogin(req, res, this.db.connection);
     }
 
     register(req, res) {
         const {authenticateRegistration} = require("./authentication")
-        return authenticateRegistration(req, res, this.db.connection);
-    }
-
-    dashboard(req, res) {
-        const {dashboardWithRoomList} = require("./roomManager")
-        return dashboardWithRoomList(req, res, this.db.connection)
+        authenticateRegistration(req, res, this.db.connection);
     }
 
     room(req, res) {
+        const user = req.signedCookies["user"]
+        if (!user) {
+            res.redirect("/login", {
+                message: "You need to sign in to create a new room"
+            })
+        }
         const {loadRoom} = require("./roomManager")
-        return loadRoom(req, res, this.db.connection);
+        loadRoom(req, res, this.db.connection);
     }
 
     createRoom(req, res) {
@@ -32,7 +43,7 @@ class Service {
             })
         }
         const {createRoom} = require("./roomManager")
-        return createRoom(req, res, this.db.connection)
+        createRoom(req, res, this.db.connection)
     }
 
 }
