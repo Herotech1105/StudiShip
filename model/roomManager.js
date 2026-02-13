@@ -2,7 +2,7 @@ module.exports = {dashboardWithRoomList, loadRoom, createRoom}
 
 function dashboardWithRoomList(req, res, db) {
     const user = req.signedCookies["user"]
-    db.query('SELECT DISTINCT rooms.id, rooms.name FROM rooms RIGHT JOIN roommembers ON roommembers.room_id = rooms.id LEFT JOIN users ON users.id = roommembers.user_id WHERE users.name = ?', [user], async (error, result) => {
+    db.query('SELECT DISTINCT rooms.id, rooms.name FROM rooms RIGHT JOIN roommembers ON roommembers.room_id = rooms.id LEFT JOIN users ON users.id = roommembers.user_id WHERE users.name = ? AND rooms.id IS NOT NULL ', [user], async (error, result) => {
         res.render('dashboard', {
             rooms: result
         })
@@ -14,9 +14,10 @@ function loadRoom(req, res, db) {
     const user = req.signedCookies["user"]
     db.query('SELECT * FROM rooms WHERE rooms.id = ? ', [roomId], async (error, room) => {
         db.query('SELECT users.id FROM (SELECT roommembers.user_id FROM roommembers WHERE roommembers.room_id = ?) members LEFT JOIN users ON users.id = members.user_id WHERE users.name = ? ', [roomId, user], async (error, result) => {
-            if(result.length === 0) {
+            if (result.length === 0) {
                 if (room[0].privacy !== 'private') {
-                    db.query('INSERT INTO roommembers (user_id, room_id) VALUES ((SELECT users.id FROM users WHERE users.name = ?), ?)', [user, roomId], async (error, success) => {})
+                    db.query('INSERT INTO roommembers (user_id, room_id) VALUES ((SELECT users.id FROM users WHERE users.name = ?), ?)', [user, roomId], async (error, success) => {
+                    })
                 } else {
                     res.render('dashboard', {
                         message: 'Access denied'

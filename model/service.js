@@ -28,7 +28,7 @@ class Service {
         const user = req.signedCookies["user"]
         if (!user) {
             res.redirect("/login", {
-                message: "You need to sign in to create a new room"
+                message: "You need to sign in to participate with this room!"
             })
         }
         const {loadRoom} = require("./roomManager")
@@ -39,7 +39,7 @@ class Service {
         const user = req.signedCookies["user"]
         if (!user) {
             res.redirect("/login", {
-                message: "You need to sign in to create a new room"
+                message: "You need to sign in to create a new room!"
             })
         }
         const {createRoom} = require("./roomManager")
