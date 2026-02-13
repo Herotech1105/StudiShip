@@ -2,9 +2,11 @@
 
 ## Node dependencies
 
+Install `Node js` on your system.
+
 Run the following command in your Project's Console:
 
-`npm install cookie-parser dotenv express hbs mysql nodemon`
+`npm install cookie-parser dotenv express hbs mysql2 nodemon`
 
 ## Setting up the database
 

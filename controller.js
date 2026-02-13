@@ -47,6 +47,14 @@ controller.get("/login", (req, res) => {
     res.render("login")
 })
 
+controller.get("/rooms/create", (req, res) => {
+    res.render("roomAdder")
+})
+
+controller.post("/rooms/create", (req, res) => {
+    service.createRoom(req, res)
+})
+
 controller.post("/auth/register", (req, res) => {
     return service.register(req, res)
 })

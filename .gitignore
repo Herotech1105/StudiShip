@@ -10,5 +10,5 @@
 /httpRequests/
 # Node Modules for backend
 node_modules/
-.env
-.idea/workspace.xml
+/.env
+/.idea/workspace.xml

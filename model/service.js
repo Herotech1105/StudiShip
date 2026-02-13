@@ -20,8 +20,19 @@ class Service {
     }
 
     room(req, res) {
-        const {room} = require("./roomManager")
-        return room(req, res, this.db.connection);
+        const {loadRoom} = require("./roomManager")
+        return loadRoom(req, res, this.db.connection);
+    }
+
+    createRoom(req, res) {
+        const user = req.signedCookies["user"]
+        if (!user) {
+            res.redirect("/login", {
+                message: "You need to sign in to create a new room"
+            })
+        }
+        const {createRoom} = require("./roomManager")
+        return createRoom(req, res, this.db.connection)
     }
 
 }
