@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="dbHandler" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dbHandler" />
+        <item url="file://$PROJECT_DIR$/model" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/dbHandler" />
+      <root url="file://$PROJECT_DIR$/model" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

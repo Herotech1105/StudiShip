@@ -7,6 +7,8 @@
 </head>
 </head>
 <body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../scripts/room.js"></script>
 
 <nav>
     <h4>{{room.name}}</h4>
@@ -25,13 +27,15 @@
     </ul>
 
     <h1>Messages</h1>
-    <ul>
+    <ul id="messages">
         {{#each messages}}
             <li>{{this.user}}, {{this.timestamp}}: {{this.content}} </li>
-        {{else}}
-            <p>No messages yet</p>
         {{/each}}
     </ul>
+
+    <input value="" type="text" name="message" id="message">
+    <button onclick="sendMessage('clicked')">Send</button>
+
 </div>
 
 

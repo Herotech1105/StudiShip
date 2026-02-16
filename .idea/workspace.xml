@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Backend: Implementation for reaching room by id">
+    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend">
+      <change afterPath="$PROJECT_DIR$/public/scripts/room.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/roomManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/roomManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/readMe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/room.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room.hbs" afterDir="false" />
     </list>
     <list id="62586ea4-dbc9-45a0-bad9-33ecef5674b4" name="Unversioned Files" comment="" />
@@ -72,9 +80,11 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.install cookie-parser dotenv express hbs mysql nodemon.executor": "Run",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
     "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -83,6 +93,13 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\leesch\WebstormProjects\WebServer\public" />
+      <recent name="C:\Users\leesch\WebstormProjects\WebServer\views" />
+      <recent name="C:\Users\leesch\WebstormProjects\WebServer\views\room" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="controller.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="controller.js" working-dir="$PROJECT_DIR$">
       <EXTENSION ID="com.intellij.javascript.debugger.execution.StartBrowserRunConfigurationExtension">
@@ -117,7 +134,9 @@
       <workItem from="1770792182134" duration="11625000" />
       <workItem from="1770885395851" duration="459000" />
       <workItem from="1770887635399" duration="4723000" />
-      <workItem from="1770893294770" duration="12940000" />
+      <workItem from="1770893294770" duration="13727000" />
+      <workItem from="1770964651965" duration="30278000" />
+      <workItem from="1771246645674" duration="7978000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -183,7 +202,39 @@
       <option name="project" value="LOCAL" />
       <updated>1770904694252</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Backend: Now hands room information to hbs file">
+      <option name="closed" value="true" />
+      <created>1770907014461</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1770907014462</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Backend: Added Room creation">
+      <option name="closed" value="true" />
+      <created>1770972504029</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1770972504029</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Backend: Better differentiation between layers">
+      <option name="closed" value="true" />
+      <created>1770974619323</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1770974619323</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend">
+      <option name="closed" value="true" />
+      <created>1770976732687</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1770976732687</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +270,10 @@
     <MESSAGE value="Changed Cookies to signed" />
     <MESSAGE value="Backend: dashboard now shows list of rooms user is part of" />
     <MESSAGE value="Backend: Implementation for reaching room by id" />
-    <option name="LAST_COMMIT_MESSAGE" value="Backend: Implementation for reaching room by id" />
+    <MESSAGE value="Backend: Now hands room information to hbs file" />
+    <MESSAGE value="Backend: Added Room creation" />
+    <MESSAGE value="Backend: Better differentiation between layers" />
+    <MESSAGE value="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend" />
   </component>
 </project>

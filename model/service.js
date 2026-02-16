@@ -1,3 +1,5 @@
+const {createRoom} = require("./roomManager");
+
 class Service {
     constructor() {
         const DbHandler = require("../dbHandler/dbHandler");
@@ -38,12 +40,12 @@ class Service {
     createRoom(req, res) {
         const user = req.signedCookies["user"]
         if (!user) {
-            res.redirect("/login", {
-                message: "You need to sign in to create a new room!"
-            })
+            res.status("200")
+            res.redirect("/")
+        } else {
+            const {createRoom} = require("./roomManager")
+            createRoom(req, res, this.db.connection)
         }
-        const {createRoom} = require("./roomManager")
-        createRoom(req, res, this.db.connection)
     }
 
 }
