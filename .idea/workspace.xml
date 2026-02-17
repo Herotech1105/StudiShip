@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Added service layer to backend">
+    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend">
+      <change afterPath="$PROJECT_DIR$/model/messageManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/roomManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/roomManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/room.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room.hbs" afterDir="false" />
     </list>
     <list id="62586ea4-dbc9-45a0-bad9-33ecef5674b4" name="Unversioned Files" comment="" />
     <option name="SHOW_DIALOG" value="false" />

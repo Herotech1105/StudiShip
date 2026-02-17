@@ -45,7 +45,8 @@ class Service {
     }
 
     saveMessage(message) {
-
+        const {saveMessage} = require("./messageManager")
+        saveMessage(message, this.db.connection)
     }
 
 }

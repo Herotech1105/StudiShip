@@ -16,7 +16,7 @@ function loadRoom(req, res, db) {
         res.redirect('/')
     } else {
         db.query('SELECT * FROM rooms WHERE rooms.id = ? ', [roomId], async (error, room) => {
-            if (room.length === 0) {
+            if (!room) {
                 res.redirect('/')
             } else {
                 db.query('SELECT users.id FROM (SELECT roommembers.user_id FROM roommembers WHERE roommembers.room_id = ?) members LEFT JOIN users ON users.id = members.user_id WHERE users.name = ? ', [roomId, user], async (error, result) => {
