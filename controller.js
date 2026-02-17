@@ -9,7 +9,7 @@ controller.use(cookieParser("securityToken"))
 // Specifies that the controller loads .hbs files as resources from the views folder
 controller.set("view engine", 'hbs')
 
-// Specifies public directory for html, css and js files the client can request
+// Specifies public directory for HTML, CSS and JS files the client can request
 const path = require("path")
 const publicDir = path.join(__dirname, './public')
 controller.use(express.static(publicDir))
@@ -21,22 +21,27 @@ controller.use(express.json())
 const http = require('http')
 const server = http.createServer(controller)
 
-// adds socket.io websocket support to server
+// adds socket.io websocket support to server and adds cookie parser
 const {Server} = require('socket.io')
 const websocket = new Server(server)
+const websocketCookieParser = require('socket.io-cookie-parser')
+websocket.use(websocketCookieParser("securityToken"))
 
+// imports service layer to handle request/response logic
+const Service = require("./model/service")
+const service = new Service()
+
+// websocket and broadcasting to handle messages
 websocket.on('connection', (socket) => {
-    console.log('Socket connected')
 
     socket.on('room', (room) => {
         socket.join(room)
-        console.log('Room joined', room)
     })
 
     socket.on('message', (message) => {
         const messageObject = JSON.parse(message)
         messageObject.timestamp = new Date()
-        messageObject.user = "User"
+        messageObject.user = socket.request.signedCookies['user']
         websocket.to(messageObject.roomId).emit("message", JSON.stringify(messageObject))
     })
 })
@@ -44,11 +49,6 @@ websocket.on('connection', (socket) => {
 server.listen(5000, () => {
     console.log("Server started on port 5000")
 })
-
-// imports service layer to handle request/response logic
-const Service = require("./model/service")
-const service = new Service()
-
 
 // controller mappings on which the server responds
 controller.get("/", (req, res) => {

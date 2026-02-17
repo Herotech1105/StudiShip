@@ -1,5 +1,3 @@
-const {createRoom} = require("./roomManager");
-
 class Service {
     constructor() {
         const DbHandler = require("../dbHandler/dbHandler");
@@ -29,23 +27,25 @@ class Service {
     room(req, res) {
         const user = req.signedCookies["user"]
         if (!user) {
-            res.redirect("/login", {
-                message: "You need to sign in to participate with this room!"
-            })
+            res.redirect('/login')
+        } else {
+            const {loadRoom} = require("./roomManager")
+            loadRoom(req, res, this.db.connection)
         }
-        const {loadRoom} = require("./roomManager")
-        loadRoom(req, res, this.db.connection);
     }
 
     createRoom(req, res) {
         const user = req.signedCookies["user"]
         if (!user) {
-            res.status("200")
             res.redirect("/")
         } else {
             const {createRoom} = require("./roomManager")
             createRoom(req, res, this.db.connection)
         }
+    }
+
+    saveMessage(message) {
+
     }
 
 }
