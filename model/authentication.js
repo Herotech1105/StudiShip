@@ -39,7 +39,10 @@ function authenticateRegistration(req, res, db) {
                 email: email
             })
         } else {
-            db.query('SELECT email, name FROM users WHERE email = ? or name = ?', [email, name], async (error, result) => {
+            db.query('SELECT email, name ' +
+                'FROM users ' +
+                'WHERE email = ? ' +
+                'OR name = ?', [email, name], async (error, result) => {
                 if (result.length !== 0 && result[0].email === email) {
                     res.render('register', {
                         message: 'This email is already in use',
