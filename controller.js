@@ -83,6 +83,10 @@ controller.post("/rooms/create", (req, res) => {
     service.createRoom(req, res)
 })
 
+controller.post("/logout", (req, res) => {
+    service.logout(req, res)
+})
+
 controller.post("/auth/register", (req, res) => {
     return service.register(req, res)
 })

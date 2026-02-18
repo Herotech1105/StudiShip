@@ -24,6 +24,11 @@ class Service {
         authenticateRegistration(req, res, this.db.connection);
     }
 
+    logout(req, res) {
+        res.clearCookie("user")
+        res.redirect("/")
+    }
+
     room(req, res) {
         const user = req.signedCookies["user"]
         if (!user) {
