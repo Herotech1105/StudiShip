@@ -75,6 +75,10 @@ controller.get("/rooms/create", (req, res) => {
     service.roomAdder(req, res)
 })
 
+controller.get("/search", (req, res) => {
+    service.search(req, res)
+})
+
 controller.post("/rooms/create", (req, res) => {
     service.createRoom(req, res)
 })
@@ -85,4 +89,8 @@ controller.post("/auth/register", (req, res) => {
 
 controller.post("/auth/login", (req, res) => {
     return service.login(req, res)
+})
+
+controller.post("/search", (req, res) => {
+    service.findRooms(req, res)
 })

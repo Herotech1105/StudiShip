@@ -73,7 +73,7 @@ function createRoom(req, res, db) {
     const subjectList = require("./subjects")
     subjectList()
         .then((subjects) => {
-            if (subjects.includes(roomSubject) && owner) {
+            if (subjects.includes(roomSubject)) {
                 db.query('SELECT rooms.id ' +
                     'FROM (SELECT users.id FROM users WHERE users.name = ?) owner ' +
                     'LEFT JOIN rooms ' +

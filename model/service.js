@@ -57,6 +57,24 @@ class Service {
         saveMessage(message, this.db.connection)
     }
 
+    search(req, res) {
+        require("./subjects")().then((subjects) => {
+            res.render("search", {
+                subjects: subjects
+            })
+        })
+    }
+
+    findRooms(req, res) {
+        const user = req.signedCookies["user"]
+        if (!user) {
+            res.redirect("/")
+        } else {
+            const {findRooms} = require("./searchManager")
+            findRooms(req, res, this.db.connection)
+        }
+    }
+
 }
 
 module.exports = Service
