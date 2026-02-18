@@ -23,7 +23,11 @@
             <label for="roomDescription">Room Description</label>
             <input type="text" class="form-control" id="roomDescription" name="roomDescription" required>
             <label for="roomSubject">Room Subject</label>
-            <input type="text" class="form-control" id="roomSubject" name="roomSubject" required>
+            <select class="form-control" id="roomSubject" name="roomSubject" required>
+                {{#each subjects}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
             <label for="roomPrivacy">Room Privacy</label>
             <select class="form-control" id="roomPrivacy" name="roomPrivacy">
                 <option value="public">Public</option>

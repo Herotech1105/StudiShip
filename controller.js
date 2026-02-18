@@ -72,7 +72,7 @@ controller.get("/login", (req, res) => {
 })
 
 controller.get("/rooms/create", (req, res) => {
-    res.render("roomAdder")
+    service.roomAdder(req, res)
 })
 
 controller.post("/rooms/create", (req, res) => {

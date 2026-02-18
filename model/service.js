@@ -34,6 +34,14 @@ class Service {
         }
     }
 
+    roomAdder(req, res) {
+        require("./subjects")().then((subjects) => {
+            res.render("roomAdder", {
+                subjects: subjects
+            })
+        })
+    }
+
     createRoom(req, res) {
         const user = req.signedCookies["user"]
         if (!user) {

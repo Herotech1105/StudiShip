@@ -49,6 +49,7 @@ function loadRoom(req, res, db) {
 
 function createRoom(req, res, db) {
     const {roomName, roomDescription, roomSubject, roomPrivacy} = req.body
+    require("./subjects")
     const owner = req.signedCookies["user"]
     db.query('SELECT rooms.id FROM (SELECT users.id FROM users WHERE users.name = ?) owner  LEFT JOIN rooms ON rooms.owner_id = owner.id ', [owner], async (error, ownedRooms) => {
         if (ownedRooms.length < 4) {

@@ -1,0 +1,6 @@
+Theoretische Informatik 1
+Theoretische Informatik 2
+Theoretische Informatik 3
+Mathematik 1
+Mathematik 2
+Mathematik 3
