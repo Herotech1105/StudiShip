@@ -28,73 +28,73 @@ const websocketCookieParser = require('socket.io-cookie-parser')
 websocket.use(websocketCookieParser("securityToken"))
 
 // imports service layer to handle request/response logic
-const Service = require("./model/service")
-const service = new Service()
+require("./model/service")().then((service) => {
 
-// websocket and broadcasting to handle messages
-websocket.on('connection', (socket) => {
+    // websocket and broadcasting to handle messages
+    websocket.on('connection', (socket) => {
 
-    socket.on('room', (room) => {
-        socket.join(room)
+        socket.on('room', (room) => {
+            socket.join(room)
+        })
+
+        socket.on('message', (message) => {
+            const messageObject = JSON.parse(message)
+            messageObject.timestamp = new Date()
+                .toISOString()
+                .slice(0, 19)
+                .replace('T', ' ') // From https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
+            messageObject.user = socket.request.signedCookies['user']
+            service.saveMessage(messageObject)
+            websocket.to(messageObject.roomId).emit("message", JSON.stringify(messageObject))
+        })
     })
 
-    socket.on('message', (message) => {
-        const messageObject = JSON.parse(message)
-        messageObject.timestamp = new Date()
-            .toISOString()
-            .slice(0, 19)
-            .replace('T', ' ') // From https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
-        messageObject.user = socket.request.signedCookies['user']
-        service.saveMessage(messageObject)
-        websocket.to(messageObject.roomId).emit("message", JSON.stringify(messageObject))
+    server.listen(5000, () => {
+        console.log("Server started on port 5000")
     })
-})
-
-server.listen(5000, () => {
-    console.log("Server started on port 5000")
-})
 
 // controller mappings on which the server responds
-controller.get("/", (req, res) => {
-    service.frontPage(req, res)
-})
+    controller.get("/", (req, res) => {
+        service.frontPage(req, res)
+    })
 
-controller.get("/rooms", (req, res) => {
-    service.room(req, res)
-})
+    controller.get("/rooms", (req, res) => {
+        service.room(req, res)
+    })
 
-controller.get("/register", (req, res) => {
-    res.render("register")
-})
+    controller.get("/register", (req, res) => {
+        res.render("register")
+    })
 
-controller.get("/login", (req, res) => {
-    res.render("login")
-})
+    controller.get("/login", (req, res) => {
+        res.render("login")
+    })
 
-controller.get("/rooms/create", (req, res) => {
-    service.roomAdder(req, res)
-})
+    controller.get("/rooms/create", (req, res) => {
+        service.roomAdder(req, res)
+    })
 
-controller.get("/search", (req, res) => {
-    service.search(req, res)
-})
+    controller.get("/search", (req, res) => {
+        service.search(req, res)
+    })
 
-controller.post("/rooms/create", (req, res) => {
-    service.createRoom(req, res)
-})
+    controller.post("/rooms/create", (req, res) => {
+        service.createRoom(req, res)
+    })
 
-controller.post("/logout", (req, res) => {
-    service.logout(req, res)
-})
+    controller.post("/logout", (req, res) => {
+        service.logout(req, res)
+    })
 
-controller.post("/auth/register", (req, res) => {
-    return service.register(req, res)
-})
+    controller.post("/auth/register", (req, res) => {
+        return service.register(req, res)
+    })
 
-controller.post("/auth/login", (req, res) => {
-    return service.login(req, res)
-})
+    controller.post("/auth/login", (req, res) => {
+        return service.login(req, res)
+    })
 
-controller.post("/search", (req, res) => {
-    service.findRooms(req, res)
+    controller.post("/search", (req, res) => {
+        service.findRooms(req, res)
+    })
 })

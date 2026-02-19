@@ -1,99 +1,154 @@
 module.exports = {dashboardWithRoomList, loadRoom, createRoom}
 
-function dashboardWithRoomList(req, res, db) {
+async function dashboardWithRoomList(req, res, db) {
     const user = req.signedCookies["user"]
-    db.query('SELECT DISTINCT rooms.id, rooms.name ' +
+    res.render('dashboard', {
+        rooms: await getRoomsByMember(user, db),
+    })
+}
+
+async function loadRoom(req, res, db) {
+    const roomId = req.query.roomId
+    const user = req.signedCookies["user"]
+    if (!roomId) {
+        res.redirect('/')
+    } else {
+        const room = await getRoomById(roomId, db)
+        if (!room) {
+            res.redirect('/')
+        } else {
+            if (!await isRoomMember(user, roomId, db)) {
+                if (room.privacy !== 'private') {
+                    await addMember(user, roomId, db)
+                } else {
+                    res.redirect('/')
+                }
+            }
+            const messages = getMessagesByRoom(roomId, db)
+            const members = getRoomMembers(roomId, db)
+            res.render('room', {
+                room: room[0],
+                messages: await messages,
+                members: await members
+            })
+
+        }
+    }
+}
+
+async function createRoom(req, res, db) {
+    const {roomName, roomDescription, roomSubject, roomPrivacy} = req.body
+    const owner = req.signedCookies["user"]
+    const subjects = await require("./subjects")()
+    if (subjects.includes(roomSubject)) {
+        const existingOwnedRooms = await getRoomsByOwner(owner, db)
+        if (existingOwnedRooms.length < 4) {
+            await addRoom({
+                name: roomName,
+                description: roomDescription,
+                subject: roomSubject    ,
+                privacy: roomPrivacy,
+                owner: owner,
+            }, db)
+            const newRoomId = await getHighestRoomId(db)
+            res.redirect('/rooms?roomId=' + newRoomId)
+        } else {
+            res.redirect('/rooms/create')
+        }
+    }
+
+}
+
+async function updateRoom(room, db) {
+    await db.query('UPDATE rooms SET ? = ? WHERE rooms.id = ? ', [])
+}
+
+async function removeMember(member, roomId, db) {
+    const [error] = await db.promise().query('DELETE FROM roommembers WHERE room_id = ? AND user_id = (SELECT users.id FROM users WHERE users.name = ?)', [roomId, member])
+    if (error) {
+        console.error(error)
+    }
+}
+
+async function changeOwner(user, roomId, db) {
+    const [error] = await db.promise().query('UPDATE rooms SET owner_id = (SELECT users.id FROM users WHERE users.name = ?) WHERE rooms.id = ?', [user, roomId])
+    if (error) {
+        console.error(error)
+    }
+}
+
+// helper functions
+async function getHighestRoomId(db) {
+    const [id] = await db.promise().query('SELECT max(rooms.id) AS id ' +
+        'FROM rooms')
+    return id[0].id
+}
+
+async function getRoomsByOwner(owner, db) {
+    const [rooms] = await db.promise().query('SELECT rooms.id ' +
+        'FROM (SELECT users.id FROM users WHERE users.name = ?) owner ' +
+        'LEFT JOIN rooms ' +
+        'ON rooms.owner_id = owner.id ', [owner])
+    return rooms
+}
+
+async function getRoomMembers(roomId, db) {
+    const [members] = await db.promise().query('SELECT users.name ' +
+        'FROM (SELECT user_id ' +
+        'FROM roommembers ' +
+        'WHERE room_id = ?) ids ' +
+        'LEFT JOIN users ' +
+        'ON ids.user_id = users.id', [roomId])
+    return members
+}
+
+async function getRoomsByMember(member, db) {
+    const [rooms] = await db.promise().query('SELECT DISTINCT rooms.id, rooms.name ' +
         'FROM rooms ' +
         'RIGHT JOIN roommembers ' +
         'ON roommembers.room_id = rooms.id ' +
         'LEFT JOIN users ' +
         'ON users.id = roommembers.user_id ' +
         'WHERE users.name = ? ' +
-        'AND rooms.id IS NOT NULL ', [user], async (error, result) => {
-        res.render('dashboard', {
-            rooms: result
-        })
-    })
+        'AND rooms.id IS NOT NULL ',
+        [member]
+    )
+    return rooms
 }
 
-function loadRoom(req, res, db) {
-    const roomId = req.query.roomId
-    const user = req.signedCookies["user"]
-    if (!roomId) {
-        res.redirect('/')
-    } else {
-        db.query('SELECT * ' +
-            'FROM rooms ' +
-            'WHERE rooms.id = ? ', [roomId], async (error, room) => {
-            if (!room) {
-                res.redirect('/')
-            } else {
-                db.query('SELECT users.id ' +
-                    'FROM (SELECT roommembers.user_id ' +
-                    'FROM roommembers ' +
-                    'WHERE roommembers.room_id = ?) members ' +
-                    'LEFT JOIN users ' +
-                    'ON users.id = members.user_id ' +
-                    'WHERE users.name = ? ', [roomId, user], async (error, result) => {
-                    if (result.length === 0) {
-                        if (room[0].privacy !== 'private') {
-                            db.query('INSERT INTO roommembers (user_id, room_id) ' +
-                                'VALUES (' +
-                                '(SELECT users.id FROM users WHERE users.name = ?), ?)', [user, roomId], async () => {
-                            })
-                        } else {
-                            res.render('dashboard', {
-                                message: 'Access denied'
-                            })
-                        }
-                    }
-                    db.query('SELECT users.name as user, room_messages.content, room_messages.timestamp ' +
-                        'FROM (SELECT * FROM messages WHERE messages.room_id = ?) room_messages ' +
-                        'LEFT JOIN users ' +
-                        'ON room_messages.user_id = users.id ', [roomId], async (error, messages) => {
-                        db.query('SELECT users.name FROM (SELECT user_id FROM roommembers WHERE room_id = ?) ids left join users ON ids.user_id = users.id', [roomId], async (error, members) => {
-                            res.render('room', {
-                                room: room[0],
-                                messages: messages,
-                                members: members
-                            })
-                        })
-                    })
-                })
-
-            }
-        })
-    }
-
+async function getMessagesByRoom(roomId, db) {
+    const [messages] = await db.promise().query('SELECT users.name as user, room_messages.content, room_messages.timestamp ' +
+        'FROM (SELECT * FROM messages WHERE messages.room_id = ?) room_messages ' +
+        'LEFT JOIN users ' +
+        'ON room_messages.user_id = users.id ', [roomId])
+    return messages
 }
 
-function createRoom(req, res, db) {
-    const {roomName, roomDescription, roomSubject, roomPrivacy} = req.body
-    const owner = req.signedCookies["user"]
-    const subjectList = require("./subjects")
-    subjectList()
-        .then((subjects) => {
-            if (subjects.includes(roomSubject)) {
-                db.query('SELECT rooms.id ' +
-                    'FROM (SELECT users.id FROM users WHERE users.name = ?) owner ' +
-                    'LEFT JOIN rooms ' +
-                    'ON rooms.owner_id = owner.id ', [owner], async (error, ownedRooms) => {
-                    if (ownedRooms.length < 4) {
-                        db.query('INSERT INTO rooms (name, description, owner_id, subject, privacy) ' +
-                            'VALUES (?, ?, ' +
-                            '(SELECT users.id FROM users WHERE users.name = ?), ' +
-                            '?, ?)', [roomName, roomDescription, owner, roomSubject, roomPrivacy], async () => {
-                            db.query('SELECT max(rooms.id) AS id ' +
-                                'FROM rooms', async (error, newRoom) => {
-                                res.redirect('/rooms?roomId=' + newRoom[0].id)
-                            })
-                        })
-                    } else {
-                        res.redirect('/rooms/create')
-                    }
-                })
-            }
-        })
+async function getRoomById(roomId, db) {
+    const [room] = await db.promise().query('SELECT * FROM rooms WHERE rooms.id = ? ', [roomId])
+    return room[0]
+}
 
+async function addMember(user, roomId, db) {
+    await db.promise().query('INSERT INTO roommembers (user_id, room_id) ' +
+        'VALUES (' +
+        '(SELECT users.id FROM users WHERE users.name = ?), ?)', [user, roomId])
+}
 
+async function addRoom(room, db) {
+    await db.promise().query('INSERT INTO rooms (name, description, owner_id, subject, privacy) ' +
+        'VALUES (?, ?, ' +
+        '(SELECT users.id FROM users WHERE users.name = ?), ' +
+        '?, ?)', [room.name, room.description, room.owner, room.subject, room.privacy])
+}
+
+async function isRoomMember(user, roomId, db) {
+    const [result] = await db.promise().query('SELECT users.id ' +
+        'FROM (SELECT roommembers.user_id ' +
+        'FROM roommembers ' +
+        'WHERE roommembers.room_id = ?) members ' +
+        'LEFT JOIN users ' +
+        'ON users.id = members.user_id ' +
+        'WHERE users.name = ? ', [roomId, user])
+    return result.length > 0
 }

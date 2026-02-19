@@ -1,7 +1,6 @@
 class Service {
-    constructor() {
-        const DbHandler = require("../dbHandler/dbHandler");
-        this.db = new DbHandler();
+    constructor(db) {
+        this.db = db;
     }
 
     frontPage(req, res) {
@@ -82,4 +81,10 @@ class Service {
 
 }
 
-module.exports = Service
+async function createService() {
+    const {createDBConnection} = require("../dbHandler/createDBConnection");
+    const db = await createDBConnection()
+    return new Service(db)
+}
+
+module.exports = createService
