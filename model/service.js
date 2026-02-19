@@ -96,7 +96,7 @@ class Service {
 
     async deleteRoom(roomId) {
         const {deleteRoom} = require("./roomManager")
-        await deleteRoom(roomId)
+        await deleteRoom(roomId, this.db.connection)
     }
 
 }

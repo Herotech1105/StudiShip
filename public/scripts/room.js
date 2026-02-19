@@ -16,6 +16,10 @@ function sendMessage() {
 
 }
 
+function deleteRoom(){
+    websocket.emit('delete', roomId)
+}
+
 websocket.on("message", message => {
     const messageObject = JSON.parse(message)
     const messageList = document.getElementById('messages')
@@ -33,4 +37,8 @@ websocket.on("kicked", (user) => {
     const memberList = document.getElementById('memberList')
     const kickedUser = document.getElementById(user)
     memberList.removeChild(kickedUser)
+})
+
+websocket.on("deleteRoom", () => {
+    location.replace("/")
 })
