@@ -20,7 +20,7 @@
 </nav>
 <div class="container">
     <h1>Members</h1>
-    <ul>
+    <ul id="memberList">
         {{#each members}}
             <li>{{this.name}}</li>
         {{/each}}
@@ -29,7 +29,7 @@
     <h1>Messages</h1>
     <ul id="messages">
         {{#each messages}}
-            <li>{{this.user}}[{{this.timestamp}}]: {{this.content}} </li>
+            <li id="{{this.user}}">{{this.user}}[{{this.timestamp}}]: {{this.content}} </li>
         {{/each}}
     </ul>
 

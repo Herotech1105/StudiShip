@@ -1,4 +1,4 @@
-module.exports = {dashboardWithRoomList, loadRoom, createRoom}
+module.exports = {dashboardWithRoomList, loadRoom, createRoom, updateRoom, removeMember, changeOwner}
 
 async function dashboardWithRoomList(req, res, db) {
     const user = req.signedCookies["user"]
@@ -46,7 +46,7 @@ async function createRoom(req, res, db) {
             await addRoom({
                 name: roomName,
                 description: roomDescription,
-                subject: roomSubject    ,
+                subject: roomSubject,
                 privacy: roomPrivacy,
                 owner: owner,
             }, db)
@@ -60,18 +60,30 @@ async function createRoom(req, res, db) {
 }
 
 async function updateRoom(room, db) {
-    await db.query('UPDATE rooms SET ? = ? WHERE rooms.id = ? ', [])
+    await db.query('UPDATE rooms ' +
+        'SET name = ? ' +
+        'AND description = ? ' +
+        'AND subject = ? ' +
+        'AND privacy = ? ' +
+        'WHERE rooms.id = ? ',
+        [room.name, room.description, room.subject, room.privacy, room.id],)
 }
 
 async function removeMember(member, roomId, db) {
-    const [error] = await db.promise().query('DELETE FROM roommembers WHERE room_id = ? AND user_id = (SELECT users.id FROM users WHERE users.name = ?)', [roomId, member])
+    const [error] = await db.promise().query('DELETE FROM roommembers ' +
+        'WHERE room_id = ? ' +
+        'AND user_id = ' +
+        '(SELECT users.id FROM users WHERE users.name = ?)', [roomId, member])
     if (error) {
         console.error(error)
     }
 }
 
 async function changeOwner(user, roomId, db) {
-    const [error] = await db.promise().query('UPDATE rooms SET owner_id = (SELECT users.id FROM users WHERE users.name = ?) WHERE rooms.id = ?', [user, roomId])
+    const [error] = await db.promise().query('UPDATE rooms ' +
+        'SET owner_id = ' +
+        '(SELECT users.id FROM users WHERE users.name = ?) ' +
+        'WHERE rooms.id = ?', [user, roomId])
     if (error) {
         console.error(error)
     }

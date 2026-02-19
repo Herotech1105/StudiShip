@@ -33,8 +33,25 @@ require("./model/service")().then((service) => {
     // websocket and broadcasting to handle messages
     websocket.on('connection', (socket) => {
 
-        socket.on('room', (room) => {
-            socket.join(room)
+        socket.on('open', (roomId) => {
+            socket.join(roomId)
+            socket.join(socket.request.signedCookies['user'])
+        })
+
+        socket.on('updateRoom', (room) => {
+            service.updateRoom(room)
+            websocket.to(room.id).emit('updateRoom', room)
+        })
+
+        socket.on('changeOwner', (owner, roomId) => {
+            service.changeOwner(owner, roomId)
+            websocket.to(roomId).emit('changeOwner', owner)
+        })
+
+        socket.on('removeUser', (user, roomId) => {
+            service.removeUser(user, roomId)
+            websocket.to(user).emit('kick')
+            websocket.to(roomId).emit('kickedUser', user)
         })
 
         socket.on('message', (message) => {

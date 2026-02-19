@@ -79,6 +79,21 @@ class Service {
         }
     }
 
+    async removeUser(user, roomId) {
+        const {removeMember} = require("./roomManager")
+        await removeMember(user, roomId, this.db.connection)
+    }
+
+    async changeOwner(user, roomId) {
+        const {changeOwner} = require("./roomManager")
+        await changeOwner(user, roomId, this.db.connection)
+    }
+
+    async updateRoom(room) {
+        const {updateRoom} = require("./roomManager")
+        await updateRoom(room, this.db.connection)
+    }
+
 }
 
 async function createService() {

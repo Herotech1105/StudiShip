@@ -1,7 +1,7 @@
 const websocket = io()
 const searchParams = new URLSearchParams(window.location.search)
 const roomId = searchParams.get('roomId')
-websocket.emit("room", roomId)
+websocket.emit("open", roomId)
 
 function sendMessage() {
     const input = document.getElementById('message')
@@ -23,4 +23,14 @@ websocket.on("message", message => {
     const messageEntry = document.createElement("li")
     messageEntry.appendChild(textMessage)
     messageList.appendChild(messageEntry)
+})
+
+websocket.on("kick", () => {
+    location.replace("/")
+})
+
+websocket.on("kicked", (user) => {
+    const memberList = document.getElementById('memberList')
+    const kickedUser = document.getElementById(user)
+    memberList.removeChild(kickedUser)
 })
