@@ -1,4 +1,4 @@
-module.exports = {dashboardWithRoomList, loadRoom, createRoom, updateRoom, removeMember, changeOwner}
+module.exports = {dashboardWithRoomList, loadRoom, createRoom, updateRoom, removeMember, changeOwner, deleteRoom}
 
 async function dashboardWithRoomList(req, res, db) {
     const user = req.signedCookies["user"]
@@ -87,6 +87,12 @@ async function changeOwner(user, roomId, db) {
     if (error) {
         console.error(error)
     }
+}
+
+async function deleteRoom(roomId, db) {
+    await db.promise().query('DELETE FROM rooms WHERE rooms.id = ? ', [roomId])
+    await db.promise().query('DELETE FROM roommembers WHERE roommembers.room_id = ? ', [roomId])
+    await db.promise().query('DELETE FROM messages WHERE messages.room_id = ? ', [roomId])
 }
 
 // helper functions

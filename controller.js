@@ -38,6 +38,11 @@ require("./model/service")().then((service) => {
             socket.join(socket.request.signedCookies['user'])
         })
 
+        socket.on('delete', (roomId) => {
+            service.deleteRoom(roomId)
+            websocket.to(roomId).emit('deleteRoom')
+        })
+
         socket.on('updateRoom', (room) => {
             service.updateRoom(room)
             websocket.to(room.id).emit('updateRoom', room)
@@ -114,4 +119,5 @@ require("./model/service")().then((service) => {
     controller.post("/search", (req, res) => {
         service.findRooms(req, res)
     })
+
 })
