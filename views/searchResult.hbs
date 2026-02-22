@@ -57,7 +57,7 @@
         <h1>Search</h1>
         <ul>
             {{#each rooms}}
-                <li><a class="" href="/rooms?roomId={{{this.id}}}">{{this.name}}</a></li>
+                <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
             {{else}}
                 <p>No Room found</p>
             {{/each}}
