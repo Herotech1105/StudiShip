@@ -20,6 +20,18 @@ function deleteRoom(){
     websocket.emit('delete', roomId)
 }
 
+function updateRoom(room){
+    websocket.emit('updateRoom', room)
+}
+
+function changeOwner(owner){
+    websocket.emit('changeOwner', owner, roomId)
+}
+
+function removeUser(user){
+    websocket.emit('removeUser', user, roomId)
+}
+
 websocket.on("message", message => {
     const messageObject = JSON.parse(message)
     const messageList = document.getElementById('messages')
@@ -33,12 +45,28 @@ websocket.on("kick", () => {
     location.replace("/")
 })
 
-websocket.on("kicked", (user) => {
+websocket.on("kickedUser", (user) => {
     const memberList = document.getElementById('memberList')
     const kickedUser = document.getElementById(user)
-    memberList.removeChild(kickedUser)
+    if(memberList && kickedUser){
+        memberList.removeChild(kickedUser)
+    }
 })
 
 websocket.on("deleteRoom", () => {
     location.replace("/")
+})
+
+websocket.on("updateRoom", (room) => {
+    const title = document.getElementById("roomTitle")
+    if(title && room.name){
+        title.textContent = room.name
+    }
+})
+
+websocket.on("changeOwner", (owner) => {
+    const ownerElement = document.getElementById("roomOwner")
+    if(ownerElement){
+        ownerElement.textContent = owner
+    }
 })
