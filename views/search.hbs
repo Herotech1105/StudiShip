@@ -1,38 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-          crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>StudyShip</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style> {{!--Extrackt to style.css later--}}
+    header{
+        background-color: red;
+        color: white;
+        padding: 16px;
+
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo{
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .mobile-menu a{
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+    }
+    .mobile-menu a:hover{
+        color: white;
+        text-decoration: underline;
+        margin-left: 20px;
+    }
+    .mobile-menu button{
+        background: none;
+        border: none;
+        padding: 0;
+        color: white;
+        font: inherit;
+        cursor: pointer;
+        margin-left: 20px;
+        text-decoration: none;
+    }
+    .mobile-menu button:hover{
+        text-decoration: underline;
+    }
+    .mobile-menu form{
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
+    </style>
 </head>
-<body>
 
-<nav>
-    <h4>Search</h4>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-    </ul>
-</nav>
-<div class="container">
-    <form action="/search" method="POST">
-        <div class="form-group">
-            <label for="roomName">Room Name</label>
-            <input type="text" class="form-control" id="roomName" name="roomName">
-            <label for="roomSubject">Room Subject</label>
-            <select class="form-control" id="roomSubject" name="roomSubject">
-                <option value="any">any</option>
-                {{#each subjects}}
-                    <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
-            <button type="submit" class="btn btn-primary">Add Room</button>
+<header>
+    <nav>
+        <a href="/" class="logo">StudyShip 📖</a>
+        <div class="mobile-menu">
+            <a href="/rooms/create">Erstellen</a>
+            <a href="/search">Suchen</a>
+            <form action="/logout" method="POST" class="logout-form">
+                <button type="submit" class="logout-link-style">Abmelden</button>
+            </form>
         </div>
-    </form>
-
-</div>
-
-
+        </div>
+    </nav>
+</header>
+<body>
+    <div class="container">
+        <form action="/search" method="POST">
+            <div class="form-group">
+                <label for="roomName">Room Name</label>
+                <input type="text" class="form-control" id="roomName" name="roomName">
+                <label for="roomSubject">Room Subject</label>
+                <select class="form-control" id="roomSubject" name="roomSubject">
+                    <option value="any">any</option>
+                    {{#each subjects}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+                <button type="submit" class="btn btn-primary">Add Room</button>
+            </div>
+        </form>
+    </div>
 </body>
+<footer>
+    <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+    <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+</footer>
 </html>

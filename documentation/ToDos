@@ -1,0 +1,10 @@
+Hey, Leute hier ein paar ToDos die mir beim schreiben auf gefallen sind:
+1. all das in der views in den html/hbs daten von den <style> klammern in eine Css verschieben(durch sowas wie <link rel="stylesheet" href="css/style.css"
+                                                                                               type="text/css"/> erstetzten)
+
+2. Logout link zu einen Butten oder back end anpassen (<form action="/logout" method="POST">
+                                                           <button type="submit" class="btn btn-primary">Logout</button>
+                                                       </form>)
+3. favicon zum laufen bringen( bild ist favicon.icon und <link rel="icon" href="favicon.ico" type="image/x-icon">)
+
+4. Text für den <footer> erstellen und aus tauschen
