@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>StudyShip</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style> {{!--Extrackt to style.css later--}}
+    <style>
         header{
             background-color: red;
             color: white;
@@ -15,6 +15,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        footer{
+            background-color: red;
+            color: white;
         }
         .logo{
             text-decoration: none;
@@ -34,19 +38,22 @@
         }
     </style>
 </head>
-<body>
-<header>
-    <nav>
-        <a href="/" class="logo">StudyShip 📖</a>
-        <div class="mobile-menu">
-            <a href="/login">Anmelden</a>
-            <a href="/register">Registrieren</a>
-        </div>
-    </nav>
-</header>
-{{!-- Body of each page will go here --}}
-<main><p>What ever I Whant to schreiben here</p></main>
-
-
-</body>
+    <header>
+        <nav>
+            <a href="/" class="logo">StudyShip 📖</a>
+            <div class="mobile-menu">
+                <a href="/login">Anmelden</a>
+                <a href="/register">Registrieren</a>
+            </div>
+        </nav>
+    </header>
+    <body>
+        <main>
+            <p>What ever I Whant to schreiben here</p>
+        </main>
+    </body>
+    <footer>
+        <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+        <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+    </footer>
 </html>

@@ -143,7 +143,7 @@
                 <span>{{room.subject}}</span>
             </div>
 
-            <div class="border-box description-field">
+            <div class="border-box">
                 <p>{{room.description}}</p>
             </div>
 
@@ -152,7 +152,9 @@
                 <button class="share-btn">🔗 teilen</button>
                 <ul>
                     {{#each members}}
-                        <li>{{this.name}}</li>
+                        <li>{{this.name}}
+                            <button onclick="deleteMember(this)">x</button>
+                        </li>
                     {{/each}}
                 </ul>
             </div>
