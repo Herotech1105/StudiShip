@@ -4,3 +4,10 @@ Theoretische Informatik 3
 Mathematik 1
 Mathematik 2
 Mathematik 3
+Web Engineering 1
+Web Engineering 2
+Python
+C++
+BWL
+Ethik und Recht
+Algorithmen und Verfahren
