@@ -32,38 +32,56 @@
         text-decoration: underline;
         margin-left: 20px;
     }
+    .mobile-menu button{
+        background: none;
+        border: none;
+        padding: 0;
+        color: white;
+        font: inherit;
+        cursor: pointer;
+        margin-left: 20px;
+        text-decoration: none;
+    }
+    .mobile-menu button:hover{
+        text-decoration: underline;
+    }
+    .mobile-menu form{
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
     </style>
 </head>
-<body>
+
 <header>
     <nav>
         <a href="/" class="logo">StudyShip 📖</a>
         <div class="mobile-menu">
             <a href="/rooms/create">Erstellen</a>
             <a href="/search">Suchen</a>
-            <a href="/logout">Abmelden</a>
+            <form action="/logout" method="POST" class="logout-form">
+                <button type="submit" class="logout-link-style">Abmelden</button>
+            </form>
         </div>
         </div>
     </nav>
 </header>
-<div class="container">
-    <form action="/search" method="POST">
-        <div class="form-group">
-            <label for="roomName">Room Name</label>
-            <input type="text" class="form-control" id="roomName" name="roomName">
-            <label for="roomSubject">Room Subject</label>
-            <select class="form-control" id="roomSubject" name="roomSubject">
-                <option value="any">any</option>
-                {{#each subjects}}
-                    <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
-            <button type="submit" class="btn btn-primary">Add Room</button>
-        </div>
-    </form>
-
-</div>
-
-
+<body>
+    <div class="container">
+        <form action="/search" method="POST">
+            <div class="form-group">
+                <label for="roomName">Room Name</label>
+                <input type="text" class="form-control" id="roomName" name="roomName">
+                <label for="roomSubject">Room Subject</label>
+                <select class="form-control" id="roomSubject" name="roomSubject">
+                    <option value="any">any</option>
+                    {{#each subjects}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+                <button type="submit" class="btn btn-primary">Add Room</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
