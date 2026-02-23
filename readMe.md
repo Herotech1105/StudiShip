@@ -1,4 +1,4 @@
-# Getting Started for development
+# Getting Started 
 
 ## Node dependencies
 
@@ -16,4 +16,6 @@ Run the following command in your Project's Console:
 
 # Starting the server
 
-Run the `controller.js` script
+Run the server using `nodemon controller.js`
+
+The Application should be available at `http://localhost:5000`
