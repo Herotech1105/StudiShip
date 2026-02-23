@@ -79,24 +79,24 @@ class Service {
         }
     }
 
-    async removeUser(user, roomId) {
+    async removeUser(user, roomId, actor) {
         const {removeMember} = require("./roomManager")
-        await removeMember(user, roomId, this.db.connection)
+        await removeMember(user, roomId, actor, this.db.connection)
     }
 
-    async changeOwner(user, roomId) {
+    async changeOwner(user, roomId, actor) {
         const {changeOwner} = require("./roomManager")
-        await changeOwner(user, roomId, this.db.connection)
+        await changeOwner(user, roomId, actor,this.db.connection)
     }
 
-    async updateRoom(room) {
+    async updateRoom(room, actor) {
         const {updateRoom} = require("./roomManager")
-        await updateRoom(room, this.db.connection)
+        await updateRoom(room, actor, this.db.connection)
     }
 
-    async deleteRoom(roomId) {
+    async deleteRoom(roomId, actor) {
         const {deleteRoom} = require("./roomManager")
-        await deleteRoom(roomId, this.db.connection)
+        await deleteRoom(roomId, actor, this.db.connection)
     }
 
 }

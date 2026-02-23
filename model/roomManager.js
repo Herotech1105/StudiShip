@@ -61,39 +61,59 @@ async function createRoom(req, res, db) {
 }
 
 async function updateRoom(room, db) {
-    await db.query('UPDATE rooms ' +
-        'SET name = ? ' +
-        'AND description = ? ' +
-        'AND subject = ? ' +
-        'AND privacy = ? ' +
-        'WHERE rooms.id = ? ',
-        [room.name, room.description, room.subject, room.privacy, room.id],)
-}
-
-async function removeMember(member, roomId, db) {
-    const [error] = await db.promise().query('DELETE FROM roommembers ' +
-        'WHERE room_id = ? ' +
-        'AND user_id = ' +
-        '(SELECT users.id FROM users WHERE users.name = ?)', [roomId, member])
-    if (error) {
-        console.error(error)
+    if (await isOwner(actor, roomId, db)) {
+        await db.query('UPDATE rooms ' +
+            'SET name = ? ' +
+            'AND description = ? ' +
+            'AND subject = ? ' +
+            'AND privacy = ? ' +
+            'WHERE rooms.id = ? ',
+            [room.name, room.description, room.subject, room.privacy, room.id],)
+    }
+    else {
+        throw Error("You are not the owner of this room")
     }
 }
 
-async function changeOwner(user, roomId, db) {
-    const [error] = await db.promise().query('UPDATE rooms ' +
-        'SET owner_id = ' +
-        '(SELECT users.id FROM users WHERE users.name = ?) ' +
-        'WHERE rooms.id = ?', [user, roomId])
-    if (error) {
-        console.error(error)
+async function removeMember(member, roomId, actor, db) {
+    if (await isOwner(actor, roomId, db)) {
+        const [error] = await db.promise().query('DELETE FROM roommembers ' +
+            'WHERE room_id = ? ' +
+            'AND user_id = ' +
+            '(SELECT users.id FROM users WHERE users.name = ?)', [roomId, member])
+        if (error) {
+            console.error(error)
+        }
+    }
+    else {
+        throw Error("You are not the owner of this room")
     }
 }
 
-async function deleteRoom(roomId, db) {
-    await db.promise().query('DELETE FROM rooms WHERE rooms.id = ? ', [roomId])
-    await db.promise().query('DELETE FROM roommembers WHERE roommembers.room_id = ? ', [roomId])
-    await db.promise().query('DELETE FROM messages WHERE messages.room_id = ? ', [roomId])
+async function changeOwner(user, roomId, actor, db) {
+    if (await isOwner(actor, roomId, db)) {
+        const [error] = await db.promise().query('UPDATE rooms ' +
+            'SET owner_id = ' +
+            '(SELECT users.id FROM users WHERE users.name = ?) ' +
+            'WHERE rooms.id = ?', [user, roomId])
+        if (error) {
+            console.error(error)
+        }
+    }
+    else {
+        throw Error("You are not the owner of this room")
+    }
+}
+
+async function deleteRoom(roomId, actor, db) {
+    if (await isOwner(actor, roomId, db)) {
+        await db.promise().query('DELETE FROM rooms WHERE rooms.id = ? ', [roomId])
+        await db.promise().query('DELETE FROM roommembers WHERE roommembers.room_id = ? ', [roomId])
+        await db.promise().query('DELETE FROM messages WHERE messages.room_id = ? ', [roomId])
+    }
+    else {
+        throw Error("You are not the owner of this room")
+    }
 }
 
 // helper functions
@@ -175,4 +195,14 @@ async function isRoomMember(user, roomId, db) {
         'ON users.id = members.user_id ' +
         'WHERE users.name = ? ', [roomId, user])
     return result.length > 0
+}
+
+async function isOwner(user, roomId, db) {
+    const [ownedRooms] = await getRoomsByOwner(user, db)
+    ownedRooms.forEach(room => {
+        if(room.id === roomId) {
+            return true
+        }
+    })
+    return false
 }

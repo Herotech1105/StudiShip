@@ -38,25 +38,45 @@ require("./model/service")().then((service) => {
             socket.join(socket.request.signedCookies['user'])
         })
 
-        socket.on('delete', (roomId) => {
-            service.deleteRoom(roomId)
-            websocket.to(roomId).emit('deleteRoom')
+        socket.on('delete', async (roomId) => {
+            const user = socket.request.signedCookies['user']
+            try {
+                await service.deleteRoom(roomId, user)
+                websocket.to(roomId).emit('deleteRoom')
+            } catch (err) {
+                websocket.to(actor).emit('invalid', JSON.stringify(err))
+            }
         })
 
-        socket.on('updateRoom', (room) => {
-            service.updateRoom(room)
-            websocket.to(room.id).emit('updateRoom', room)
+        socket.on('updateRoom', async (room) => {
+            const user = socket.request.signedCookies['user']
+            try {
+                await service.updateRoom(room, user)
+                websocket.to(room.id).emit('updateRoom', room)
+            } catch (error) {
+                websocket.to(actor).emit('invalid', JSON.stringify(err))
+            }
         })
 
-        socket.on('changeOwner', (owner, roomId) => {
-            service.changeOwner(owner, roomId)
-            websocket.to(roomId).emit('changeOwner', owner)
+        socket.on('changeOwner', async (owner, roomId) => {
+            const user = socket.request.signedCookies['user']
+            try {
+                await service.changeOwner(owner, roomId, user)
+                websocket.to(roomId).emit('changeOwner', owner)
+            } catch (err) {
+                websocket.to(actor).emit('invalid', JSON.stringify(err))
+            }
         })
 
-        socket.on('removeUser', (user, roomId) => {
-            service.removeUser(user, roomId)
-            websocket.to(user).emit('kick')
-            websocket.to(roomId).emit('kickedUser', user)
+        socket.on('removeUser', async (user, roomId) => {
+            const actor = socket.request.signedCookies['user']
+            try {
+                await service.removeUser(user, roomId)
+                websocket.to(user).emit('kick')
+                websocket.to(roomId).emit('kickedUser', user)
+            } catch (err) {
+                websocket.to(actor).emit('invalid', JSON.stringify(err))
+            }
         })
 
         socket.on('message', (message) => {
@@ -68,6 +88,12 @@ require("./model/service")().then((service) => {
             messageObject.user = socket.request.signedCookies['user']
             service.saveMessage(messageObject)
             websocket.to(messageObject.roomId).emit("message", JSON.stringify(messageObject))
+        })
+
+        socket.on('disconnecting', () => {
+            socket.rooms.forEach((room) => {
+                websocket.to(room).emit('disconnection', socket.request.signedCookies['user'])
+            })
         })
     })
 
