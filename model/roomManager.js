@@ -26,6 +26,7 @@ async function loadRoom(req, res, db) {
             }
             const messages = getMessagesByRoom(roomId, db)
             const members = getRoomMembers(roomId, db)
+            room.owner = await getUserNameById(room.owner, db)
             res.render('room', {
                 room: room,
                 messages: await messages,
@@ -143,8 +144,13 @@ async function getMessagesByRoom(roomId, db) {
 }
 
 async function getRoomById(roomId, db) {
-    const [room] = await db.promise().query('SELECT * FROM rooms WHERE rooms.id = ? ', [roomId])
+    const [room] = await db.promise().query('SELECT id, name, description, subject, privacy, owner_id AS owner FROM rooms WHERE rooms.id = ? ', [roomId])
     return room[0]
+}
+
+async function getUserNameById(userId, db) {
+    const [user] = await db.promise().query('SELECT users.name FROM users WHERE users.id = ?', [userId])
+    return user[0].name
 }
 
 async function addMember(user, roomId, db) {

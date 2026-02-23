@@ -139,12 +139,16 @@
                 <h1>{{room.name}}</h1>
             </div>
 
-            <div class="border-box sub-header">
+            <div id="subject" class="border-box sub-header">
                 <span>{{room.subject}}</span>
             </div>
 
-            <div class="border-box">
+            <div id="description" class="border-box">
                 <p>{{room.description}}</p>
+            </div>
+
+            <div id="owner" class="border-box">
+                <p>{{room.owner}}</p>
             </div>
 
             <div class="red-rounded-box members-field">
@@ -153,7 +157,7 @@
                 <ul>
                     {{#each members}}
                         <li>{{this.name}}
-                            <button onclick="deleteMember(this)">x</button>
+                            <button class="kickUserButton" onclick="deleteMember(this)">x</button>
                         </li>
                     {{/each}}
                 </ul>
