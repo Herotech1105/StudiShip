@@ -54,7 +54,7 @@ require("./model/service")().then((service) => {
                 await service.updateRoom(room, user)
                 websocket.to(room.id).emit('updateRoom', room)
             } catch (error) {
-                websocket.to(actor).emit('invalid', JSON.stringify(err))
+                websocket.to(user).emit('invalid', JSON.stringify(err))
             }
         })
 
@@ -64,14 +64,14 @@ require("./model/service")().then((service) => {
                 await service.changeOwner(owner, roomId, user)
                 websocket.to(roomId).emit('changeOwner', owner)
             } catch (err) {
-                websocket.to(actor).emit('invalid', JSON.stringify(err))
+                websocket.to(user).emit('invalid', JSON.stringify(err))
             }
         })
 
         socket.on('removeUser', async (user, roomId) => {
             const actor = socket.request.signedCookies['user']
             try {
-                await service.removeUser(user, roomId)
+                await service.removeUser(user, roomId, actor)
                 websocket.to(user).emit('kick')
                 websocket.to(roomId).emit('kickedUser', user)
             } catch (err) {
