@@ -27,7 +27,7 @@ async function loadRoom(req, res, db) {
             const messages = getMessagesByRoom(roomId, db)
             const members = getRoomMembers(roomId, db)
             res.render('room', {
-                room: room[0],
+                room: room,
                 messages: await messages,
                 members: await members
             })
