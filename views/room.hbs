@@ -9,7 +9,6 @@
         background-color: red;
         color: white;
         padding: 16px;
-
     }
     nav{
         display: flex;
@@ -32,9 +31,74 @@
         text-decoration: underline;
         margin-left: 20px;
     }
+    .room-layout{
+        height: calc(100vh - 65px);/*without nav*/
+        display: flex;
+        gap: 20px;
+        padding:20px
+    }
+    .room-info{
+        flex: 1;
+    }
+    .red-rounded-box {
+        background-color: red;
+        color: white;
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+    }
+    .border-box {
+        border: 2px solid black;
+        padding: 10px;
+        background-color: white;
+        margin-bottom: 15px;
+    }
+    .chat-area{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        background: lightgray;
+        border-radius: 10px;
+        height: 60hv;
+    }
+    .chat-window{
+        postion:fixed;
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 15px;
+        list-style: none;
+    }
+    .message-bubble{
+        background: red;
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 15px;
+    }
+    .chat-input{
+        display: flex;
+        padding: 10px;
+        background: white;
+    }
+    .chat-input input{
+        flex-grow: 1;
+        padding: 10px;
+        border:1px solid #ccc;
+
+    }
+    .chat-input button{
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+
     </style>
 </head>
-<body>
+
 <header>
     <nav>
         <a href="/" class="logo">StudyShip 📖</a>
@@ -45,35 +109,52 @@
         </div>
     </nav>
 </header>
-{{!-- Body of each page will go here --}}
-<main><p>What ever I Whant to schreiben here</p></main>
+<body>
+    <main class="room-layout">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="../scripts/room.js"></script>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="../scripts/room.js"></script>
+        <section class="room-info">
+            <div class="red-rounded-box header-box">
+                <h1>{{room.name}}</h1>
+            </div>
 
+            <div class="border-box sub-header">
+                <span>{{room.subject}}</span>
+            </div>
 
-<h4>{{room.name}}</h4>
-<div class="container">
-    <h1>Members</h1>
-    <ul id="memberList">
-        {{#each members}}
-            <li>{{this.name}}</li>
-        {{/each}}
-    </ul>
+            <div class="border-box description-field">
+                <p>{{room.description}}</p>
+            </div>
 
-    <h1>Messages</h1>
-    <ul id="messages">
-        {{#each messages}}
-            <li id="{{this.user}}">{{this.user}}[{{this.timestamp}}]: {{this.content}} </li>
-        {{/each}}
-    </ul>
+            <div class="red-rounded-box members-field">
+                <h3>Mitglieder:</h3>
+                <button class="share-btn">🔗 teilen</button>
+                <ul>
+                    {{#each members}}
+                        <li>{{this.name}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <button onclick="deleteRoom()">Delete</button>
+        </section>
 
-    <input value="" type="text" name="message" id="message">
-    <button onclick="sendMessage()">Send</button>
+        <aside class="chat-area">
+            <h4>Nachrichten:</h4>
+            <ul id="messages" class="chat-window">
+                {{#each messages}}
+                    <li class="message-bubble" id="{{this.user}}">
+                        <small>{{this.user}}[{{this.timestamp}}]:</small>
+                        <p>{{this.message}}</p>
+                    </li>
+                {{/each}}
 
-</div>
-
-<button onclick="deleteRoom()">Delete</button>
-
+            </ul>
+            <div class="chat-input">
+                <input type="text" name="message" id="message" placeholder="...">
+                <button onclick="sendMessage()" class="send-button">➤</button>
+            </div>
+        </aside>
+    </main>
 </body>
 </html>
