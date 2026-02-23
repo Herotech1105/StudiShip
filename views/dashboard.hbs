@@ -52,7 +52,7 @@
         }
     </style>
 </head>
-<body>
+
 <header>
     <nav>
         <a href="/" class="logo">StudyShip 📖</a>
@@ -65,18 +65,25 @@
         </div>
     </nav>
 </header>
-<main>
-    <h1>Dashboard</h1>
-    <img src="images/handy.jpg"></img>
-    <h2>Deine Lerngruppen</h2>
-    <ul>
-        {{#each rooms}}
-            <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
-        {{else}}
-            <p>You are not part of any groups</p>
-        {{/each}}
-    </ul>
-</main>
-
+<body>
+    <main>
+        <h3>Dashboard</h3>
+            {{#if user }}
+                <h4>Wilkommen, {{user}}!</h4>
+            {{/if}}
+        <img src="images/handy.jpg"></img>
+        <h4>Deine Lerngruppen</h4>
+        <ul>
+            {{#each rooms}}
+                <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
+            {{else}}
+                <p>You are not part of any groups</p>
+            {{/each}}
+        </ul>
+    </main>
 </body>
+<footer>
+    <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+    <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+</footer>
 </html>

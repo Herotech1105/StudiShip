@@ -52,7 +52,6 @@
     }
     </style>
 </head>
-<body>
 <header>
     <nav>
         <a href="/" class="logo">StudyShip 📖</a>
@@ -68,22 +67,24 @@
 </header>
 {{!-- Body of each page will go here --}}
 <main><p>What ever I Whant to schreiben here</p></main>
-
-
+<body>
+    <main>
+        <div class="container mt-4">
+            <div>
+                <h1>Search</h1>
+                <ul>
+                    {{#each rooms}}
+                        <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
+                    {{else}}
+                        <p>No Room found</p>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </main>
 </body>
-</html>
-<div class="container mt-4">
-    <div>
-        <h1>Search</h1>
-        <ul>
-            {{#each rooms}}
-                <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
-            {{else}}
-                <p>No Room found</p>
-            {{/each}}
-        </ul>
-    </div>
-</div>
-
-</body>
+<footer>
+    <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+    <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+</footer>
 </html>
