@@ -2,9 +2,9 @@ module.exports = {authenticateRegistration, authenticateLogin}
 
 
 function authenticateLogin(req, res, db) {
-    const {name, password} = req.body
-    db.query('SELECT password FROM users WHERE name = ?', [name], async (error, result) => {
-        try {
+    try {
+        const {name, password} = req.body
+        db.query('SELECT password FROM users WHERE name = ?', [name], async (error, result) => {
             if (result.length === 0) {
                 res.render('login', {
                     message: `No user under ${name} registered`,
@@ -19,14 +19,15 @@ function authenticateLogin(req, res, db) {
                 res.redirect("/")
             }
 
-        } catch (err) {
-            console.log(err)
-            res.render('login', {
-                message: 'An unexpected error occurred',
-                name: name
-            })
-        }
-    })
+
+        })
+    } catch (error) {
+        console.log(err)
+        res.render('login', {
+            message: 'An unexpected error occurred',
+            name: name
+        })
+    }
 }
 
 function authenticateRegistration(req, res, db) {

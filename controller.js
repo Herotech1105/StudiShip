@@ -80,14 +80,19 @@ require("./model/service")().then((service) => {
         })
 
         socket.on('message', (message) => {
-            const messageObject = JSON.parse(message)
-            messageObject.timestamp = new Date()
-                .toISOString()
-                .slice(0, 19)
-                .replace('T', ' ') // From https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
-            messageObject.user = socket.request.signedCookies['user']
-            service.saveMessage(messageObject)
-            websocket.to(messageObject.roomId).emit("message", JSON.stringify(messageObject))
+            try {
+                const messageObject = JSON.parse(message)
+                messageObject.timestamp = new Date()
+                    .toISOString()
+                    .slice(0, 19)
+                    .replace('T', ' ') // From https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
+                messageObject.user = socket.request.signedCookies['user']
+                service.saveMessage(messageObject)
+                websocket.to(messageObject.roomId).emit("message", JSON.stringify(messageObject))
+            } catch (error) {
+                console.error(error)
+            }
+
         })
 
         socket.on('disconnecting', () => {

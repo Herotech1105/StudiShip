@@ -1,3 +1,6 @@
+const {createRoom} = require("./roomManager");
+const {findRooms} = require("./searchManager");
+
 class Service {
     constructor(db) {
         this.db = db;
@@ -33,8 +36,12 @@ class Service {
         if (!user) {
             res.redirect('/login')
         } else {
-            const {loadRoom} = require("./roomManager")
-            loadRoom(req, res, this.db.connection)
+            try {
+                const {loadRoom} = require("./roomManager")
+                loadRoom(req, res, this.db.connection)
+            } catch (err) {
+                res.redirect('/')
+            }
         }
     }
 
@@ -51,8 +58,13 @@ class Service {
         if (!user) {
             res.redirect("/")
         } else {
-            const {createRoom} = require("./roomManager")
-            createRoom(req, res, this.db.connection)
+            try {
+                const {createRoom} = require("./roomManager")
+                createRoom(req, res, this.db.connection)
+            }
+            catch (err) {
+                res.redirect('/rooms/create')
+            }
         }
     }
 
@@ -74,8 +86,13 @@ class Service {
         if (!user) {
             res.redirect("/")
         } else {
-            const {findRooms} = require("./searchManager")
-            findRooms(req, res, this.db.connection)
+            try{
+                const {findRooms} = require("./searchManager")
+                findRooms(req, res, this.db.connection)
+            } catch(err) {
+                res.redirect('/')
+            }
+
         }
     }
 
@@ -86,7 +103,7 @@ class Service {
 
     async changeOwner(user, roomId, actor) {
         const {changeOwner} = require("./roomManager")
-        await changeOwner(user, roomId, actor,this.db.connection)
+        await changeOwner(user, roomId, actor, this.db.connection)
     }
 
     async updateRoom(room, actor) {
