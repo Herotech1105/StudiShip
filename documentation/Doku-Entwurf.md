@@ -1,6 +1,10 @@
 # StudyShip
 
-Dies ist das Projekt ...
+Dies ist das Projekt StudyShip erstellt durch:
+* Tim Dorozynski
+* Lennart Esch
+* Barnabas Steiner
+* Jannis Weber
 
 [Unser Github Repoistory](https://github.com/Herotech1105/StudiShip)
 
@@ -85,7 +89,7 @@ Der Controller bietet sowohl Endpunkte für http POST- und GET-requests, als auc
 Endpunkte können dann vom Nutzer erreicht werden, um Webseiten anzufordern oder Formulare (wie z.B der Login)
 einzureichen.
 Der Websocket Server bietet die Möglichkeit, dass Server und Client in beide Richtungen miteinander über das Zusenden
-von Events kommunizieren können. 
+von Events kommunizieren können.
 
 
 <img src="./images/backendStructure.svg">
@@ -137,6 +141,21 @@ sowie Inhalt und Zeitpunkt der Nachricht.
 und Raum-Id gespeichert.
 
 ### Endpoints
+
+| Pfad           | Request Typ | Beschreibung                                            | Response                                                                                                                                                             |
+|----------------|-------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| /              | GET         | Main Page                                               | Wenn der Nutzer nicht angemeldet ist wird der Index geladen, ansonsten das Dashboard                                                                                 |
+| /login         | GET         | Login Seite                                             | Lädt die Login Seite                                                                                                                                                 |
+| /register      | GET         | Registrierungs Seite                                    | Lädt die Resgistrierungs Seite                                                                                                                                       |
+| /rooms         | GET         | Chat Raum                                               | Lädt den Raum mit der mitgegebenen Id, falls der Zugriff erlaubt ist. Ansonsten Weiterleitung an '/'                                                                 |
+| /rooms/create  | GET         | Raum Ersteller Seite                                    | Läadt die Seite zur Erstellung eines neuen Raums, falls der Nutzer angemeldet ist. Ansonsten Weiterleitung zu '/login'                                               |
+| /search        | GET         | Raum Suchseite                                          | Lädt die Raumsuchseite, falls der Nutzer angemeldet ist. Ansonsten Weiterleitung zu '/login'                                                                         |
+| /auth/login    | POST        | Authentifizierung der Nutzerdaten beim Login            | Überprüft die Anmeldedaten. Bei Erfolg wird der Cookie für die Anmeldung gesetzt und zu '/' weitergeleitet, ansonsten wieder zu '/login'                             |
+| /auth/register | POST        | Authentifizierung der Nutzerdaten bei der Registrierung | Überprüft, ob die Anmeldedaten valide und frei sind. Bei Erfolg wird der Cookie für die Anmeldung gesetzt und zu '/' weitergeleitet, ansonsten wieder zu '/register' |
+| /logout        | POST        | Abmeldung des Nutzers                                   | Entfernt den Cookie für die Anmeldung und leitet zu '/' weiter                                                                                                       |
+| /rooms/create  | POST        | Erstellung eines neuen Raums                            | Prüft die Angaben und erstellt aus ihnen bei Erfolg einen neuen Raum und leitet zu diesem weiter. Ansonsten wird wieder zu '/rooms/create' weitergeleitet.           |
+| /search        | POST        | Suche nach Räumen                                       | Sucht Räume nach gegebenen Parametern. Rendert eine Liste mit Ergebnissen.                                                                                           |
+
 
 ### Socketevents
 
