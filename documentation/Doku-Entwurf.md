@@ -2,10 +2,6 @@
 
 ## Backend - (javascript)
 
-### Struktur
-
-<img src="./images/backendStructure.svg">
-
 ### Technologien
 
 #### Node.js:
@@ -52,6 +48,21 @@ Möglichkeit, dass der Server Clients in Gruppen einteilen kann und dann Events 
 
 Spezielle Schnittstelle für Cookie-Parser und Socket.io, damit der Websocketserver auf die signierten Cookies der
 Clients zugreifen kann.
+
+#### Nodemon:
+
+Nodemon ist ein Entwicklungstool, das Dateiänderungen automatisch in das laufende Programm geladen werden. Es dient nur
+dem Komfort bei der Entwicklung
+
+### Struktur
+
+<img src="./images/backendStructure.svg">
+
+### Datenbank
+
+### Endpoints
+
+### Socketevents
 
 ## Frontend - (html)
 

@@ -44,7 +44,7 @@ require("./model/service")().then((service) => {
                 await service.deleteRoom(roomId, user)
                 websocket.to(roomId).emit('deleteRoom')
             } catch (err) {
-                websocket.to(actor).emit('invalid', JSON.stringify(err))
+                websocket.to(user).emit('invalid', JSON.stringify(err))
             }
         })
 
