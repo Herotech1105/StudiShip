@@ -38,13 +38,20 @@ require("./model/service")().then((service) => {
             socket.join(socket.request.signedCookies['user'])
         })
 
+        socket.on('giveSubjects', async () => {
+            const user = socket.request.signedCookies['user']
+            const subjectList = await require('./model/subjects')()
+            websocket.to(user).emit('subjects', JSON.stringify(subjectList))
+        })
+
         socket.on('delete', async (roomId) => {
             const user = socket.request.signedCookies['user']
             try {
                 await service.deleteRoom(roomId, user)
                 websocket.to(roomId).emit('deleteRoom')
-            } catch (err) {
-                websocket.to(user).emit('invalid', JSON.stringify(err))
+            } catch (error) {
+                const message = error.message
+                websocket.to(user).emit('invalid', JSON.stringify(message))
             }
         })
 
@@ -54,7 +61,8 @@ require("./model/service")().then((service) => {
                 await service.updateRoom(room, user)
                 websocket.to(room.id).emit('updateRoom', room)
             } catch (error) {
-                websocket.to(user).emit('invalid', JSON.stringify(err))
+                const message = error.message
+                websocket.to(user).emit('invalid', JSON.stringify(message))
             }
         })
 
@@ -63,8 +71,9 @@ require("./model/service")().then((service) => {
             try {
                 await service.changeOwner(owner, roomId, user)
                 websocket.to(roomId).emit('changeOwner', owner)
-            } catch (err) {
-                websocket.to(user).emit('invalid', JSON.stringify(err))
+            } catch (error) {
+                const message = error.message
+                websocket.to(user).emit('invalid', JSON.stringify(message))
             }
         })
 
@@ -74,8 +83,9 @@ require("./model/service")().then((service) => {
                 await service.removeUser(user, roomId, actor)
                 websocket.to(user).emit('kick')
                 websocket.to(roomId).emit('kickedUser', user)
-            } catch (err) {
-                websocket.to(actor).emit('invalid', JSON.stringify(err))
+            } catch (error) {
+                const message = error.message
+                websocket.to(user).emit('invalid', JSON.stringify(message))
             }
         })
 

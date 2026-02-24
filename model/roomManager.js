@@ -69,8 +69,7 @@ async function updateRoom(room, db) {
             'AND privacy = ? ' +
             'WHERE rooms.id = ? ',
             [room.name, room.description, room.subject, room.privacy, room.id],)
-    }
-    else {
+    } else {
         throw Error("You are not the owner of this room")
     }
 }
@@ -84,8 +83,7 @@ async function removeMember(member, roomId, actor, db) {
         if (error) {
             console.error(error)
         }
-    }
-    else {
+    } else {
         throw Error("You are not the owner of this room")
     }
 }
@@ -99,19 +97,18 @@ async function changeOwner(user, roomId, actor, db) {
         if (error) {
             console.error(error)
         }
-    }
-    else {
+    } else {
         throw Error("You are not the owner of this room")
     }
 }
 
 async function deleteRoom(roomId, actor, db) {
-    if (await isOwner(actor, roomId, db)) {
+    const isRoomOwner = await isOwner(actor, roomId, db)
+    if (isRoomOwner) {
         await db.promise().query('DELETE FROM rooms WHERE rooms.id = ? ', [roomId])
         await db.promise().query('DELETE FROM roommembers WHERE roommembers.room_id = ? ', [roomId])
         await db.promise().query('DELETE FROM messages WHERE messages.room_id = ? ', [roomId])
-    }
-    else {
+    } else {
         throw Error("You are not the owner of this room")
     }
 }
@@ -198,11 +195,11 @@ async function isRoomMember(user, roomId, db) {
 }
 
 async function isOwner(user, roomId, db) {
-    const [ownedRooms] = await getRoomsByOwner(user, db)
-    ownedRooms.forEach(room => {
-        if(room.id === roomId) {
+    const ownedRooms = await getRoomsByOwner(user, db)
+    for (let i = 0; i < ownedRooms.length; i++) {
+        if (ownedRooms[i].id === roomId) {
             return true
         }
-    })
+    }
     return false
 }

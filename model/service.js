@@ -98,12 +98,12 @@ class Service {
 
     async removeUser(user, roomId, actor) {
         const {removeMember} = require("./roomManager")
-        await removeMember(user, roomId, actor, this.db.connection)
+        await removeMember(user, Number(roomId), actor, this.db.connection)
     }
 
     async changeOwner(user, roomId, actor) {
         const {changeOwner} = require("./roomManager")
-        await changeOwner(user, roomId, actor, this.db.connection)
+        await changeOwner(user, Number(roomId), actor, this.db.connection)
     }
 
     async updateRoom(room, actor) {
@@ -113,7 +113,7 @@ class Service {
 
     async deleteRoom(roomId, actor) {
         const {deleteRoom} = require("./roomManager")
-        await deleteRoom(roomId, actor, this.db.connection)
+        await deleteRoom(Number(roomId), actor, this.db.connection)
     }
 
 }

@@ -70,3 +70,7 @@ websocket.on("changeOwner", (owner) => {
         ownerElement.textContent = owner
     }
 })
+
+websocket.on("invalid", (err) => {
+    console.log(err)
+})
