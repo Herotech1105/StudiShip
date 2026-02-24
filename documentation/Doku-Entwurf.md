@@ -1,5 +1,9 @@
 # StudyShip
 
+Dies ist das Projekt ...
+
+[Unser Github Repoistory](https://github.com/Herotech1105/StudiShip)
+
 ## Backend - (javascript)
 
 ### Technologien
@@ -56,9 +60,81 @@ dem Komfort bei der Entwicklung
 
 ### Struktur
 
+Das backend lässt sich in 3 Teile aufteilen:
+
+* Model
+* Views
+* Controller
+
+#### Model:
+
+Im Model steckt die Logik des Backends. Die zentrale Komponente hier ist der Service.
+Der Service stellt zuerst mit Hilfe einer externen Funktion eine Vernindung zur Datenbank her.
+Danach ist der Service ist der Server vom Controller ansprechbar und nutzt dann die Methoden, die in die manager
+unterteilt sind, um eine Antwort zu generieren.
+
+#### Views:
+
+Views bezeichnet eine Liste von `.hbs` templates. Aus diesen wird dann die Webseite gerendert, indem Variablen und Werte
+in die Template injiziert werden. Der Client erhält dann die fertige Seite, ohne dass er die Werte clientseitig selbst
+einsetzen muss.
+
+#### Controller:
+
+Der Controller bietet sowohl Endpunkte für http POST- und GET-requests, als auch einen Websocketserver. Die http
+Endpunkte können dann vom Nutzer erreicht werden, um Webseiten anzufordern oder Formulare (wie z.B der Login)
+einzureichen.
+Der Websocket Server bietet die Möglichkeit, dass Server und Client in beide Richtungen miteinander über das Zusenden
+von Events kommunizieren können. 
+
+
 <img src="./images/backendStructure.svg">
 
 ### Datenbank
+
+Die Datenbank ist auf folgende Weise definiert:
+
+`CREATE SCHEMA webapp;`
+
+`USE webapp;`
+
+Die Datenbank für das Projekt befindet sich im Schema webapp
+
+| users.id                          | users.name              | users.email             | users.password          |
+|-----------------------------------|-------------------------|-------------------------|-------------------------|
+| (INT AUTO_ INCREMENT PRIMARY KEY) | (VARCHAR(255) NOT NULL) | (VARCHAR(255) NOT NULL) | (VARCHAR(255) NOT NULL) |
+| 1                                 | 'name'                  | 'email'                 | 'password'              |
+| 2                                 | 'name'                  | 'email'                 | 'password'              |
+
+In `users` sind die Daten der einzelnen Nutzer mit Nutzername, Email und Passwort gespeichert.
+
+| rooms.id                          | rooms.name              | rooms.description       | rooms.owner_id | rooms.subject           | rooms.privacy                                    |
+|-----------------------------------|-------------------------|-------------------------|----------------|-------------------------|--------------------------------------------------|
+| (INT AUTO_ INCREMENT PRIMARY KEY) | (VARCHAR(255) NOT NULL) | (VARCHAR(255) NOT NULL) | (INT NOT NULL) | (VARCHAR(255) NOT NULL) | (enum ('public', 'invited', 'private') NOT NULL) |
+| 1                                 | 'name'                  | 'description'           | 2              | 'Mathematik 1'          | 'public'                                         |
+| 2                                 | 'name'                  | 'description'           | 1              | 'Web-Engineering 1'     | 'private'                                        |
+
+`rooms` enthält die Informationen über die einzelnen Räume. Dazu gehören Name, Beschreibung, die Nutzer Id des
+Besitzers, das zugehörige Fach, und, ob der Raum bei der Suche erscheinen soll (public), man nur durch einen Link auf
+ihn zugreifen kann (invited), oder man diesem im Moment nicht beitreten kann (private).
+
+| messages.id                       | messages.user_id | messages.room_id | messages.content        | messages.timestamp                                                 |
+|-----------------------------------|------------------|------------------|-------------------------|--------------------------------------------------------------------|
+| (INT AUTO_ INCREMENT PRIMARY KEY) | (INT NOT NULL)   | (INT NOT NULL)   | (VARCHAR(255) NOT NULL) | (TIMESTAMP NOT NULL)                                               |
+| 1                                 | 3                | 4                | 'message'               | 'Tue Feb 24 2026 09:59:35 GMT+0100 (Mitteleuropäische Normalzeit)' |
+| 2                                 | 2                | 2                | 'message'               | 'Tue Feb 24 2026 09:59:35 GMT+0100 (Mitteleuropäische Normalzeit)' |
+
+In `messages` werden die Nachrichten der Nutzer in den Räumen gespeichert. Enthalten sind die Ids von Nutzer und Raum,
+sowie Inhalt und Zeitpunkt der Nachricht.
+
+| roommembers.id                    | roommembers.user_id | roommembers.room_id |
+|-----------------------------------|---------------------|---------------------|
+| (INT AUTO_ INCREMENT PRIMARY KEY) | (INT NOT NULL)      | (INT NOT NULL)      |
+| 1                                 | 4                   | 1                   |
+| 2                                 | 2                   | 3                   |
+
+`roommembers` wird benutzt, um Räume und die enthaltenen Mitglieder zu verknüpfen. Dementsprechend sind hier nur Nutzer-
+und Raum-Id gespeichert.
 
 ### Endpoints
 

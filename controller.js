@@ -140,11 +140,11 @@ require("./model/service")().then((service) => {
     })
 
     controller.post("/auth/register", (req, res) => {
-        return service.register(req, res)
+        service.register(req, res)
     })
 
     controller.post("/auth/login", (req, res) => {
-        return service.login(req, res)
+        service.login(req, res)
     })
 
     controller.post("/search", (req, res) => {
