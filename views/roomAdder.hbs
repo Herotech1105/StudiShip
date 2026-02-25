@@ -22,14 +22,14 @@
             </nav>
         </header>
         <main class="container">
-            <h1>Suche</h1>
+            <h1>Lerngruppe Erstellen</h1>
             <form action="/rooms/create" method="POST">
                 <div class="form-group">
-                    <label for="roomName">Room Name</label>
+                    <label for="roomName">Gruppenname</label>
                     <input type="text" class="form-control" id="roomName" name="roomName" required>
-                    <label for="roomDescription">Room Description</label>
+                    <label for="roomDescription">Beschreibung</label>
                     <input type="text" class="form-control" id="roomDescription" name="roomDescription" required>
-                    <label for="roomSubject">Room Subject</label>
+                    <label for="roomSubject">Kursart</label>
                     <select class="form-control" id="roomSubject" name="roomSubject" required>
                         {{#each subjects}}
                             <option value="{{this}}">{{this}}</option>
@@ -40,7 +40,7 @@
                         <option value="public">Public</option>
                         <option value="invited">Invitation only</option>
                     </select>
-                    <button type="submit" class="btn btn-primary">Add Room</button>
+                    <button type="submit" class="btn btn-primary">Gruppe erstellen</button>
                 </div>
             </form>
         </main>
