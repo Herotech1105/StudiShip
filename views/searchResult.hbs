@@ -65,21 +65,32 @@
         </div>
     </nav>
 </header>
-{{!-- Body of each page will go here --}}
-<main><p>What ever I Whant to schreiben here</p></main>
 <body>
     <main>
-        <div class="container mt-4">
-            <div>
-                <h1>Search</h1>
-                <ul>
-                    {{#each rooms}}
-                        <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
-                    {{else}}
-                        <p>No Room found</p>
-                    {{/each}}
-                </ul>
-            </div>
+        <h1>Suchen</h1>
+        <div class="container">
+            <form action="/search" method="POST">
+                <div class="form-group">
+                    <label for="roomName">Lerngruppen Name</label>
+                    <input type="text" class="form-control" id="roomName" name="roomName">
+                    <label for="roomSubject">Kursart</label>
+                    <select class="form-control" id="roomSubject" name="roomSubject">
+                        <option value="any">any</option>
+                        {{#each subjects}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Erstellen</button>
+                </div>
+            </form>
+            <h4>Suchergebnisse:</h4>
+            <ul>
+                {{#each rooms}}
+                    <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
+                {{else}}
+                    <p>Keine passende Lerngruppen gefunden</p>
+                {{/each}}
+            </ul>
         </div>
     </main>
 </body>
