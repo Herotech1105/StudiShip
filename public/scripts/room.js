@@ -20,7 +20,19 @@ function deleteRoom(){
     websocket.emit('delete', roomId)
 }
 
-function updateRoom(room){
+function updateRoom(){
+    const title = document.getElementById('title')
+    const description = document.getElementById('description')
+    const subject = document.getElementById('subject')
+    const privacy = document.getElementById('privacy')
+
+    const room = {
+        id: roomId,
+        name: title.value,
+        description: description.value,
+        subject: subject.value,
+        privacy: privacy.value,
+    }
     websocket.emit('updateRoom', room)
 }
 

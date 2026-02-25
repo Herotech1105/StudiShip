@@ -163,7 +163,7 @@ async function getRoomsByMember(member, db) {
 }
 
 async function getMessagesByRoom(roomId, db) {
-    const [messages] = await db.promise().query('SELECT users.name as user, room_messages.content, room_messages.timestamp ' +
+    const [messages] = await db.promise().query("SELECT users.name as user, room_messages.content, DATE_FORMAT(room_messages.timestamp, '%Y-%m-%d %H:%i:%s') AS timestamp " +
         'FROM (SELECT * FROM messages WHERE messages.room_id = ?) room_messages ' +
         'LEFT JOIN users ' +
         'ON room_messages.user_id = users.id ', [roomId])
@@ -213,3 +213,4 @@ async function isOwner(user, roomId, db) {
     }
     return false
 }
+
