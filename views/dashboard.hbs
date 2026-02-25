@@ -26,9 +26,9 @@
                 {{#if user }}
                     <h4>Wilkommen, {{user}}!</h4>
                 {{/if}}
-            <a href="/rooms/create" class="search-btn">Gruppe Erstellen</a>
+            <a href="/search"> class="search-btn">Suchen</a>
+            <h4>Deine Lerngruppen: </h4>
             <a href="/rooms/create" class="add-group-btn">Gruppe Erstellen</a>
-            <h4>Deine Lerngruppen</h4>
             <ul>
                 {{#each rooms}}
                     <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
