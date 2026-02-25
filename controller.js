@@ -145,7 +145,7 @@ require("./model/service")().then((service) => {
         res.render("login")
     })
 
-    controller.get("/rooms/create", (req, res) => {
+    controller.get("/createRoom", (req, res) => {
         service.roomAdder(req, res)
     })
 

@@ -5,7 +5,7 @@
     <title>StudyShip</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./search.css">
+    <link rel="stylesheet" href="./styles/search.css">
 
 </head>
     <body>
@@ -13,7 +13,8 @@
             <nav>
                 <a href="/" class="logo">StudyShip 📖</a>
                 <div class="mobile-menu">
-                    <a href="/rooms/create">Erstellen</a>
+                    <input id="searchBar" type="search" name="roomName" >
+                    <a href="/createRoom">Erstellen</a>
                     <a href="/search">Suchen</a>
                     <form action="/logout" method="POST" class="logout-form">
                         <button type="submit" class="logout-link-style">Abmelden</button>
@@ -43,5 +44,7 @@
             <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
             <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
         </footer>
+
+        <script src="../scripts/searchBar.js"></script>
     </body>
 </html>

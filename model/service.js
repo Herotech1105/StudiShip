@@ -63,7 +63,7 @@ class Service {
                 createRoom(req, res, this.db.connection)
             }
             catch (err) {
-                res.redirect('/rooms/create')
+                res.redirect('/createRoom')
             }
         }
     }

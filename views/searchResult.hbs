@@ -13,7 +13,7 @@
             <nav>
                 <a href="/" class="logo">StudyShip 📖</a>
                 <div class="mobile-menu">
-                    <a href="/rooms/create">Erstellen</a>
+                    <a href="/createRoom">Erstellen</a>
                     <a href="/search">Suchen</a>
                     <form action="/logout" method="POST" class="logout-form">
                         <button type="submit" class="logout-link-style">Abmelden</button>
@@ -38,7 +38,7 @@
                     <button type="submit" class="btn btn-primary">Suchen</button>
                 </div>
             </form>
-            <a href="/rooms/create" class="add-group-btn">Gruppe Erstellen</a>
+            <a href="/createRoom" class="add-group-btn">Gruppe Erstellen</a>
             <h4>Suchergebnisse:</h4>
             <ul>
                 {{#each rooms}}

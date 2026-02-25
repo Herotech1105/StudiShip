@@ -54,7 +54,7 @@ async function createRoom(req, res, db) {
             const newRoomId = await getHighestRoomId(db)
             res.redirect('/rooms?roomId=' + newRoomId)
         } else {
-            res.redirect('/rooms/create')
+            res.redirect('/createRoom')
         }
     }
 
