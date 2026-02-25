@@ -38,7 +38,7 @@
                 </div>
 
                 <div id="owner" class="border-box">
-                    <p>{{room.owner}}</p>
+                    <p></p>
                 </div>
 
                 <div class="red-rounded-box members-field">
@@ -47,12 +47,15 @@
                     <ul>
                         {{#each members}}
                             <li>{{this.name}}
-                                <button class="kickUserButton" onclick="deleteMember(this)">x</button>
+                                <button class="kickUserButton" onclick="changeOwner(this)">Zum Admin</button>
+                                <button class="kickUserButton" onclick="removeUser(this)">x</button>
                             </li>
                         {{/each}}
                     </ul>
                 </div>
-                <button onclick="deleteRoom()">Delete</button>
+                <button onclick="deleteRoom()">Raum Löschen</button>
+                <button onclick="leaveRoom()">Verlassen</button>
+                <button onclick="editRoom()">Bearbeiten</button>
             </section>
             <aside class="chat-area">
                 <h4>Nachrichten:</h4>
