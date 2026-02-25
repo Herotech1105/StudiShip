@@ -61,7 +61,7 @@
                 <h4>Nachrichten:</h4>
                 <ul id="messages" class="chat-window">
                     {{#each messages}}
-                        <li class="message-bubble">{{this.user}}[{{this.timestamp}}]: {{this.content}}</li>
+                        <li class="message-bubble">{{this.user}}<small>[{{this.timestamp}}]</small>: {{this.content}}</li>
                     {{/each}}
                 </ul>
                 <div class="chat-input">
