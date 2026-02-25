@@ -5,14 +5,26 @@
         padding: 16px;
     }
 
-    body {
-        background-image: url('./images/bgImage.jpg') !important;
+    .hero {
+        background-image: url('../images/background.jpg') !important;
         background-color: transparent;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        min-height: 100vh;
-        margin: 0;
+        padding: 80px 20px; /* Innenabstand für bessere Lesbarkeit */
+        min-height: 400px; /* Mindesthöhe für den Hero-Bereich */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Zentriert den Inhalt vertikal */
+        align-items: center; /* Zentriert den Inhalt horizontal */
+        color: white;
+    }
+
+    .hero h1{
+        text-align: center;
+        color: white;
+        font-size: 3em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .features {
@@ -36,9 +48,7 @@
         text-align: center;        /* Optional: Text zentrieren */
     }
 
-   h1{
-       text-align: center;
-   }
+
 
 
     .cta-button {
