@@ -1,4 +1,4 @@
-module.exports = {dashboardWithRoomList, loadRoom, createRoom, updateRoom, removeMember, changeOwner, deleteRoom}
+module.exports = {dashboardWithRoomList, loadRoom, createRoom, updateRoom, removeMember, changeOwner, deleteRoom, leaveRoom}
 
 async function dashboardWithRoomList(req, res, db) {
     const user = req.signedCookies["user"]
@@ -85,6 +85,16 @@ async function removeMember(member, roomId, actor, db) {
         }
     } else {
         throw Error("You are not the owner of this room")
+    }
+}
+
+async function leaveRoom(member, roomId, db) {
+    const [error] = await db.promise().query('DELETE FROM roommembers ' +
+        'WHERE room_id = ? ' +
+        'AND user_id = ' +
+        '(SELECT users.id FROM users WHERE users.name = ?)', [roomId, member])
+    if (error) {
+        console.error(error)
     }
 }
 

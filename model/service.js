@@ -101,6 +101,11 @@ class Service {
         await removeMember(user, Number(roomId), actor, this.db.connection)
     }
 
+    async leaveRoom(user, roomId, actor) {
+        const {leaveRoom} = require("./roomManager")
+        await leaveRoom(user, roomId, this.db.connection)
+    }
+
     async changeOwner(user, roomId, actor) {
         const {changeOwner} = require("./roomManager")
         await changeOwner(user, Number(roomId), actor, this.db.connection)

@@ -89,6 +89,18 @@ require("./model/service")().then((service) => {
             }
         })
 
+        socket.on('leaveRoom', async (roomId) => {
+            const user = socket.request.signedCookies['user']
+            try {
+                await service.leaveRoom(user, roomId)
+                websocket.to(user).emit('left')
+                websocket.to(roomId).emit('userLeft', user)
+            } catch (error) {
+                const message = error.message
+                websocket.to(user).emit('invalid', JSON.stringify(message))
+            }
+        })
+
         socket.on('message', (message) => {
             try {
                 const messageObject = JSON.parse(message)
