@@ -161,11 +161,11 @@ require("./model/service")().then((service) => {
         service.logout(req, res)
     })
 
-    controller.post("/auth/register", (req, res) => {
+    controller.post("/register", (req, res) => {
         service.register(req, res)
     })
 
-    controller.post("/auth/login", (req, res) => {
+    controller.post("/login", (req, res) => {
         service.login(req, res)
     })
 
