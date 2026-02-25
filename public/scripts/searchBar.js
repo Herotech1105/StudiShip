@@ -7,9 +7,10 @@ searchBar.addEventListener("keydown", (e) => {
         form.setAttribute("method", "POST");
 
         const subject = document.createElement("input");
-        subject.id = "roomSubject";
+        subject.name = "roomSubject";
         subject.value = "any";
         form.appendChild(searchBar);
+        form.appendChild(subject);
         document.body.appendChild(form);
         form.submit();
     }
