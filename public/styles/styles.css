@@ -107,6 +107,30 @@ input, textarea, select {
     font-family: inherit;
 }
 
+
+footer {
+    background-color: red;    /* Rote Hintergrundfarbe */
+    color: white;                 /* Weiße Textfarbe */
+    text-align: center;           /* Text zentrieren */
+    padding: 2px 0;              /* Weniger Innenabstand (oben/unten) */
+    margin-top: auto;             /* Drückt den Footer nach unten */
+    width: 100%;                  /* Volle Breite */
+    font-size: 14px; /* Optional: Kleinere Schrift */
+    line-height: 1.2;
+    position: relative;           /* Standard-Positionierung */
+    bottom: 0;                    /* Ausrichtung unten (wird durch Flexbox des Body erzwungen) */
+}
+
+html, body {
+    height: 100%;                 /* Volle Höhe des Viewports nutzen */
+    display: flex;                 /* Flexbox aktivieren */
+    flex-direction: column;        /* Kinder (Header, Main, Footer) untereinander anordnen */
+}
+
+main {
+    flex: 1;                      /* Main füllt den verfügbaren Platz zwischen Header und Footer */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {

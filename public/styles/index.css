@@ -3,8 +3,67 @@
         background-color: red;
         color: white;
         padding: 16px;
-
     }
+
+    body {
+        background-image: url('./images/bgImage.jpg') !important;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .features {
+        display: flex;               /* Aktiviert Flexbox */
+        justify-content: center;     /* Zentriert die Karten horizontal */
+        gap: 20px;                   /* Abstand zwischen den Karten */
+        flex-wrap: wrap;             /* Erlaubt Umbruch auf kleinen Bildschirmen */
+        padding: 20px;              /* Optional: Innenabstand */
+        max-width: 1200px;          /* Optional: Maximale Breite */
+        margin: 0 auto;             /* Optional: Zentriert die Sektion selbst */
+    }
+
+    .feature-card {
+        flex: 1 1 300px;            /* Flex-Growth, Flex-Shrink, Basisbreite */
+        max-width: 300px;           /* Maximale Breite pro Karte */
+        background: white;          /* Optional: Hintergrundfarbe */
+        border: 1px solid #ddd;    /* Optional: Rahmen */
+        border-radius: 8px;        /* Optional: Abgerundete Ecken */
+        padding: 20px;             /* Optional: Innenabstand */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Schatten */
+        text-align: center;        /* Optional: Text zentrieren */
+    }
+
+   h1{
+       text-align: center;
+   }
+
+
+    .cta-button {
+        display: block;               /* Macht den Button zu einem Block-Element */
+        width: fit-content;           /* Passt die Breite an den Inhalt an */
+        max-width: 300px;             /* Maximale Breite (optional) */
+        margin: 20px auto;            /* Zentriert den Button horizontal */
+        padding: 12px 24px;           /* Innenabstand für bessere Klickfläche */
+        background-color: red;    /* Hintergrundfarbe (z. B. Rot) */
+        color: white;                 /* Textfarbe */
+        text-align: center;           /* Text zentrieren */
+        text-decoration: none;        /* Unterstreichung entfernen */
+        border: none;                 /* Standard-Rahmen entfernen */
+        border-radius: 4px;           /* Abgerundete Ecken */
+        font-weight: bold;           /* Fetter Text */
+        cursor: pointer;              /* Cursor als Zeiger */
+        transition: background-color 0.3s; /* Sanfter Übergang für Hover-Effekt */
+    }
+
+    .cta-button:hover {
+        background-color: darkred;    /* Dunklerer Ton beim Hovern */
+        color: darkgray;
+    }
+
+
     nav{
         display: flex;
         justify-content: space-between;
