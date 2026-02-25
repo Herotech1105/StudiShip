@@ -68,18 +68,19 @@
 </header>
 <body>
     <div class="container">
+        <h1>Suche</h1>
         <form action="/search" method="POST">
             <div class="form-group">
-                <label for="roomName">Room Name</label>
+                <label for="roomName">Lerngruppen Name</label>
                 <input type="text" class="form-control" id="roomName" name="roomName">
-                <label for="roomSubject">Room Subject</label>
+                <label for="roomSubject">Kursart</label>
                 <select class="form-control" id="roomSubject" name="roomSubject">
                     <option value="any">any</option>
                     {{#each subjects}}
                         <option value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>
-                <button type="submit" class="btn btn-primary">Add Room</button>
+                <button type="submit" class="btn btn-primary">Erstellen</button>
             </div>
         </form>
     </div>
