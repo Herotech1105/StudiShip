@@ -31,9 +31,15 @@
             <a href="/createRoom" class="add-group-btn">Gruppe Erstellen</a>
             <ul>
                 {{#each rooms}}
-                    <li><a class="" href="/rooms?roomId={{this.id}}">{{this.name}}</a></li>
+                    <li >
+                        <a href="/rooms?roomId={{this.id}}" class="room-selection-btn">
+                            <p>{{this.name}}</p>
+                            <p>{{this.subject}}</p><!--js:is probably missing here-->
+                            <p>{{this.owner}}</p>
+                        </a>
+                    </li>
                 {{else}}
-                    <p>You are not part of any groups</p>
+                    <p>Du bist bis in noch in keiner Gruppe</p>
                 {{/each}}
             </ul>
         </main>
