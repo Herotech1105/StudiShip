@@ -21,54 +21,61 @@
                 </div>
             </nav>
         </header>
-        <main class="room-layout">
+
+        <main >
             <script src="/socket.io/socket.io.js"></script>
             <script src="../scripts/room.js"></script>
-            <section class="room-info">
-                <div class="red-rounded-box header-box">
-                    <h1>{{room.name}}</h1>
-                </div>
+            <div class="red-rounded-box header-box">
+                <h1 contenteditable="true">{{room.name}}</h1><!--false for User-->
+            </div>
+            <div class="room-layout">
+                <section class="room-info">
 
-                <div id="subject" class="border-box sub-header">
-                    <span>{{room.subject}}</span>
-                </div>
+                    <div id="subject" class="border-box sub-header">
+                        <span >{{room.subject}}</span>
+                        {!--No select for User--}}
+                        <select class="form-control" id="roomSubject" name="roomSubject">
+                            <option value="any">any</option>
+                            {{#each subjects}}
+                                <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
 
-                <div id="description" class="border-box">
-                    <p>{{room.description}}</p>
-                </div>
+                    <div id="description" class="border-box">
+                        <p contenteditable="true">{{room.description}}</p><!--false for User-->
+                    </div>
 
-                <div id="owner" class="border-box">
-                    <p></p>
-                </div>
+                    <div class="red-rounded-box members-field">
+                        <h3>Mitglieder:</h3>
+                        <button class="share-btn">🔗 teilen</button>
+                        <ul>
+                            {{#each members}}
+                                <li>{{this.name}}
+                                    <button class="kickUserButton" onclick="changeOwner(this)">Zum Admin</button><!--not for User-->
+                                    <button class="kickUserButton" onclick="removeUser(this)">x</button><!--not for User. Admin gets Asked be-->
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <button onclick="deleteRoom()">Raum Löschen</button><!--not for User-->
+                    <button onclick="leaveRoom()">Verlassen</button><!--not for Admin!!! Only after giving away admin rights.-->
+                    <button onclick="editRoom()">Bearbeiten</button><!--not for User-->
+                </section>
 
-                <div class="red-rounded-box members-field">
-                    <h3>Mitglieder:</h3>
-                    <button class="share-btn">🔗 teilen</button>
-                    <ul>
-                        {{#each members}}
-                            <li>{{this.name}}
-                                <button class="kickUserButton" onclick="changeOwner(this)">Zum Admin</button>
-                                <button class="kickUserButton" onclick="removeUser(this)">x</button>
-                            </li>
+                <aside class="chat-area"><!--CSS:move the chat a bit up so you don't need to scroll down evertime you open the window-->
+                    <h4>Nachrichten:</h4>
+                    <ul id="messages" class="chat-window">
+                        {{#each messages}}
+                            <li class="message-bubble">{{this.user}}<small>[{{this.timestamp}}]</small>: {{this.content}}</li>
                         {{/each}}
                     </ul>
-                </div>
-                <button onclick="deleteRoom()">Raum Löschen</button>
-                <button onclick="leaveRoom()">Verlassen</button>
-                <button onclick="editRoom()">Bearbeiten</button>
-            </section>
-            <aside class="chat-area">
-                <h4>Nachrichten:</h4>
-                <ul id="messages" class="chat-window">
-                    {{#each messages}}
-                        <li class="message-bubble">{{this.user}}<small>[{{this.timestamp}}]</small>: {{this.content}}</li>
-                    {{/each}}
-                </ul>
-                <div class="chat-input">
-                    <input type="text" name="message" id="message" placeholder="...">
-                    <button onclick="sendMessage()" class="send-button">➤</button>
-                </div>
-            </aside>
+                    <div class="chat-input">
+                        <input type="text" name="message" id="message" placeholder="...">
+                        <button onclick="sendMessage()" class="send-button">➤</button>
+                    </div>
+                </aside>
+            </div>
         </main>
         <footer>
             <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
