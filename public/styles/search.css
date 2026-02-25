@@ -1,0 +1,46 @@
+
+header{
+    background-color: red;
+    color: white;
+    padding: 16px;
+
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+.mobile-menu a{
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+.mobile-menu a:hover{
+    color: white;
+    text-decoration: underline;
+    margin-left: 20px;
+}
+.mobile-menu button{
+    background: none;
+    border: none;
+    padding: 0;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    margin-left: 20px;
+    text-decoration: none;
+}
+.mobile-menu button:hover{
+    text-decoration: underline;
+}
+.mobile-menu form{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
