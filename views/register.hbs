@@ -34,51 +34,49 @@
     }
     </style>
 </head>
-<body>
-<header>
-    <nav>
-        <a href="/" class="logo">StudyShip 📖</a>
-        <div class="mobile-menu">
-            <a href="/login">Anmelden</a>
-            <a href="/register">Registrieren</a>
-        </div>
-    </nav>
-</header>
-<div class="container mt-4">
-    <div class="card" style="width: 18rem;">
-        <div class="card-header">Register Form</div>
-        <div class="card-body">
-            <form action="/auth/register" method="POST">
-                <div class="mb-3">
-                    <label for="name-reg" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name-reg" name="name" required value="{{name}}">
+    <body>
+        <header>
+            <nav>
+                <a href="/" class="logo">StudyShip 📖</a>
+                <div class="mobile-menu">
+                    <a href="/login">Anmelden</a>
+                    <a href="/register">Registrieren</a>
                 </div>
-                <div class="mb-3">
-                    <label for="email-reg" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email-reg" name="email" required value="{{email}}">
-                </div>
-                <div class="mb-3">
-                    <label for="password-reg" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password-reg" name="password" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password-conf-reg" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="password-conf-reg" name="password_confirm" required>
-                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">Register Form</div>
+                <div class="card-body">
+                    <form action="/auth/register" method="POST">
+                        <div class="mb-3">
+                            <label for="name-reg" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name-reg" name="name" required value="{{name}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email-reg" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email-reg" name="email" required value="{{email}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-reg" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password-reg" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-conf-reg" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="password-conf-reg" name="password_confirm" required>
+                        </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-{{#if message }}
-    <h4 class="alert alert-danger mt-4">{{message}}</h4>
-{{/if}}
-
-</body>
-<footer>
-    <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
-    <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
-</footer>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            {{#if message }}
+                <h4 class="alert alert-danger mt-4">{{message}}</h4>
+            {{/if}}
+        </main>
+        <footer>
+            <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+            <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+        </footer>
+    </body>
 </html>

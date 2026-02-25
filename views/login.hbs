@@ -34,44 +34,43 @@
     }
     </style>
 </head>
-<body>
-<header>
-    <nav>
-        <a href="/" class="logo">StudyShip 📖</a>
-        <div class="mobile-menu">
-            <a href="/login">Anmelden</a>
-            <a href="/register">Registrieren</a>
-        </div>
-    </nav>
-</header>
-{{!-- Body of each page will go here --}}
-<main>
-    <div class="container mt-4">
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">Login Form</div>
-            <div class="card-body">
-                <form action="/auth/login" method="POST">
-                    <div class="mb-3">
-                        <label for="name-login" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name-login" name="name" required value="{{name}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password-login" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password-login" name="password" required>
-                    </div>
+    <body>
+        <header>
+            <nav>
+                <a href="/" class="logo">StudyShip 📖</a>
+                <div class="mobile-menu">
+                    <a href="/login">Anmelden</a>
+                    <a href="/register">Registrieren</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="container mt-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">Login Form</div>
+                    <div class="card-body">
+                        <form action="/auth/login" method="POST">
+                            <div class="mb-3">
+                                <label for="name-login" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name-login" name="name" required value="{{name}}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-login" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password-login" name="password" required>
+                            </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</main>
-{{#if message }}
-    <h4 class="alert alert-danger mt-4">{{message}}</h4>
-{{/if}}
-</body>
-<footer>
-    <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
-    <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
-</footer>
+        </main>
+        {{#if message }}
+            <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+        <footer>
+            <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+            <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+        </footer>
+    </body>
 </html>

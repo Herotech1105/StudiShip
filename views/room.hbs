@@ -116,75 +116,71 @@
 
     </style>
 </head>
+    <body>
+        <header>
+            <nav>
+                <a href="/" class="logo">StudyShip 📖</a>
+                <div class="mobile-menu">
+                    <a href="/rooms/create">Erstellen</a>
+                    <a href="/search">Suchen</a>
+                    <form action="/logout" method="POST" class="logout-form">
+                        <button type="submit" class="logout-link-style">Abmelden</button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+        <main class="room-layout">
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="../scripts/room.js"></script>
+            <section class="room-info">
+                <div class="red-rounded-box header-box">
+                    <h1>{{room.name}}</h1>
+                </div>
 
-<header>
-    <nav>
-        <a href="/" class="logo">StudyShip 📖</a>
-        <div class="mobile-menu">
-            <a href="/rooms/create">Erstellen</a>
-            <a href="/search">Suchen</a>
-            <form action="/logout" method="POST" class="logout-form">
-                <button type="submit" class="logout-link-style">Abmelden</button>
-            </form>
-        </div>
-    </nav>
-</header>
-<body>
-    <main class="room-layout">
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="../scripts/room.js"></script>
+                <div id="subject" class="border-box sub-header">
+                    <span>{{room.subject}}</span>
+                </div>
 
-        <section class="room-info">
-            <div class="red-rounded-box header-box">
-                <h1>{{room.name}}</h1>
-            </div>
+                <div id="description" class="border-box">
+                    <p>{{room.description}}</p>
+                </div>
 
-            <div id="subject" class="border-box sub-header">
-                <span>{{room.subject}}</span>
-            </div>
+                <div id="owner" class="border-box">
+                    <p>{{room.owner}}</p>
+                </div>
 
-            <div id="description" class="border-box">
-                <p>{{room.description}}</p>
-            </div>
-
-            <div id="owner" class="border-box">
-                <p>{{room.owner}}</p>
-            </div>
-
-            <div class="red-rounded-box members-field">
-                <h3>Mitglieder:</h3>
-                <button class="share-btn">🔗 teilen</button>
-                <ul>
-                    {{#each members}}
-                        <li>{{this.name}}
-                            <button class="kickUserButton" onclick="deleteMember(this)">x</button>
+                <div class="red-rounded-box members-field">
+                    <h3>Mitglieder:</h3>
+                    <button class="share-btn">🔗 teilen</button>
+                    <ul>
+                        {{#each members}}
+                            <li>{{this.name}}
+                                <button class="kickUserButton" onclick="deleteMember(this)">x</button>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <button onclick="deleteRoom()">Delete</button>
+            </section>
+            <aside class="chat-area">
+                <h4>Nachrichten:</h4>
+                <ul id="messages" class="chat-window">
+                    {{#each messages}}
+                        <li class="message-bubble" id="{{this.user}}">
+                            <small>{{this.user}}[{{this.timestamp}}]:</small>
+                            <p>{{this.content}}</p>
                         </li>
                     {{/each}}
                 </ul>
-            </div>
-            <button onclick="deleteRoom()">Delete</button>
-        </section>
-
-        <aside class="chat-area">
-            <h4>Nachrichten:</h4>
-            <ul id="messages" class="chat-window">
-                {{#each messages}}
-                    <li class="message-bubble" id="{{this.user}}">
-                        <small>{{this.user}}[{{this.timestamp}}]:</small>
-                        <p>{{this.content}}</p>
-                    </li>
-                {{/each}}
-
-            </ul>
-            <div class="chat-input">
-                <input type="text" name="message" id="message" placeholder="...">
-                <button onclick="sendMessage()" class="send-button">➤</button>
-            </div>
-        </aside>
-    </main>
-</body>
-<footer>
-    <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
-    <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
-</footer>
+                <div class="chat-input">
+                    <input type="text" name="message" id="message" placeholder="...">
+                    <button onclick="sendMessage()" class="send-button">➤</button>
+                </div>
+            </aside>
+        </main>
+        <footer>
+            <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+            <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+        </footer>
+    </body>
 </html>

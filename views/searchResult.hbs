@@ -52,23 +52,22 @@
     }
     </style>
 </head>
-<header>
-    <nav>
-        <a href="/" class="logo">StudyShip 📖</a>
-        <div class="mobile-menu">
-            <a href="/rooms/create">Erstellen</a>
-            <a href="/search">Suchen</a>
-            <form action="/logout" method="POST" class="logout-form">
-                <button type="submit" class="logout-link-style">Abmelden</button>
-            </form>
-        </div>
-        </div>
-    </nav>
-</header>
-<body>
-    <main>
-        <h1>Suchen</h1>
-        <div class="container">
+    <body>
+        <header>
+            <nav>
+                <a href="/" class="logo">StudyShip 📖</a>
+                <div class="mobile-menu">
+                    <a href="/rooms/create">Erstellen</a>
+                    <a href="/search">Suchen</a>
+                    <form action="/logout" method="POST" class="logout-form">
+                        <button type="submit" class="logout-link-style">Abmelden</button>
+                    </form>
+                </div>
+                </div>
+            </nav>
+        </header>
+        <main class="container">
+            <h1>Suchen</h1>
             <form action="/search" method="POST">
                 <div class="form-group">
                     <label for="roomName">Lerngruppen Name</label>
@@ -91,11 +90,10 @@
                     <p>Keine passende Lerngruppen gefunden</p>
                 {{/each}}
             </ul>
-        </div>
-    </main>
-</body>
-<footer>
-    <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
-    <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
-</footer>
+        </main>
+        <footer>
+            <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim ...</p>
+            <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
+        </footer>
+    </body>
 </html>
