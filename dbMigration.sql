@@ -1,8 +1,7 @@
-CREATE SCHEMA webapp;
-
+CREATE DATABASE IF NOT EXISTS webapp;
 USE webapp;
 
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
     id       INT AUTO_INCREMENT PRIMARY KEY,
     name     VARCHAR(255) NOT NULL,
@@ -10,7 +9,7 @@ CREATE TABLE users
     password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE rooms
+CREATE TABLE IF NOT EXISTS rooms
 (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(255)                          NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE rooms
     privacy     enum ('public', 'invited', 'private') NOT NULL
 );
 
-CREATE TABLE messages
+CREATE TABLE IF NOT EXISTS messages
 (
     id        INT AUTO_INCREMENT PRIMARY KEY,
     user_id   INT          NOT NULL,
@@ -29,7 +28,7 @@ CREATE TABLE messages
     timestamp TIMESTAMP    NOT NULL
 );
 
-CREATE TABLE roommembers
+CREATE TABLE IF NOT EXISTS roommembers
 (
     id      INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,

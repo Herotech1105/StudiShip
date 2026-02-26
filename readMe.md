@@ -1,4 +1,4 @@
-# Getting Started 
+# Getting Started for Development
 
 ## Node dependencies
 
@@ -14,8 +14,12 @@ Run the following command in your Project's Console:
 * Add the user 'webapp'@'localhost' with the password webapp
 * Connect to your database from your IDE and run the `dbMigration.sql` script
 
-# Starting the server
+## Starting the server
 
 Run the server using `nodemon controller.js`
 
 The Application should be available at `http://localhost:5000`
+
+# Deployment using Docker/Podman
+
+Deploy the server by running `docker-compose up` in the command line

@@ -42,13 +42,16 @@
             <h4>Suchergebnisse:</h4>
             <ul>
                 {{#each rooms}}
-                    <li >
-                        <a href="/rooms?roomId={{this.id}}" class="room-selection-btn">
+                    <div class="room-btn">
+                        <li>
+                            <a href="/rooms?roomId={{this.id}}" class="room-selection-btn">
                             <p>{{this.name}}</p>
-                            <p>{{this.subject}}</p><!--js:is probably missing here-->
-                            <p>{{this.owner}}</p>
-                        </a>
-                    </li>
+                            <p>{{this.subject}}</p>
+                            <p>{{this.description}}</p>
+                            </a>
+                        </li>
+                    </div>
+
                 {{else}}
                     <p>Keine passende Lerngruppen gefunden</p>
                 {{/each}}
