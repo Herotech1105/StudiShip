@@ -149,7 +149,7 @@ async function getRoomMembers(roomId, db) {
 }
 
 async function getRoomsByMember(member, db) {
-    const [rooms] = await db.promise().query('SELECT DISTINCT rooms.id, rooms.name ' +
+    const [rooms] = await db.promise().query('SELECT DISTINCT rooms.id, rooms.name, rooms.subject, rooms.description ' +
         'FROM rooms ' +
         'RIGHT JOIN roommembers ' +
         'ON roommembers.room_id = rooms.id ' +
