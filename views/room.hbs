@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>StudyShip</title>
     <link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/room.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/room.css">
 
 </head>
-    <body>
+    <body data-is-owner="{{isOwner}}">
         <header>
             <nav>
                 <a href="/" class="logo">StudyShip 📖</a>
@@ -24,26 +24,26 @@
 
         <main >
             <script src="/socket.io/socket.io.js"></script>
-            <script src="../scripts/room.js"></script>
+            <script src="/scripts/room.js" defer></script>
             <div class="red-rounded-box header-box">
-                <h1 contenteditable="true">{{room.name}}</h1><!--false for User-->
+                <h1 id="roomTitle" contenteditable="false">{{room.name}}</h1><!--false for User-->
             </div>
             <div class="room-layout">
                 <section class="room-info">
 
                     <div id="subject" class="border-box sub-header">
-                        <span >{{room.subject}}</span>
-                        {!--No select for User--}}
-                        <select class="form-control" id="roomSubject" name="roomSubject">
-                            <option value="any">any</option>
-                            {{#each subjects}}
-                                <option value="{{this}}">{{this}}</option>
-                            {{/each}}
-                        </select>
+                        <span id="roomSubjectText">{{room.subject}}</span>
+                        {{#if isOwner}}
+                            <select class="form-control hidden" id="roomSubject" name="roomSubject">
+                                {{#each subjects}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                        {{/if}}
                     </div>
 
                     <div id="description" class="border-box">
-                        <p contenteditable="true">{{room.description}}</p><!--false for User-->
+                        <p id="roomDescription" contenteditable="false">{{room.description}}</p>
                     </div>
 
                     <div class="red-rounded-box members-field">
@@ -52,15 +52,21 @@
                         <ul>
                             {{#each members}}
                                 <li>{{this.name}}
-                                    <button class="kickUserButton" onclick="changeOwner(this)">Zum Admin</button><!--not for User-->
-                                    <button class="kickUserButton" onclick="removeUser(this)">x</button><!--not for User. Admin gets Asked be-->
+                                    <span>{{this.name}}</span>
+                                    {{#if ../isOwner}}
+                                        <button class="kickUserButton owner-edit-only hidden" onclick="changeOwner('{{this.name}}')">Zum Admin</button>
+                                        <button class="kickUserButton owner-edit-only hidden" onclick="removeUser('{{this.name}}')">x</button>
+                                    {{/if}}
                                 </li>
                             {{/each}}
                         </ul>
                     </div>
-                    <button onclick="deleteRoom()">Raum Löschen</button><!--not for User-->
-                    <button onclick="leaveRoom()">Verlassen</button><!--not for Admin!!! Only after giving away admin rights.-->
-                    <button onclick="editRoom()">Bearbeiten</button><!--not for User-->
+                    {{#if isOwner}}
+                        <button id="editButton" onclick="editRoom()">Bearbeiten</button>
+                        <button id="saveButton" class="hidden" onclick="updateRoom()">Speichern</button>
+                        <button id="deleteButton" class="owner-edit-only hidden" onclick="deleteRoom()">Raum löschen</button>
+                    {{/if}}
+                    <button onclick="leaveRoom()">Verlassen</button>
                 </section>
 
                 <aside class="chat-area"><!--CSS:move the chat a bit up so you don't need to scroll down evertime you open the window-->

@@ -26,11 +26,17 @@ async function loadRoom(req, res, db) {
             }
             const messages = getMessagesByRoom(roomId, db)
             const members = getRoomMembers(roomId, db)
+
             room.owner = await getUserNameById(room.owner, db)
+            const isOwner = room.owner === user
+            const subjects = await require("./subjects")()
+
             res.render('room', {
                 room: room,
                 messages: await messages,
-                members: await members
+                members: await members,
+                isOwner: isOwner,
+                subjects: subjects
             })
 
         }
@@ -60,13 +66,15 @@ async function createRoom(req, res, db) {
 
 }
 
-async function updateRoom(room, db) {
+async function updateRoom(room, actor, db) {
+    const roomId = Number(room.id)
     if (await isOwner(actor, roomId, db)) {
-        await db.query('UPDATE rooms ' +
+        await db.promise().query(
+            'UPDATE rooms ' +
             'SET name = ? ' +
-            'AND description = ? ' +
-            'AND subject = ? ' +
-            'AND privacy = ? ' +
+            ', description = ? ' +
+            ', subject = ? ' +
+            ', privacy = ? ' +
             'WHERE rooms.id = ? ',
             [room.name, room.description, room.subject, room.privacy, room.id],)
     } else {
