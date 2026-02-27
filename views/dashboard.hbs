@@ -33,20 +33,20 @@
                 {{#each rooms}}
                     <div class="room-btn">
                         <li>
-                            <a href="/rooms?roomId={{this.id}}" class="room-selection-btn">
-                            <p>{{this.name}}</p>
-                            <p>{{this.subject}}</p>
-                            <p>{{this.description}}</p>
+                            <a href="/rooms?roomId={{this.id}}">
+                                <p class="room-btn-name">{{this.name}}</p>
+                                <p class="room-btn-subject">{{this.subject}}</p>
+                                <p class="room-btn-description">{{this.description}}</p>
                             </a>
                         </li>
                     </div>
                 {{else}}
-                    <p>Du bist bis in noch in keiner Gruppe</p>
+                    <p>Du bist in keiner Gruppe</p>
                 {{/each}}
             </ul>
         </main>
         <footer>
-            <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim Dorotzki, Lennart Esch und Jannes Weber</p>
+            <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim Dorotzki, Lennart Esch und Jannis Weber</p>
             <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>
         </footer>
     </body>
