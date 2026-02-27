@@ -7,7 +7,11 @@ Dies ist das Projekt StudyShip erstellt durch:
 * Barnabas Steiner
 * Jannis Weber
 
-[Unser Github Repoistory](https://github.com/Herotech1105/StudiShip)
+[Unser Github Repository](https://github.com/Herotech1105/StudiShip)
+
+# Idee
+
+# Umsetzung
 
 ## Backend - (javascript)
 
@@ -159,19 +163,155 @@ und Raum-Id gespeichert.
 
 ### Socketevents
 
-| Empfangenes Event | Parameter     | Beschreibung                                                                                                                              | Gesendetes Event | Parameter   |
-|-------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|------------------|-------------|
-| open              | roomId        | erster Verbindungsaufbau des Clients, der server fügt den client zur broadcasting Grupper für den Raum und einer Nutzerspezifischen hinzu | keine            | keine       |
-| giveSubjects      | keine         | Client fragt eine Liste aller zulässiger Fächer ab, Server schickt die Liste                                                              | subjects         | subjectList |
-| delete            | roomId        | Client bittet um Löschung des Raums, wenn er die Rechte dazu hat wird der Raum gelöscht und alle Raummitglieder erhalten die ent          |                  |             |
-| updateRoom        | room          | Client fordert Änderung des Raums an, Raum wird geändert, wenn die Rechte dafür da sind                                                   | updateRoom       | room        |
-| changeOwner       | owner, roomId | Client überträgt Besitz des Raums an neueun Nutzer, wenn er selbst Besitzer ist                                                           | changeOwner      | owner       |
-| removeUser        | user, roomId  | Nutzer wird aus dem Raum geworden, wenn Event vom Besitzer geschickt wird                                                                 |                  |             |
-|                   |               |                                                                                                                                           |                  |             |
-|                   |               |                                                                                                                                           |                  |             |
+| Empfangenes Event | Parameter     | Beschreibung                                                                                                                              | Gesendetes Event                     | Parameter           |
+|-------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|---------------------|
+| open              | roomId        | erster Verbindungsaufbau des Clients, der server fügt den client zur broadcasting Grupper für den Raum und einer Nutzerspezifischen hinzu | keine                                | keine               |
+| giveSubjects      | keine         | Client fragt eine Liste aller zulässiger Fächer ab, Server schickt die Liste                                                              | subjects                             | subjectList         |
+| delete            | roomId        | Client bittet um Löschung des Raums, wenn er die Rechte dazu hat wird der Raum gelöscht und alle Raummitglieder erhalten die ent          |                                      |                     |
+| updateRoom        | room          | Client fordert Änderung des Raums an, Raum wird geändert, wenn die Rechte dafür da sind                                                   | updateRoom                           | room                |
+| changeOwner       | owner, roomId | Client überträgt Besitz des Raums an neueun Nutzer, wenn er selbst Besitzer ist                                                           | changeOwner                          | owner               |
+| removeUser        | user, roomId  | Nutzer wird aus dem Raum geworden, wenn Event vom Besitzer geschickt wird                                                                 |                                      |                     |
+| leaveRoom         | roomId        | Nutzer verlässt den Raum, Änderung wird in Datenbank übernommen und Information an den Raum Socket weitergegeben                          | left (an Nutzer), leftUser (an Raum) | user (bei leftUser) |
+| message           | message       | Nutzer schickt Nachricht in den Chat, der Server speichert sie und schickt sie dann an alle in dem Raum zum Anzeigen                      | message                              | messageObject       |
+| disconnecting     | keine         | Nutzer trennt Verbindung zum Socket und Socket gibt Information an Raum weiter                                                            | disconnection                        | user                |
 
 ## Frontend - (html)
 
 ## Frontend (css)
 
 ## Frontend (javascript)
+
+## Deployment
+
+Der Server kann mittels Docker oder Podman deployed werden. Hierbei reicht es im Projektverzeichnis `docker-compose up`
+auszuführen, solange eine Internetverbindung besteht.
+
+Dies funktioniert mittels zwei Dateien:
+
+* Dockerfile
+* docker-compose.yaml
+
+### Dockerfile
+
+In der Dockerfile wird aus dem Projekt ein Image gebaut. Dieses Image kann dann unabhängig von Betriebssystem und
+installierter Software in einem Container genutzt werden.
+
+Die Dockerfile ist auf folgende Weise aufgebaut:
+
+`FROM node:latest`  
+Das Image wird auf Basis des neuesten node.js Imagages gebaut.
+
+`WORKDIR /user/src/app`  
+Der Bau nutzt dann das angegebene Verzeichnis
+
+`COPY package.json ./`  
+Es werden die Node Module kopiert und unter gleichen Namen abgelegt
+
+`RUN npm install`  
+Nun werden die kopierten Module im Image installiert
+
+`ENV DATABASE="webapp"`  
+`ENV DATABASE_HOST="localhost"`  
+`ENV DATABASE_USER="webapp"`  
+`ENV DATABASE_PASSWORD="webapp"`
+
+`COPY . .`  
+Kopiert jetzt alle Projektdateien
+
+`EXPOSE 5000`  
+Öffnet den Port 5000 nach außen
+
+`CMD [ "node", "controller.js"]`
+Der Befehl zum Starten wird auf `node controller.js` gesetzt
+
+### docker-compose.yaml
+
+Mit der docker-compose.yaml wird angegeben, wie der Container aus den Images gebaut und konfiguriert wird.
+
+In einer docker-compose werden Services und Volumes definiert. Services sind die einzelnen Images, die im Container
+genutzt werden udn Volumes definiert einen persistenten Speicher, der also beim Beenden des Containers nicht automatisch
+gelöscht wird.
+
+    services:
+      node:
+        //node configuration
+      mysql:
+        //mysql confguration
+
+    volumes:
+      db_data:
+
+Der node Service wird folgendermaßen definiert:
+
+    build: .
+
+Es wird mit einer Dockerfile im gleichen Verzeihnis ein Image gebaut
+
+    ports:
+        - "5000:5000"
+
+Der Container nutzt dann den internen Port 5000 und bildet ihn auf den Host Port 5000 ab
+
+    depends_on:
+        mysql:
+            condition: service_healthy
+
+Hierdurch wird der node service erst gestartet, nachdem der mysql service 'healthy' gestartet ist (wird im mysql service
+definiert)
+
+    environment:
+        DATABASE: webapp
+        DATABASE_HOST: mysql
+        DATABASE_USER: webapp
+        DATABASE_PASSWORD: webapp
+
+Hier werden noch Umgebungsvariablen mitgegeben. Für die gewerbliche Nutzung sollten diese anders gesetzt werden.
+
+Der mysql Service wird dann folgendermaßen konfiguriert:
+
+    image: mysql:8.0
+
+Es wird das mysql Image 8.0 vom öffentlichen Docker Hub verwendet.
+
+    container_name: mysql
+
+Dem Container wird der Name mysql gegeben.
+
+    restart: always
+
+Wenn der Container abstürzen sollte fährt er automatisch wieder hoch.
+
+    volumes:
+        - db_data:/var/lib/mysql
+        - ./dbMigration.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+Der Service nutzt den persistenten Speicher, der in Volumes definiert ist und führt beim ersten Start die
+dbMigration.sql Datei aus.
+
+    environment:
+        MYSQL_USER: webapp
+        MYSQL_PASSWORD: webapp
+        MYSQL_ROOT_PASSWORD: webapp
+        MYSQL_DATABASE: webapp
+    ports:
+      - "3306:3306"
+
+Dasselbe, wie bei node.
+
+    healthcheck:
+        test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+        timeout: 5s
+        retries: 10
+
+Hier wird dann noch der healthcheck definiert. Es wird zum testen der Befehl mysqladmin ausgeführt und wenn kein Fehler
+auftritt gilt der service als 'healthy'
+
+# Glossar
+
+* Backend: Serverseitige Anwendungen eines Webauftritts (z.B. node)
+* Frontend: Clientseitige Anwendungen eines Webauftritts (html, css, js)
+*
+
+# Literaturverzeichnis
+
+# Abbildungen
