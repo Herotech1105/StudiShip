@@ -1,6 +1,7 @@
 # StudyShip
 
 Dies ist das Projekt StudyShip erstellt durch:
+
 * Tim Dorozynski
 * Lennart Esch
 * Barnabas Steiner
@@ -29,7 +30,7 @@ Klammern {{}}.
 
 #### Dotenv:
 
-Dotenv wird genutzt um Code und Laufzeitvariablen zu trennen. In diesem Projekt nutzen wir eine `.env`-Datei um die
+Dotenv wird genutzt, um Code und Laufzeitvariablen zu trennen. In diesem Projekt nutzen wir eine `.env`-Datei um die
 Parameter zur Verbindungsaufnahme für die Datenbank zu hinterlegen.
 
 #### MySQL:
@@ -156,8 +157,18 @@ und Raum-Id gespeichert.
 | /rooms/create  | POST        | Erstellung eines neuen Raums                            | Prüft die Angaben und erstellt aus ihnen bei Erfolg einen neuen Raum und leitet zu diesem weiter. Ansonsten wird wieder zu '/rooms/create' weitergeleitet.           |
 | /search        | POST        | Suche nach Räumen                                       | Sucht Räume nach gegebenen Parametern. Rendert eine Liste mit Ergebnissen.                                                                                           |
 
-
 ### Socketevents
+
+| Empfangenes Event | Parameter     | Beschreibung                                                                                                                              | Gesendetes Event | Parameter   |
+|-------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|------------------|-------------|
+| open              | roomId        | erster Verbindungsaufbau des Clients, der server fügt den client zur broadcasting Grupper für den Raum und einer Nutzerspezifischen hinzu | keine            | keine       |
+| giveSubjects      | keine         | Client fragt eine Liste aller zulässiger Fächer ab, Server schickt die Liste                                                              | subjects         | subjectList |
+| delete            | roomId        | Client bittet um Löschung des Raums, wenn er die Rechte dazu hat wird der Raum gelöscht und alle Raummitglieder erhalten die ent          |                  |             |
+| updateRoom        | room          | Client fordert Änderung des Raums an, Raum wird geändert, wenn die Rechte dafür da sind                                                   | updateRoom       | room        |
+| changeOwner       | owner, roomId | Client überträgt Besitz des Raums an neueun Nutzer, wenn er selbst Besitzer ist                                                           | changeOwner      | owner       |
+| removeUser        | user, roomId  | Nutzer wird aus dem Raum geworden, wenn Event vom Besitzer geschickt wird                                                                 |                  |             |
+|                   |               |                                                                                                                                           |                  |             |
+|                   |               |                                                                                                                                           |                  |             |
 
 ## Frontend - (html)
 
