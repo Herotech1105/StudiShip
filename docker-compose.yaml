@@ -2,7 +2,7 @@ services:
   node:
     build: .
     ports:
-      - "8888:5000"
+      - "5000:5000"
     depends_on:
       mysql:
         condition: service_healthy
