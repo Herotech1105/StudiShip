@@ -21,7 +21,12 @@
         <main>
             <div class="container mt-4">
                 <div class="card">
-                    <div class="card-header">Login Form</div>
+                    <div class="card-header">Anmelde Feld</div>
+                    <div class="error-alert">
+                        {{#if message }}
+                            <h3>{{message}}</h3>
+                        {{/if}}
+                    </div>
                     <div class="card-body">
                         <form action="/login" method="POST">
                             <div class="mb-3">
@@ -32,16 +37,14 @@
                                 <label for="password-login" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password-login" name="password" required>
                             </div>
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="btn btn-primary">
+                                <button type="submit" >Anmelden</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </main>
-        {{#if message }}
-            <h4 class="alert alert-danger mt-4">{{message}}</h4>
-        {{/if}}
         <footer>
             <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim Dorozynski, Lennart Esch und Jannis Weber</p>
             <p>Nur zur internen Verwendung an der DHBW Ravensburg Campus Friedrichshafen.</p>

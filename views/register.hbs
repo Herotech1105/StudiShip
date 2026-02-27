@@ -21,7 +21,10 @@
         <main>
             <div class="container mt-4">
                 <div class="card" style="width: 18rem;">
-                    <div class="card-header">Register Form</div>
+                    <div class="card-header">Regrestrierung Feld</div>
+                    {{#if message }}
+                        <h3 class="error-alert">{{message}}</h3>
+                    {{/if}}
                     <div class="card-body">
                         <form action="/register" method="POST">
                             <div class="mb-3">
@@ -40,15 +43,13 @@
                                 <label for="password-conf-reg" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control" id="password-conf-reg" name="password_confirm" required>
                             </div>
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="btn btn-primary">
+                                <button type="submit" >Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
-            {{#if message }}
-                <h4 class="alert alert-danger mt-4">{{message}}</h4>
-            {{/if}}
         </main>
         <footer>
             <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim Dorotzki, Lennart Esch und Jannis Weber</p>
