@@ -1,4 +1,13 @@
-module.exports = {dashboardWithRoomList, loadRoom, createRoom, updateRoom, removeMember, changeOwner, deleteRoom, leaveRoom}
+module.exports = {
+    dashboardWithRoomList,
+    loadRoom,
+    createRoom,
+    updateRoom,
+    removeMember,
+    changeOwner,
+    deleteRoom,
+    leaveRoom
+}
 
 async function dashboardWithRoomList(req, res, db) {
     const user = req.signedCookies["user"]
@@ -108,13 +117,19 @@ async function leaveRoom(member, roomId, db) {
 
 async function changeOwner(user, roomId, actor, db) {
     if (await isOwner(actor, roomId, db)) {
-        const [error] = await db.promise().query('UPDATE rooms ' +
-            'SET owner_id = ' +
-            '(SELECT users.id FROM users WHERE users.name = ?) ' +
-            'WHERE rooms.id = ?', [user, roomId])
-        if (error) {
-            console.error(error)
+        const newOwnersRooms = await getRoomsByOwner(user, db)
+        if (newOwnersRooms.length < 3) {
+            const [error] = await db.promise().query('UPDATE rooms ' +
+                'SET owner_id = ' +
+                '(SELECT users.id FROM users WHERE users.name = ?) ' +
+                'WHERE rooms.id = ?', [user, roomId])
+            if (error) {
+                console.error(error)
+            }
+        } else {
+            throw Error("Chosen user already owns 3 rooms")
         }
+
     } else {
         throw Error("You are not the owner of this room")
     }
