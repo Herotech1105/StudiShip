@@ -82,3 +82,25 @@
         body{
             background-color: #f2f2f2;
         }
+
+        .add-group-btn {
+            display: block;               /* Macht den Button zu einem Block-Element */
+            width: fit-content;           /* Passt die Breite an den Inhalt an */
+            max-width: 300px;             /* Maximale Breite (optional) */
+            margin: 20px auto;            /* Zentriert den Button horizontal */
+            padding: 12px 24px;           /* Innenabstand für bessere Klickfläche */
+            background-color: red;    /* Hintergrundfarbe (z. B. Rot) */
+            color: white;                 /* Textfarbe */
+            text-align: center;           /* Text zentrieren */
+            text-decoration: none;        /* Unterstreichung entfernen */
+            border: none;                 /* Standard-Rahmen entfernen */
+            border-radius: 4px;           /* Abgerundete Ecken */
+            font-weight: bold;           /* Fetter Text */
+            cursor: pointer;              /* Cursor als Zeiger */
+            transition: background-color 0.3s; /* Sanfter Übergang für Hover-Effekt */
+        }
+
+        .add-group-btn:hover {
+            background-color: darkred;    /* Dunklerer Ton beim Hovern */
+            color: darkgray;
+        }
