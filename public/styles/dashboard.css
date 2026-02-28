@@ -104,3 +104,27 @@
             background-color: darkred;    /* Dunklerer Ton beim Hovern */
             color: darkgray;
         }
+
+        /*test*/
+        .room-btn {
+            border: 1px solid #ccc; /* Rahmen um den Kasten */
+            border-radius: 8px;    /* Abgerundete Ecken */
+            padding: 15px;         /* Innenabstand */
+            margin: 10px;          /* Außenabstand */
+            background-color: #f9f9f9; /* Hintergrundfarbe */
+            display: inline-block; /* Standardmäßig nebeneinander */
+            width: 200px;          /* Feste Breite für Konsistenz */
+            vertical-align: top;   /* Ausrichtung oben */
+        }
+
+        /* Wenn du möchtest, dass sie untereinander sind, ersetze `inline-block` mit: */
+        .room-btn.block {
+            display: block;        /* Untereinander */
+            width: 100%;           /* Volle Breite */
+        }
+
+        /* Optional: Hover-Effekt für bessere Benutzerfreundlichkeit */
+        .room-btn:hover {
+            background-color: #e9e9e9;
+            border-color: #999;
+        }
