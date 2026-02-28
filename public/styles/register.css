@@ -26,4 +26,54 @@
         text-decoration: underline;
         margin-left: 20px;
     }
+
+    .container {
+        display: flex;
+        justify-content: center; /* Zentriert horizontal */
+        align-items: center;     /* Zentriert vertikal (falls nötig) */
+        min-height: 70vh;       /* Optional: Gibt dem Container eine Mindesthöhe */
+        margin-top: 1em;        /* Optional: Abstände anpassen */
+        /* background-color: white;
+         max-width: 400px;
+
+         */
+    }
+
+    /*Test für Box Login*/
+    .card {
+        width: 25rem; /* oder eine andere Breite, z. B. 300px */
+        height: 28rem;
+        /* margin: 0 auto; /* Zentriert die Karte im Container (falls nötig) */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Schatten für "Kasten"-Effekt */
+        border: 1px solid #ddd; /* Optional: Rahmen für "Kasten"-Effekt */
+        border-radius: 8px; /* Optional: Abgerundete Ecken */
+        background-color: white;
+    }
+
+    .card-body {
+        padding: 1.5rem; /* Abstand zum Rand der Karte */
+        /*text-align: center; /*Zentriert den Text*/
+    }
+
+    .btn-primary {
+        background-color: red; /* Rote Farbe (Bootstrap-Danger-Farbe) */
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 2rem; /* Innenabstand für bessere Klickfläche */
+        color: white; /*weiße schrift*/
+        transition: background-color 0.3s; /* Sanfter Farbübergang beim Hover */
+    }
+
+    .btn-primary:hover {
+        background-color: darkred; /* Dunkleres Rot beim Hover */
+        color: darkgray;/*graue schrift*/
+    }
+
+    body{
+        background-image: url('../images/background.jpg');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
  
