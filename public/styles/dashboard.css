@@ -44,4 +44,37 @@
             margin: 0;
             padding: 0;
         }
-    
+
+        h3{
+            text-align: center ;
+        }
+
+        .search-btn{
+            text-align: center;
+        }
+
+        .room-btn{
+            text-align: center ;
+        }
+
+        .hero{
+            background-image: url('../images/background.jpg') !important;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px; /* Innenabstand für bessere Lesbarkeit */
+            min-height: 400px; /* Mindesthöhe für den Hero-Bereich */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Zentriert den Inhalt vertikal */
+            align-items: center; /* Zentriert den Inhalt horizontal */
+            color: white;
+        }
+
+        .hero h3{
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
