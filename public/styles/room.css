@@ -56,14 +56,25 @@
         background-color: red;
         color: white;
         padding: 15px;
-        border-radius: 15px;
-        margin-bottom: 15px;
+        border-radius: 8px;
     }
+
+    .red-rounded-box.header-box{ /*Man muss . nach der klasse setzen um das kind element zu bearbeiten*/
+        margin-top: 20px;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        margin-left: 10px;
+
+        text-align: center;
+
+    }
+
     .border-box {
         border: 2px solid black;
         padding: 10px;
         background-color: white;
         margin-bottom: 15px;
+        border-radius: 8px;
     }
     .chat-area{
         flex: 2;
@@ -106,6 +117,10 @@
         width: 35px;
         height: 35px;
         cursor: pointer;
+    }
+
+    button{
+        margin-left: 3px;
     }
 
     .hidden {
