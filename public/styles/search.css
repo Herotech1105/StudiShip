@@ -44,3 +44,34 @@ nav{
     margin: 0;
     padding: 0;
 }
+
+
+.form-container {
+    display: flex;
+    align-items: center;     /* Zentriert die .form-group-Elemente horizontal */
+    justify-content: center;
+    gap: 1rem;               /* Abstand zwischen den Elementen */
+    width: 100%;
+
+}
+
+.form-group {
+    background-color: white;
+    min-width: 15rem;
+    width: 25rem;            /* Festgelegte Breite */
+    height: 28rem;
+    box-sizing: border-box;  /* Padding in die Breite einbeziehen */
+    padding: 1rem;           /* Innenabstand */
+    border-radius: 8px;
+}
+
+body{
+    background-image: url('../images/background.jpg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+
+
+}

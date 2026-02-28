@@ -41,7 +41,7 @@
 
     /*Test für Box Login*/
     .card {
-        width: 25rem; /* oder eine andere Breite, z. B. 300px */
+        width: 25rem;
         height: 28rem;
        /* margin: 0 auto; /* Zentriert die Karte im Container (falls nötig) */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Schatten für "Kasten"-Effekt */
