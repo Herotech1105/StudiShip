@@ -4,6 +4,12 @@ const roomId = searchParams.get('roomId')
 
 const isOwner = document.body.dataset.isOwner === "true"
 let isEditMode = false
+let pendingAction = null
+let activePopup = null
+
+const kickPopup = document.querySelector(".user-kick-confirmation-window")
+const ownerPopup = document.querySelector(".new-admin-confirmation-window")
+const deletePopup = document.querySelector(".delition-confirmation-window")
 
 websocket.emit("open", roomId)
 
@@ -54,8 +60,26 @@ async function copyRoomLink() {
     }
 }
 
+function hideAllPopups() {
+    if (kickPopup) kickPopup.style.display = "none"
+    if (ownerPopup) ownerPopup.style.display = "none"
+    if (deletePopup) deletePopup.style.display = "none"
+    activePopup = null
+    pendingAction = null
+}
+
+function openPopup(popupElement, onConfirm) {
+    hideAllPopups()
+    if (!popupElement) return
+    activePopup = popupElement
+    pendingAction = onConfirm
+    popupElement.style.display = "flex"
+}
+
 function deleteRoom(){
-    websocket.emit('delete', roomId)
+    openPopup(deletePopup, () => {
+        websocket.emit('delete', roomId)
+    })
 }
 
 function updateRoom(){
@@ -78,16 +102,21 @@ function updateRoom(){
 }
 
 function changeOwner(owner){
-    websocket.emit('changeOwner', owner, roomId)
+    openPopup(ownerPopup, () => {
+        websocket.emit('changeOwner', owner, roomId)
+    })
 }
 
 function removeUser(user){
-    websocket.emit('removeUser', user, roomId)
+    openPopup(kickPopup, () => {
+        websocket.emit('removeUser', user, roomId)
+    })
 }
 
 function setEditMode(enabled) {
     if (!isOwner) return
     isEditMode = enabled
+    const roomOwner = document.body.dataset.roomOwner
 
     const title = document.getElementById("roomTitle")
     const description = document.getElementById("roomDescription")
@@ -109,7 +138,9 @@ function setEditMode(enabled) {
     if (deleteButton) deleteButton.classList.toggle("hidden", !enabled)
 
     document.querySelectorAll(".owner-edit-only").forEach((el) => {
-        el.classList.toggle("hidden", !enabled)
+        const memberName = el.closest("li")?.querySelector("span")?.textContent?.trim()
+        const isSelfRow = memberName === roomOwner
+        el.classList.toggle("hidden", !enabled || isSelfRow)
     })
 }
 
@@ -181,6 +212,26 @@ websocket.on("invalid", (err) => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
+    hideAllPopups()
+
+    document.getElementById("kick-confirmation")?.addEventListener("click", () => {
+        pendingAction?.()
+        hideAllPopups()
+    })
+    document.getElementById("kick-rejected")?.addEventListener("click", hideAllPopups)
+
+    document.getElementById("new-admin-confirmation")?.addEventListener("click", () => {
+        pendingAction?.()
+        hideAllPopups()
+    })
+    document.getElementById("new-admin-rejected")?.addEventListener("click", hideAllPopups)
+
+    document.getElementById("delition-confirmation")?.addEventListener("click", () => {
+        pendingAction?.()
+        hideAllPopups()
+    })
+    document.getElementById("delition-rejected")?.addEventListener("click", hideAllPopups)
+
     const shareButton = document.querySelector(".share-btn")
     if (shareButton) {
         shareButton.addEventListener("click", async () => {
