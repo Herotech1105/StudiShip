@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
 
-
     background: linear-gradient( white, lightgray);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -18,7 +17,7 @@ body {
     padding: 20px;
 }
 
-/* Boxen (z.B. für Cards, Container, etc.) */
+/* Boxen  */
 .box {
     background-color: #fff;
     border: 1px solid #e0e0e0;
@@ -28,7 +27,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Rote Boxen (wie gewünscht) */
+/* Rote Boxen */
 .box--red {
     border-left: 4px solid #e74c3c;
     background-color: #fff9f9;
