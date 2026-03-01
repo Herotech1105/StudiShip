@@ -126,3 +126,7 @@
     .hidden {
         display: none !important;
     }
+
+    .send-button{
+        padding: 0rem;
+    }
