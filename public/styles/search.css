@@ -56,15 +56,28 @@ nav{
 }
 
 .form-group {
+    margin-top: 5rem;
     background-color: white;
     min-width: 15rem;
-    width: 25rem;            /* Festgelegte Breite */
-    height: 28rem;
+    width: 30rem;            /* Festgelegte Breite */
+    height: 23rem;
     box-sizing: border-box;  /* Padding in die Breite einbeziehen */
     padding: 1rem;           /* Innenabstand */
     border-radius: 8px;
-    max-width: 90vw;
+    padding: 1rem;
 }
+
+.form-group {
+    margin-top: 5rem;
+    background-color: white;
+    min-width: 15rem;
+    width: 30rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow: visible; /* Standard, aber explizit gesetzt */
+}
+
 
 body{
     background-image: url('../images/background.jpg');
@@ -82,9 +95,6 @@ body{
     margin-top: 1em;        /* Abstände anpassen */
 }
 
-.form-group{
-    padding: 1rem;
-}
 
 #searchBar{
     display: none; /*Versteckt sie searchBar Vorerst*/
@@ -100,8 +110,18 @@ h1{
 }
 
 
-#roomName{
-    width: 100%;
-    max-width: 400px; /* Maximale Breite des Formulars */
-    margin: 0;
-    }
+.form-group input,
+.form-group select {
+    width: 100%; /* Volle Breite der Box nutzen */
+    box-sizing: border-box; /* Padding in die Breite einbeziehen */
+    padding: 0.5rem; /* Innenabstand für bessere Lesbarkeit */
+    margin-bottom: 0.75rem; /* Abstand nach unten */
+}
+
+.btn {
+    width: 100%; /* Button nutzt die volle Breite */
+    margin-top: 0.5rem; /* Abstand nach oben */
+}
+
+
+
