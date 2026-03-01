@@ -1,13 +1,13 @@
-/* Modernes, generisches CSS-Stylesheet */
-
-/* Grundlegende Stile für den Body */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
+
+
+    background: linear-gradient( white, lightgray);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* Box-Modell und Container */
@@ -112,10 +112,10 @@ footer {
     background-color: red;    /* Rote Hintergrundfarbe */
     color: white;                 /* Weiße Textfarbe */
     text-align: center;           /* Text zentrieren */
-    padding: 2px 0;              /* Weniger Innenabstand (oben/unten) */
+    padding: 2px;              /* Weniger Innenabstand (oben/unten) */
     margin-top: auto;             /* Drückt den Footer nach unten */
     width: 100%;                  /* Volle Breite */
-    font-size: 14px; /* Optional: Kleinere Schrift */
+    font-size: 12px;
     line-height: 1.2;
     position: relative;           /* Standard-Positionierung */
     bottom: 0;                    /* Ausrichtung unten (wird durch Flexbox des Body erzwungen) */

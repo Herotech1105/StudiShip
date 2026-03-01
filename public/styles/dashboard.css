@@ -100,7 +100,7 @@
             text-decoration: none;        /* Unterstreichung entfernen */
             border: none;                 /* Standard-Rahmen entfernen */
             border-radius: 4px;           /* Abgerundete Ecken */
-            font-weight: bold;           /* Fetter Text */
+            font-weight:  1;           /* Fetter Text */
             cursor: pointer;              /* Cursor als Zeiger */
             transition: background-color 0.3s; /* Sanfter Übergang für Hover-Effekt */
         }
@@ -110,7 +110,7 @@
             color: darkgray;
         }
 
-        /*test*/
+
         .room-btn {
             border: 1px;       /* Rahmen um den Kasten */
             border-radius: 8px;          /* Abgerundete Ecken */
@@ -123,6 +123,9 @@
             vertical-align: top;          /* Ausrichtung oben */
             overflow: hidden;             /* Text abschneiden */
             position: relative;          /* Für Positionierung der Ellipsis */
+
+
+
         }
 
         .room-btn-name,
@@ -132,13 +135,18 @@
             white-space: nowrap;          /* Verhindert Zeilenumbrüche */
             overflow: hidden;             /* Text abschneiden */
             text-overflow: ellipsis;      /* "..." einfügen */
+
+            color: black;
         }
 
+        .room-btn-name{ font:bold;
+        font-size: large;}
 
         ul{
             display: flex;
             justify-content: center; /* Zentriert horizontal */
-            align-items: center;     /* Zentriert vertikal (falls nötig) */
+            align-items: center;     /* Zentriert vertikal */
+
         }
 
         .room-btn.block {
@@ -148,9 +156,14 @@
 
 
         .room-btn:hover {
-            background-color: #bbbbbb;
+            background-color: #bbbbbb; /*Hellgraue Farbe*/
         }
 
         .room-btn li {
             list-style: none; /* Entfernt den Aufzählungszeichen */
         }
+
+
+
+
+
