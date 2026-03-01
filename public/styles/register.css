@@ -55,18 +55,8 @@
         /*text-align: center; /*Zentriert den Text*/
     }
 
-    .btn-primary {
-        background-color: red; /* Rote Farbe (Bootstrap-Danger-Farbe) */
-        border: none;
-        border-radius: 8px;
-        padding: 0.5rem 2rem; /* Innenabstand für bessere Klickfläche */
-        color: white; /*weiße schrift*/
-        transition: background-color 0.3s; /* Sanfter Farbübergang beim Hover */
-    }
-
-    .btn-primary:hover {
-        background-color: darkred; /* Dunkleres Rot beim Hover */
-        color: darkgray;/*graue schrift*/
+    button{
+        width: 100%; /* Optional: Button füllt das Div aus */
     }
 
     body{
