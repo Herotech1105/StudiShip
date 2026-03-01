@@ -175,7 +175,56 @@ und Raum-Id gespeichert.
 | message           | message       | Nutzer schickt Nachricht in den Chat, der Server speichert sie und schickt sie dann an alle in dem Raum zum Anzeigen                      | message                              | messageObject       |
 | disconnecting     | keine         | Nutzer trennt Verbindung zum Socket und Socket gibt Information an Raum weiter                                                            | disconnection                        | user                |
 
+
+
 ## Frontend - (html)
+
+### 1. Öffentliche Seiten
+
+#### `index.hbs` (Landing Page)
+Die Startseite für nicht eingeloggte Nutzer.
+- **Funktion:** Begrüßung und Vorstellung der Features (Kostenlos, Zielorientiert, Schnell).
+- **Navigation:** Links zu Login und Registrierung.
+
+#### `login.hbs` & `register.hbs` (Authentifizierung)
+Formulare für den Zugang zur Plattform.
+- **Login:** Fragt `Name` und `Password` ab. Zeigt Fehlermeldungen (z. B. "Falsches Passwort") dynamisch an, wenn die Variable `{{message}}` übergeben wird.
+- **Register:** Erfordert Name, E-Mail und doppelte Passworteingabe zur Bestätigung.
+
+
+
+### 2. Internerbereich (Eingeloggt)
+
+#### `dashboard.hbs` (Startseite)
+Die zentrale Anlaufstelle nach dem Login.
+- **Header:** Zeigt "Willkommen, {{user}}!".
+- **Suche:** Ermöglicht Eingabe des Namen der gesuchten Gruppe oder das Öffnen der Suche mit Filter 
+- **Lerngruppen-Liste:** Iteriert mit `{{#each rooms}}` über alle Gruppen, in denen der Nutzer Mitglied ist, und zeigt diese als Karten an.
+- **Fallback:** Zeigt "Du bist in keiner Gruppe", falls die Liste leer ist.
+
+#### `search.hbs` & `searchResult.hbs` (Suche)
+Ermöglicht das Finden von Lerngruppen.
+- **Filter:** Suche nach Text (Name) und Dropdown-Filter für die "Kursart" (Subjects).
+- **Ergebnisse:** `searchResult.hbs` zeigt die Trefferliste an oder die Meldung "Keine passende Lerngruppe gefunden".
+
+#### `roomAdder.hbs` (Erstellung)
+Formular zum Anlegen einer neuen Gruppe.
+- **Felder:** Name, Beschreibung, Kursart (Dropdown) und Privatsphäre (Public/Invitation only).
+
+
+
+### 3. Kerndienstleistung: `room.hbs` (Lerngruppen-Raum)
+Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **Owner** (Ersteller) und normalem **Mitglied**.
+
+**Features:**
+- **Rechte-Management (`isOwner`):**
+    - Nur der Owner sieht Buttons zum Bearbeiten, Speichern und Löschen des Raums.
+    - Nur der Owner kann Mitglieder kicken (`x`) oder zum Admin befördern (`Zum Admin`).
+    - Mitglieder sehen nur den "Verlassen"-Button.
+- **Chat-System:**
+    - Linke Seite: Chat-Verlauf (`{{#each messages}}`) und Eingabefeld.
+- **Mitglieder-Liste:** Links (Desktop) oder unten (Mobile) werden alle Teilnehmer angezeigt.
+- **Modals (Popups):** Versteckte Warnfenster für kritische Aktionen (Kick, Admin-Wechsel, Löschen), die per JavaScript eingeblendet werden.
 
 ## Frontend (css)
 
