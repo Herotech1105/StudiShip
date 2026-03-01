@@ -1,9 +1,15 @@
 Hey, Leute hier ein paar ToDos die mir beim schreiben auf gefallen sind:
-1. all das in der views in den html/hbs daten von den <style> klammern in eine Css verschieben(durch sowas wie <link rel="stylesheet" href="css/style.css"
-                                                                                               type="text/css"/> erstetzten)
+
 3. favicon durch svl ersetzen
 
-4. Text für den <footer> umlizenen erweitern
-
 5. Suche Feld bei dashboard
+
+6. CSS: confirmmation window weiß und rund machen sowie ja und nein button design
+
+7. CSS&Html: Suche feld im Dasch board design und absende buttoen(js?)
+
+8. Beckend: Begrüßung user darstellen
+
+9. CSS: Daschboard li nicht neben einander untereinandere anordnen.
+
 
