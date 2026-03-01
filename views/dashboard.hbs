@@ -24,30 +24,39 @@
         <main>
 
             <section class="hero">
-            <h3>Dashboard</h3>
+
                 {{#if user }}
                     <h4>Wilkommen, {{user}}!</h4>
+                {{else}}
+                    <h3>Dashboard</h3>
                 {{/if}}
             </section>
-
-            <a href="/search" class="search-btn">Suchen</a>
-            <h4>Deine Lerngruppen: </h4>
-            <a href="/createRoom" class="add-group-btn">Gruppe Erstellen</a>
-            <ul>
-                {{#each rooms}}
-                    <div class="room-btn">
-                        <li>
-                            <a href="/rooms?roomId={{this.id}}">
-                                <p class="room-btn-name">{{this.name}}</p>
-                                <p class="room-btn-subject">{{this.subject}}</p>
-                                <p class="room-btn-description">{{this.description}}</p>
-                            </a>
-                        </li>
-                    </div>
-                {{else}}
-                    <p>Du bist in keiner Gruppe</p>
-                {{/each}}
-            </ul>
+            <input id="searchBar" type="search" name="roomName" >
+            <div>
+                <script src="../scripts/searchBar.js"></script>
+                <a href="/search" class="search-btn">Erweiterte Suche</a>
+            </div>
+            <div>
+                <h4>Deine Lerngruppen: </h4>
+                <a href="/createRoom" class="add-group-btn">Gruppe Erstellen</a>
+            </div>
+            <div>
+                <ul>
+                    {{#each rooms}}
+                        <div class="room-btn">
+                            <li>
+                                <a href="/rooms?roomId={{this.id}}">
+                                    <p class="room-btn-name">{{this.name}}</p>
+                                    <p class="room-btn-subject">{{this.subject}}</p>
+                                    <p class="room-btn-description">{{this.description}}</p>
+                                </a>
+                            </li>
+                        </div>
+                    {{else}}
+                        <p>Du bist in keiner Gruppe</p>
+                    {{/each}}
+                </ul>
+            </div>
         </main>
         <footer>
             <p>Diese Seite wurde erstellt von Barnabas Steiner, Tim Dorozynski, Lennart Esch und Jannis Weber</p>
