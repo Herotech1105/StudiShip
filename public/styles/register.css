@@ -30,24 +30,24 @@
     .container {
         display: flex;
         justify-content: center; /* Zentriert horizontal */
-        align-items: center;     /* Zentriert vertikal (falls nötig) */
-        min-height: 70vh;       /* Optional: Gibt dem Container eine Mindesthöhe */
-        margin-top: 1em;        /* Optional: Abstände anpassen */
+        align-items: center;     /* Zentriert vertikal */
+        min-height: 70vh;       /* Gibt dem Container eine Mindesthöhe */
+        margin-top: 1em;        /* Abstände anpassen */
         /* background-color: white;
          max-width: 400px;
 
          */
     }
 
-    /*Test für Box Login*/
+
     .card {
-        width: 25rem; /* oder eine andere Breite, z. B. 300px */
-        height: 28rem;
-        /* margin: 0 auto; /* Zentriert die Karte im Container (falls nötig) */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Schatten für "Kasten"-Effekt */
-        border: 1px solid #ddd; /* Optional: Rahmen für "Kasten"-Effekt */
-        border-radius: 8px; /* Optional: Abgerundete Ecken */
-        background-color: white;
+        width: 25rem; /*Breite*/
+        height: 28rem;/*Höhe*/
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*Schatten für "Kasten"-Effekt */
+        border: 1px solid #ddd; /*Rahmen für "Kasten"-Effekt */
+        border-radius: 8px; /* Abgerundete Ecken */
+        background-color: white;/*Weißer Hintergrund*/
+        padding: 1rem;/*Innenabstand*/
     }
 
     .card-body {

@@ -63,6 +63,7 @@ nav{
     box-sizing: border-box;  /* Padding in die Breite einbeziehen */
     padding: 1rem;           /* Innenabstand */
     border-radius: 8px;
+    max-width: 90vw;
 }
 
 body{
@@ -70,8 +71,37 @@ body{
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-
-
-
 }
+
+.container {
+    display: flex;
+    flex-direction: column; /* Elemente untereinander anordnen */
+    justify-content: flex-start; /* Zentriert horizontal */
+    align-items: center;     /* Zentriert vertikal */
+    min-height: 70vh;       /* Gibt dem Container eine Mindesthöhe */
+    margin-top: 1em;        /* Abstände anpassen */
+}
+
+.form-group{
+    padding: 1rem;
+}
+
+#searchBar{
+    display: none; /*Versteckt sie searchBar Vorerst*/
+}
+
+
+.btn{
+    width: 100%; /*Such-button benutzt die gange breite*/
+}
+
+h1{
+    color: white;
+}
+
+
+#roomName{
+    width: 100%;
+    max-width: 400px; /* Maximale Breite des Formulars */
+    margin: 0;
+    }
