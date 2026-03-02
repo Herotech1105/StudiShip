@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend">
-      <change afterPath="$PROJECT_DIR$/model/messageManager.js" afterDir="false" />
+    <list default="true" id="0b3f2458-9092-4bbf-a5a7-6572be73f0ab" name="Changes" comment="Comments to styles.css">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/roomManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/roomManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/room.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <list id="62586ea4-dbc9-45a0-bad9-33ecef5674b4" name="Unversioned Files" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -39,8 +37,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Herotech1105/StudiShip&quot;,
-    &quot;accountId&quot;: &quot;8c001d5f-a0d9-403f-8b17-136be7157c67&quot;
+    &quot;url&quot;: &quot;https://github.com/Herotech1105/StudiShip.git&quot;,
+    &quot;accountId&quot;: &quot;a768aef2-b875-4bb0-b221-993ddef6ab11&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -71,13 +69,15 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/leesch/WebstormProjects/WebServer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tim Notebook/WebstormProjects/StudiShip/public/styles&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.install cookie-parser dotenv express hbs mysql nodemon.executor&quot;: &quot;Run&quot;,
+    &quot;npm.install cookie-parser dotenv express hbs mysql2 nodemon socket.io socket.io-cookie-parser.executor&quot;: &quot;Run&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;JavaScript.Libraries&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
@@ -91,10 +91,15 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Tim Notebook\WebstormProjects\StudiShip\public\styles" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tim Notebook\WebstormProjects\StudiShip\public\images" />
+      <recent name="C:\Users\Tim Notebook\WebstormProjects\StudiShip\public\icons" />
+      <recent name="C:\Users\Tim Notebook\WebstormProjects\StudiShip\public" />
+      <recent name="C:\Users\Tim Notebook\WebstormProjects\StudiShip\public\styles" />
       <recent name="C:\Users\leesch\WebstormProjects\WebServer\public" />
-      <recent name="C:\Users\leesch\WebstormProjects\WebServer\views" />
-      <recent name="C:\Users\leesch\WebstormProjects\WebServer\views\room" />
     </key>
   </component>
   <component name="RunManager">
@@ -108,7 +113,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.242" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
       </set>
     </attachedChunks>
   </component>
@@ -134,6 +139,15 @@
       <workItem from="1770893294770" duration="13727000" />
       <workItem from="1770964651965" duration="30278000" />
       <workItem from="1771246645674" duration="7978000" />
+      <workItem from="1772003053802" duration="4568000" />
+      <workItem from="1772008770697" duration="6980000" />
+      <workItem from="1772046787720" duration="5843000" />
+      <workItem from="1772098146085" duration="140000" />
+      <workItem from="1772173848836" duration="3478000" />
+      <workItem from="1772273666998" duration="20355000" />
+      <workItem from="1772381084289" duration="11215000" />
+      <workItem from="1772396964149" duration="261000" />
+      <workItem from="1772433715287" duration="4837000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -231,7 +245,239 @@
       <option name="project" value="LOCAL" />
       <updated>1770976732687</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added general css file styles.css and extracted css from index login and register from html to css files">
+      <option name="closed" value="true" />
+      <created>1772008385386</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1772008385386</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Extracted css from dashboard from html to css file">
+      <option name="closed" value="true" />
+      <created>1772009305465</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1772009305465</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Extracted css from room/roomAdder from html to css files">
+      <option name="closed" value="true" />
+      <created>1772010476354</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1772010476354</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Extracted css from search/searchResult from html to css files">
+      <option name="closed" value="true" />
+      <created>1772011115662</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1772011115662</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fix errors when including CSS">
+      <option name="closed" value="true" />
+      <created>1772011893206</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1772011893206</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fix errors when including CSS">
+      <option name="closed" value="true" />
+      <created>1772015209911</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1772015209911</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fixed error with the icon in the icon in the index.hbs">
+      <option name="closed" value="true" />
+      <created>1772015820816</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1772015820816</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added images folder and background image">
+      <option name="closed" value="true" />
+      <created>1772025871178</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1772025871178</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fixed title icon on all sites.&#10;added 1st version footer design&#10;reworked index design">
+      <option name="closed" value="true" />
+      <created>1772050864457</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1772050864457</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Register page has now prototype design as well">
+      <option name="closed" value="true" />
+      <created>1772274439115</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1772274439115</updated>
+    </task>
+    <task id="LOCAL-00023" summary="dashboard.css and dashboard.hbs edit to style">
+      <option name="closed" value="true" />
+      <created>1772276300397</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1772276300397</updated>
+    </task>
+    <task id="LOCAL-00024" summary="dashboard.css and dashboard.hbs edit to style">
+      <option name="closed" value="true" />
+      <created>1772277327775</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1772277327775</updated>
+    </task>
+    <task id="LOCAL-00025" summary="dashboard.css and dashboard.hbs edit to style">
+      <option name="closed" value="true" />
+      <created>1772277691486</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1772277691486</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fixed order of stylesheets">
+      <option name="closed" value="true" />
+      <created>1772278231241</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1772278231241</updated>
+    </task>
+    <task id="LOCAL-00027" summary="prototype dashboard groups">
+      <option name="closed" value="true" />
+      <created>1772302980345</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1772302980345</updated>
+    </task>
+    <task id="LOCAL-00028" summary="changes to style on dashboard.css, login.css, and search.css">
+      <option name="closed" value="true" />
+      <created>1772304786770</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1772304786770</updated>
+    </task>
+    <task id="LOCAL-00029" summary="changes to style on dashboard.css">
+      <option name="closed" value="true" />
+      <created>1772306264188</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1772306264188</updated>
+    </task>
+    <task id="LOCAL-00030" summary="changes to style on room.css, fixed overflow in header reb bubble and overflow from send button, and added radius to text fields">
+      <option name="closed" value="true" />
+      <created>1772307729165</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1772307729165</updated>
+    </task>
+    <task id="LOCAL-00031" summary="dashboard.css Done, changed standard background in styles.css">
+      <option name="closed" value="true" />
+      <created>1772364705145</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1772364705145</updated>
+    </task>
+    <task id="LOCAL-00032" summary="all butons have our red Corporate Design in styles.css">
+      <option name="closed" value="true" />
+      <created>1772369466612</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1772369466612</updated>
+    </task>
+    <task id="LOCAL-00033" summary="all butons have our red Corporate Design in styles.css">
+      <option name="closed" value="true" />
+      <created>1772369519482</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1772369519482</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fixed button in login and register.css">
+      <option name="closed" value="true" />
+      <created>1772369937410</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1772369937410</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fixed register.css, and improved search.css, top searchbar is hidden">
+      <option name="closed" value="true" />
+      <created>1772392533019</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1772392533019</updated>
+    </task>
+    <task id="LOCAL-00036" summary="fixed overflow from input field in search.css and made Heading visable again in search.hbs">
+      <option name="closed" value="true" />
+      <created>1772394378855</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1772394378855</updated>
+    </task>
+    <task id="LOCAL-00037" summary="fixed send button in rooms (it wasn't round anymore)">
+      <option name="closed" value="true" />
+      <created>1772394942934</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1772394942934</updated>
+    </task>
+    <task id="LOCAL-00038" summary="exported css for Confirmation to a seperate file">
+      <option name="closed" value="true" />
+      <created>1772396981709</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1772396981714</updated>
+    </task>
+    <task id="LOCAL-00039" summary="removed style elements and added reverence to stylesheet">
+      <option name="closed" value="true" />
+      <created>1772397208699</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1772397208699</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Comments to styles.css">
+      <option name="closed" value="true" />
+      <created>1772437381222</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1772437381222</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Comments to styles.css">
+      <option name="closed" value="true" />
+      <created>1772438415737</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1772438415737</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,18 +505,31 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial Commit" />
-    <MESSAGE value="Update workspace to git" />
-    <MESSAGE value="Backend login and registration" />
-    <MESSAGE value="Added simple readMe for development purposes" />
-    <MESSAGE value="Added service layer to backend" />
-    <MESSAGE value="Changed Cookies to signed" />
-    <MESSAGE value="Backend: dashboard now shows list of rooms user is part of" />
-    <MESSAGE value="Backend: Implementation for reaching room by id" />
-    <MESSAGE value="Backend: Now hands room information to hbs file" />
-    <MESSAGE value="Backend: Added Room creation" />
-    <MESSAGE value="Backend: Better differentiation between layers" />
     <MESSAGE value="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Backend, Bugfix: Dashboard would always receive an extra NULL room from backend" />
+    <MESSAGE value="Added general css file styles.css and extracted css from index login and register from html to css files" />
+    <MESSAGE value="Extracted css from dashboard from html to css file" />
+    <MESSAGE value="Extracted css from room/roomAdder from html to css files" />
+    <MESSAGE value="Extracted css from search/searchResult from html to css files" />
+    <MESSAGE value="Fix errors when including CSS" />
+    <MESSAGE value="fixed error with the icon in the icon in the index.hbs" />
+    <MESSAGE value="added images folder and background image" />
+    <MESSAGE value="fixed title icon on all sites.&#10;added 1st version footer design&#10;reworked index design" />
+    <MESSAGE value="Register page has now prototype design as well" />
+    <MESSAGE value="dashboard.css and dashboard.hbs edit to style" />
+    <MESSAGE value="fixed order of stylesheets" />
+    <MESSAGE value="prototype dashboard groups" />
+    <MESSAGE value="changes to style on dashboard.css, login.css, and search.css" />
+    <MESSAGE value="changes to style on dashboard.css" />
+    <MESSAGE value="changes to style on room.css, fixed overflow in header reb bubble and overflow from send button, and added radius to text fields" />
+    <MESSAGE value="dashboard.css Done, changed standard background in styles.css" />
+    <MESSAGE value="all butons have our red Corporate Design in styles.css" />
+    <MESSAGE value="fixed button in login and register.css" />
+    <MESSAGE value="fixed register.css, and improved search.css, top searchbar is hidden" />
+    <MESSAGE value="fixed overflow from input field in search.css and made Heading visable again in search.hbs" />
+    <MESSAGE value="fixed send button in rooms (it wasn't round anymore)" />
+    <MESSAGE value="exported css for Confirmation to a seperate file" />
+    <MESSAGE value="removed style elements and added reverence to stylesheet" />
+    <MESSAGE value="Comments to styles.css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments to styles.css" />
   </component>
 </project>
