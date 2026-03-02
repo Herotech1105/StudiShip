@@ -102,12 +102,12 @@ th {
 
 /* Formulare */
 input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: inherit;
+    width: 100%;        /*die Formulare sollen den ganzen platz den sie einemen können auch einnehmen*/
+    padding: 10px;      /*innenabstand 10px*/
+    margin-bottom: 15px; /*aussenabstand unten 15px*/
+    border: 1px solid #ddd; /*boarder die 1px groß, sichtbar und grau ist*/
+    border-radius: 8px; /*abgerundete ecken*/
+    font-family: inherit; /*erbt die schriftart*/
 }
 
 
@@ -118,8 +118,8 @@ footer {
     padding: 2px;              /* Weniger Innenabstand (oben/unten) */
     margin-top: auto;             /* Drückt den Footer nach unten */
     width: 100%;                  /* Volle Breite */
-    font-size: 12px;
-    line-height: 1.2;
+    font-size: 12px;              /*Schriftgröße 12px*/
+    line-height: 1.2;               /*Zeilenabstand 1.2*/
     position: relative;           /* Standard-Positionierung */
     bottom: 0;                    /* Ausrichtung unten (wird durch Flexbox des Body erzwungen) */
 }
