@@ -113,6 +113,10 @@ function removeUser(user){
     })
 }
 
+function leaveRoom() {
+    websocket.emit('leaveRoom', roomId)
+}
+
 function setEditMode(enabled) {
     if (!isOwner) return
     isEditMode = enabled
@@ -178,6 +182,10 @@ function scrollMessagesToBottom() {
 }
 
 websocket.on("kick", () => {
+    location.replace("/")
+})
+
+websocket.on("left", () => {
     location.replace("/")
 })
 
