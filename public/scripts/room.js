@@ -1,4 +1,4 @@
-const websocket = io()
+﻿const websocket = io()
 const searchParams = new URLSearchParams(window.location.search)
 const roomId = searchParams.get('roomId')
 
@@ -24,6 +24,12 @@ if (messageInput) {
 }
 
 
+function limitText(el, max) {
+    if (!el) return
+    if (el.textContent.length > max) {
+        el.textContent = el.textContent.slice(0, max)
+    }
+}
 function sendMessage() {
     const input = document.getElementById('message')
     if (!input || !input.value.trim()) return
@@ -252,6 +258,11 @@ websocket.on("joined", (user) => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
+    const roomTitle = document.getElementById("roomTitle")
+    const roomDescription = document.getElementById("roomDescription")
+
+    roomTitle?.addEventListener("input", () => limitText(roomTitle, 40))
+    roomDescription?.addEventListener("input", () => limitText(roomDescription, 255))
     hideAllPopups()
 
     document.getElementById("kick-confirmation")?.addEventListener("click", () => {
@@ -287,3 +298,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isOwner) setEditMode(false)
     scrollMessagesToBottom()
 })
+
