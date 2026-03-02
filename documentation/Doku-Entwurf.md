@@ -16,22 +16,22 @@ Dies ist das Projekt StudyShip erstellt durch:
 Die Intention hinter diesem Projekt ist es, eine Platform bereitzustellen, auf der sich Lerngruppen bilden können.  
 Es soll Räume geben, die einem Fach/Kurs zugeordnet sind, in denen man sich kurz austauschen kann.  
 Die primäre Aufgabe der Plattform ist es Gruppen zu helfen sich zu finden und auf einfachem Weg eine erste Kommunikation
-zu ermöglichen.
+zu ermöglichen.  
 Hier der erste Sketch der Anwendung:  
 <img src="./Fist draft for StudiShip.jpeg">
 
 ## Architekturelle Entscheidungen
 
 Von Beginn des Projekts an stand fest, dass wir eine Datenbank benötigen, um sowohl Nutzer-Daten, als auch die Chaträume
-zu speichern.
+zu speichern.  
 Hier haben wir uns für MySQL entschieden, weil diese einfach zu bedienen ist und manche von uns bereits Vorerfahrung mit
-ihr hatten.
+ihr hatten.  
 Durch die Arbeit an den Laboren kamen wir zu dem Schluss, dass wir das Backend mit Node aufsetzen sollten und nahmen
-auch express als middleware.  
+auch express als middleware.    
 Es war zwischenzeitlich auch geplant eine REST-API zu implementieren, aber wir fanden diese für einen Live-Chat nicht
 optimal. Deswegen haben wir uns dann entschieden einen Websocket-Server mit socket.io zu verwenden, um beidseitige
 Kommunikation zwischen Server und Client nutzen zu können, anstatt dass nur der Client Ressourcen beim Server anfragen
-kann.
+kann.  
 Gegen Ende des Projekts haben wir uns dann noch entschieden den Server mit Docker bzw. Podman zu deployen. Die Idee
 dahinter war, dass aufwändigere Installationsanleitungen dadurch vermieden werden können.
 
@@ -48,7 +48,8 @@ Es dient als Basis für alle andere Software, die auf den Server betrieben wird.
 
 #### Express:
 
-Express ist ein Webframework für Node.js. Hier wird es für request/response handling verwendet.
+Express ist ein Webframework für Node.js. Hier wird es verwendet, um auf eine request eine Webseite als response zu
+rendern.
 
 #### Handlebars:
 
@@ -104,9 +105,11 @@ Das backend lässt sich in 3 Teile aufteilen:
 
 #### Model:
 
-Im Model steckt die Logik des Backends. Die zentrale Komponente hier ist der Service.
-Der Service stellt zuerst mit Hilfe einer externen Funktion eine Vernindung zur Datenbank her.
-Danach ist der Service ist der Server vom Controller ansprechbar und nutzt dann die Methoden, die in die manager
+Im Model steckt die Logik des Backends. Die zentrale Komponente hier ist der Service, der vom Controller instanziert
+wird.
+Der Service stellt bei Instanzierung mit Hilfe der externen Funktion in `createDBConnection.js` eine Verbindung zur
+Datenbank her.
+Danach ist der Service vom Controller ansprechbar und nutzt dann die Methoden, die in die manager
 unterteilt sind, um eine Antwort zu generieren.
 
 ##### Model-Dateien (javascript):
@@ -148,7 +151,7 @@ einsetzen muss.
 #### Controller:
 
 Der Controller bietet sowohl Endpunkte für http POST- und GET-requests, als auch einen Websocketserver. Die http
-Endpunkte können dann vom Nutzer erreicht werden, um Webseiten anzufordern oder Formulare (wie z.B der Login)
+Endpunkte können dann vom Nutzer erreicht werden, um Webseiten anzufordern oder Formulare (wie z.B den Login)
 einzureichen.  
 Der Websocket Server bietet die Möglichkeit, dass Server und Client in beide Richtungen miteinander über das Zusenden
 von Events kommunizieren können.
@@ -296,15 +299,22 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
 ## Frontend (CSS)
 
 ### CSS Struktur
-Das Design der Webseite wird über mehrere CSS dateien erstellt alle html seiten haben die Allgemeiene `styles.css` datei eingebunden und eine eigene Datei die den gleichen namen hat wie die html datei auf welche sie sich bezieht z.B. `dashboard.html` & `dashboard.css`.
-Dabei ist es wichtig, dass die `styles.css` datei vor den speziellen CSS Dateien im html eingebunden wird, da die untere css datei eine Höhere prioität hat. Desweiteren gibt es für spezielle fälle noch zusätzliche CSS Dateien z.B. `roomConfirmation.css`.
 
+Das Design der Webseite wird über mehrere CSS dateien erstellt alle html seiten haben die Allgemeiene `styles.css` datei
+eingebunden und eine eigene Datei die den gleichen namen hat wie die html datei auf welche sie sich bezieht z.B.
+`dashboard.html` & `dashboard.css`.
+Dabei ist es wichtig, dass die `styles.css` datei vor den speziellen CSS Dateien im html eingebunden wird, da die untere
+css datei eine Höhere prioität hat. Desweiteren gibt es für spezielle fälle noch zusätzliche CSS Dateien z.B.
+`roomConfirmation.css`.
 
 ### StudyShip "Corporate Design"
-#### Allgemeines 
+
+#### Allgemeines
+
 - Die Hauptfarben von StudyShip sind Rot & Weiß sowie Weiß-Grau und schwarz.
 - Der Hintergrund von StudyShip ist Grau-Weiß, es wird oft ein Hintergrundbild verwendet.
-- Die Buttons von unserer Webseit sind Rot mit Weißer schrift, die Ecken sind standardmäßig abgerundet mit einem Radius von 8px
+- Die Buttons von unserer Webseit sind Rot mit Weißer schrift, die Ecken sind standardmäßig abgerundet mit einem Radius
+  von 8px
 
 ## Frontend (javascript)
 
@@ -517,10 +527,31 @@ auftritt gilt der service als 'healthy'
 
 * Backend: Serverseitige Anwendungen eines Webauftritts (z.B. node)
 * Frontend: Clientseitige Anwendungen eines Webauftritts (html, css, js)
-* REST:
-* MVC-Architektur:
-* Websocket:
+* REST: Representational State Transfer
+* MVC-Architektur: Aufteilung des backends eines Webauftritts in einen Controller, der die Anfragen entgegen nimmt, das
+  Model, in welchem die Logik des Servers steckt, und ein View-Segment, in dem die graphische Ausgabe erzeugt wird.
+* Websocket: Kommunikationstool zwischen client und Server, bei dem beidseitig durch das Zusenden von Events
+  kommuniziert wird
 
 # Literaturverzeichnis
 
+Für alle aufgeführten Webseiten gilt der letzte Zugriff am 02.03.2026 18:00 Uhr
+
+## Backend
+
+* [Node.js Tutorial](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
+* [Express Tutorial](https://expressjs.com/en/starter/hello-world.html)
+* [MySQL2 Modul](https://www.npmjs.com/package/mysql2)
+* [MySQL2 Doku](https://sidorares.github.io/node-mysql2/docs)
+* [Cookie-Parser Modul](https://www.npmjs.com/package/cookie-parser)
+* [Handlebars (hbs) Modul](https://www.npmjs.com/package/hbs)
+* [Handlebars Doku](https://handlebarsjs.com/guide/)
+* [Dotenv für Node - Modul und Guide](https://www.npmjs.com/package/dotenv)
+* [Socket.io Tutorial](https://socket.io/docs/v4/tutorial/introduction)
+
 # Abbildungen
+
+Sofern nicht anders angegeben sind alle Abbildungen selbst erstellt.
+Zur Erstellung wurden unter anderem folgende Software und Webseiten verwendet:
+
+* [Draw.io](https://app.diagrams.net/)

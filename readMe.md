@@ -22,6 +22,8 @@ The Application should be available at `http://localhost:5000`
 
 # Deployment using Docker/Podman
 
+If not already installed install Docker or Podman.
+
 Deploy the server by running `docker-compose up` in the command line
 
 The Server starts on Port 5000
