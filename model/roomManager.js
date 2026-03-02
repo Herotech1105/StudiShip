@@ -12,6 +12,7 @@ module.exports = {
 async function dashboardWithRoomList(req, res, db) {
     const user = req.signedCookies["user"]
     res.render('dashboard', {
+        user: user,
         rooms: await getRoomsByMember(user, db),
     })
 }
@@ -54,40 +55,55 @@ async function loadRoom(req, res, db) {
 
 async function createRoom(req, res, db) {
     const {roomName, roomDescription, roomSubject, roomPrivacy} = req.body
-    const owner = req.signedCookies["user"]
-    const subjects = await require("./subjects")()
-    if (subjects.includes(roomSubject)) {
-        const existingOwnedRooms = await getRoomsByOwner(owner, db)
-        if (existingOwnedRooms.length < 4) {
-            await addRoom({
-                name: roomName,
-                description: roomDescription,
-                subject: roomSubject,
-                privacy: roomPrivacy,
-                owner: owner,
-            }, db)
-            const newRoomId = await getHighestRoomId(db)
-            res.redirect('/rooms?roomId=' + newRoomId)
-        } else {
-            res.redirect('/createRoom')
+    if (roomName.length < 255 && roomDescription.length < 255) {
+        const subjects = await require("./subjects")()
+        if (subjects.includes(roomSubject)) {
+            const owner = req.signedCookies["user"]
+            const existingOwnedRooms = await getRoomsByOwner(owner, db)
+            const privacy = (roomPrivacy === 'public') ? 'public' : 'invited';
+            if (existingOwnedRooms.length < 4) {
+                await addRoom({
+                    name: roomName,
+                    description: roomDescription,
+                    subject: roomSubject,
+                    privacy: privacy,
+                    owner: owner,
+                }, db)
+                const newRoomId = await getHighestRoomId(db)
+                res.redirect('/rooms?roomId=' + newRoomId)
+            } else {
+                res.redirect('/createRoom')
+            }
         }
+    } else {
+        res.redirect('/createRoom')
     }
 
 }
 
 async function updateRoom(room, actor, db) {
     const roomId = Number(room.id)
-    if (await isOwner(actor, roomId, db)) {
-        await db.promise().query(
-            'UPDATE rooms ' +
-            'SET name = ? ' +
-            ', description = ? ' +
-            ', subject = ? ' +
-            ', privacy = ? ' +
-            'WHERE rooms.id = ? ',
-            [room.name, room.description, room.subject, room.privacy, room.id],)
+    if (room.name.length < 255 && room.description.length < 255) {
+        const subjects = await require("./subjects")()
+        if (subjects.includes(room.subject)) {
+            if (await isOwner(actor, roomId, db)) {
+                const privacy = (room.privacy === 'public') ? 'public' : (room.privacy === 'invited') ? 'invited' : 'private';
+                await db.promise().query(
+                    'UPDATE rooms ' +
+                    'SET name = ? ' +
+                    ', description = ? ' +
+                    ', subject = ? ' +
+                    ', privacy = ? ' +
+                    'WHERE rooms.id = ? ',
+                    [room.name, room.description, room.subject, privacy, room.id],)
+            } else {
+                throw Error("You are not the owner of this room")
+            }
+        } else {
+            throw Error("Invalid subject")
+        }
     } else {
-        throw Error("You are not the owner of this room")
+        throw Error("Inputs are too long")
     }
 }
 
