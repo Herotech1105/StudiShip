@@ -10,6 +10,8 @@ async function findRooms(req, res, db) {
         if (roomName && roomSubject !== "any") {
             db.query("SELECT * FROM rooms LEFT JOIN (SELECT roommembers.room_id FROM roommembers WHERE roommembers.user_id = ?) member ON member.room_id = rooms.id WHERE member.room_id IS NULL AND rooms.privacy = 'public' AND rooms.name LIKE ? AND rooms.subject = ?", [userId[0].id, "%" + roomName + "%", roomSubject], async (error, rooms) => {
                 res.render('searchResult', {
+                    searchName: roomName,
+                    searchSubject: subject,
                     rooms: rooms,
                     subjects: subjects,
                 })
@@ -17,6 +19,8 @@ async function findRooms(req, res, db) {
         } else if (roomSubject !== "any") {
             db.query("SELECT * FROM rooms LEFT JOIN (SELECT roommembers.room_id FROM roommembers WHERE roommembers.user_id = ?) member ON member.room_id = rooms.id WHERE member.room_id IS NULL AND rooms.privacy = 'public' AND rooms.subject = ?" , [userId[0].id, roomSubject], async (error, rooms) => {
                 res.render('searchResult', {
+                    searchName: roomName,
+                    searchSubject: subject,
                     rooms: rooms,
                     subjects: subjects,
                 })
@@ -24,6 +28,8 @@ async function findRooms(req, res, db) {
         } else if (roomName) {
             db.query("SELECT * FROM rooms LEFT JOIN (SELECT roommembers.room_id FROM roommembers WHERE roommembers.user_id = ?) member ON member.room_id = rooms.id WHERE member.room_id IS NULL AND rooms.privacy = 'public' AND rooms.name LIKE ?", [userId[0].id, "%" + roomName + "%"], async (error, rooms) => {
                 res.render('searchResult', {
+                    searchName: roomName,
+                    searchSubject: subject,
                     rooms: rooms,
                     subjects: subjects,
                 })
@@ -31,6 +37,8 @@ async function findRooms(req, res, db) {
         } else {
             db.query("SELECT * FROM rooms LEFT JOIN (SELECT roommembers.room_id FROM roommembers WHERE roommembers.user_id = ?) member ON member.room_id = rooms.id WHERE member.room_id IS NULL AND rooms.privacy = 'public'", [userId[0].id], async (error, rooms) => {
                 res.render('searchResult', {
+                    searchName: roomName,
+                    searchSubject: subject,
                     rooms: rooms,
                     subjects: subjects,
                 })
