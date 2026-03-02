@@ -9,6 +9,8 @@ Dies ist das Projekt StudyShip erstellt durch:
 
 [Unser Github Repository](https://github.com/Herotech1105/StudiShip)
 
+# Platzhalter Inhaltsverzeichnis
+
 # Idee
 
 Die Intention hinter diesem Projekt ist es, eine Platform bereitzustellen, auf der sich Lerngruppen bilden können.  
@@ -112,27 +114,30 @@ unterteilt sind, um eine Antwort zu generieren.
 Im Ordner `model` befinden sich folgende JavaScript-Dateien:
 
 * `service.js`  
-  Zentrale Schnittstelle zwischen Controller und Fachlogik. Kapselt die Aufrufe der einzelnen Manager-Dateien und
-  uebergibt die Datenbankverbindung.
+  Zentrale Schnittstelle zwischen Controller und Logik. Kapselt die Aufrufe der einzelnen Manager-Dateien und
+  übergibt die Datenbankverbindung.
 
 * `authentication.js`  
-  Prueft Login- und Registrierungsdaten, setzt bei Erfolg den signierten Login-Cookie und rendert bei Fehlern passende
-  Rueckmeldungen.
+  Prüft Login- und Registrierungsdaten, setzt bei Erfolg den signierten Login-Cookie und rendert bei Fehlern passende
+  Rückmeldungen.
 
 * `roomManager.js`  
-  EnthaeLt die komplette Raumlogik: Dashboard-Liste, Raum laden, Raum erstellen, Raumdaten aendern, Owner wechseln,
-  Mitglieder entfernen, Raum verlassen, Raum loeschen sowie Hilfsfunktionen fuer Owner-/Mitgliedspruefungen.
+  Enthält die komplette Raumlogik und Validierung: Dashboard-Liste, Raum laden, Raum erstellen, Raumdaten ändern, Owner
+  wechseln,
+  Mitglieder entfernen, Raum verlassen, Raum löschen sowie Hilfsfunktionen für Owner-/Mitgliedsprüfungen und
+  Valiedierung der Nutzereingaben.
 
 * `messageManager.js`  
-  Speichert Chatnachrichten in der Datenbank und loest den Nutzername -> Nutzer-ID Bezug fuer das Speichern auf.
+  Speichert Chatnachrichten in der Datenbank, wenn diese kürzer als 255 Zeichen sind. Wirft sonst Fehler "Message is too
+  long"
 
 * `searchManager.js`  
-  Implementiert die Raumsuche mit unterschiedlichen Filterkombinationen (Name, Fach, oeffentlich, nicht bereits
-  beigetreten).
+  Implementiert die Raumsuche nach Namen und/oder Fach. Es werden nur Räume ausgegeben, denen man noch nicht beigetreten
+  ist.
 
 * `subjects.js`  
-  Liefert die gueltige Faecherliste, die in den Frontend-Formularen fuer Erstellung, Bearbeitung und Suche verwendet
-  wird.
+  Liefert die gültige Fächerliste, die in den Frontend-Formularen für Erstellung, Bearbeitung und Suche verwendet
+  wird. Nimmt die Daten aus  `subjectList.txt`.
 
 #### Views:
 
@@ -144,7 +149,7 @@ einsetzen muss.
 
 Der Controller bietet sowohl Endpunkte für http POST- und GET-requests, als auch einen Websocketserver. Die http
 Endpunkte können dann vom Nutzer erreicht werden, um Webseiten anzufordern oder Formulare (wie z.B der Login)
-einzureichen.
+einzureichen.  
 Der Websocket Server bietet die Möglichkeit, dass Server und Client in beide Richtungen miteinander über das Zusenden
 von Events kommunizieren können.
 
@@ -217,11 +222,11 @@ und Raum-Id gespeichert.
 
 | Empfangenes Event | Parameter     | Beschreibung                                                                                                                              | Gesendetes Event                     | Parameter           |
 |-------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|---------------------|
-| open              | roomId        | erster Verbindungsaufbau des Clients, der server fügt den client zur broadcasting Grupper für den Raum und einer Nutzerspezifischen hinzu |                                 |                |
+| open              | roomId        | erster Verbindungsaufbau des Clients, der server fügt den client zur broadcasting Grupper für den Raum und einer Nutzerspezifischen hinzu |                                      |                     |
 | giveSubjects      | keine         | Client fragt eine Liste aller zulässiger Fächer ab, Server schickt die Liste                                                              | subjects                             | subjectList         |
 | delete            | roomId        | Client bittet um Löschung des Raums, wenn er die Rechte dazu hat wird der Raum gelöscht und alle Raummitglieder erhalten die ent          |                                      |                     |
 | updateRoom        | room          | Client fordert Änderung des Raums an, Raum wird geändert, wenn die Rechte dafür da sind                                                   | updateRoom                           | room                |
-| changeOwner       | owner, roomId | Client überträgt Besitz des Raums an neueun Nutzer, wenn er selbst Besitzer ist                                                           | changeOwner                          | owner               |
+| changeOwner       | owner, roomId | Client überträgt Besitz des Raums an neuen Nutzer, wenn er selbst Besitzer ist                                                            | changeOwner                          | owner               |
 | removeUser        | user, roomId  | Nutzer wird aus dem Raum geworden, wenn Event vom Besitzer geschickt wird                                                                 |                                      |                     |
 | leaveRoom         | roomId        | Nutzer verlässt den Raum, Änderung wird in Datenbank übernommen und Information an den Raum Socket weitergegeben                          | left (an Nutzer), leftUser (an Raum) | user (bei leftUser) |
 | message           | message       | Nutzer schickt Nachricht in den Chat, der Server speichert sie und schickt sie dann an alle in dem Raum zum Anzeigen                      | message                              | messageObject       |
@@ -300,7 +305,7 @@ Dabei ist es wichtig, dass die `styles.css` datei vor den speziellen CSS Dateien
 
 #### Vanilla JavaScript:
 
-Im Frontend wird bewusst ohne zusaetzliches Framework gearbeitet. Die Interaktionen erfolgen direkt über DOM-APIs.
+Im Frontend wird bewusst ohne zusätzliches Framework gearbeitet. Die Interaktionen erfolgen direkt über DOM-APIs.
 
 #### Socket.io Client:
 
@@ -320,12 +325,12 @@ Die clientseitige JavaScript-Logik ist in folgende Dateien aufgeteilt:
 * Aufbau der Websocket-Verbindung (`open` Event)
 * Senden und Anzeigen von Chat-Nachrichten
 * Bearbeiten von Raumdaten (Titel, Beschreibung, Fach)
-* Rollen- und Mitgliederaktionen (Nutzer entfernen, Besitzer wechseln, Raum loeschen)
+* Rollen- und Mitgliederaktionen (Nutzer entfernen, Besitzer wechseln, Raum löschen)
 * Share-Funktion (Raumlink in Zwischenablage kopieren)
 * Ein-/Ausblenden von Owner-Funktionen im Edit-Modus
-* Anzeige und Verarbeitung von Bestaetigungs-Popups
+* Anzeige und Verarbeitung von Bestätigungs-Popups
 
-Die Datei arbeitet stark eventbasiert: Nutzeraktionen in der UI loesen Socketevents aus, eingehende Socketevents
+Die Datei arbeitet stark eventbasiert: Nutzeraktionen in der UI lösen Socketevents aus, eingehende Socketevents
 aktualisieren die Seite.
 
 #### searchBar.js
@@ -334,29 +339,29 @@ aktualisieren die Seite.
 
 * Bei Enter wird dynamisch ein Formular erzeugt
 * Das Formular sendet einen POST-Request an `/search`
-* Das gewaehlte Fach wird dabei auf `any` gesetzt, wenn nur über die Suchleiste gesucht wird
+* Das gewählte Fach wird dabei auf `any` gesetzt, wenn nur über die Suchleiste gesucht wird
 
 ### Wichtige Client-Funktionen in room.js
 
 * `sendMessage()`: Sendet Chat-Nachrichten per Socket an den Server
-* `updateRoom()`: Uebermittelt geaenderte Raumdaten an den Server
-* `changeOwner(owner)`: Startet die Besitzeruebertragung (mit Popup-Bestaetigung)
-* `removeUser(user)`: Entfernt ein Mitglied (mit Popup-Bestaetigung)
-* `deleteRoom()`: Loescht den Raum (mit Popup-Bestaetigung)
+* `updateRoom()`: übermittelt geänderte Raumdaten an den Server
+* `changeOwner(owner)`: Startet die Besitzerübertragung (mit Popup-Bestätigung)
+* `removeUser(user)`: Entfernt ein Mitglied (mit Popup-Bestätigung)
+* `deleteRoom()`: Löscht den Raum (mit Popup-Bestätigung)
 * `copyRoomLink()`: Kopiert den Raumlink in die Zwischenablage
 * `setEditMode(enabled)`: Schaltet den Bearbeitungsmodus
 
 ### Clientseitige Socketevents
 
-| Event vom Client | Beschreibung                          |
-|------------------|---------------------------------------|
-| `open`           | Nutzer tritt einem Raumchannel bei    |
-| `message`        | Nutzer sendet Chat-Nachricht          |
-| `updateRoom`     | Nutzer speichert geaenderte Raumdaten |
-| `changeOwner`    | Besitzerrechte werden uebertragen     |
-| `removeUser`     | Mitglied wird aus dem Raum entfernt   |
-| `delete`         | Raum wird geloescht                   |
-| `leaveRoom`      | Nutzer verlaesst den Raum             |
+| Event vom Client | Beschreibung                         |
+|------------------|--------------------------------------|
+| `open`           | Nutzer tritt einem Raumchannel bei   |
+| `message`        | Nutzer sendet Chat-Nachricht         |
+| `updateRoom`     | Nutzer speichert geänderte Raumdaten |
+| `changeOwner`    | Besitzerrechte werden übertragen     |
+| `removeUser`     | Mitglied wird aus dem Raum entfernt  |
+| `delete`         | Raum wird gelöscht                   |
+| `leaveRoom`      | Nutzer verlässt den Raum             |
 
 | Event vom Server | Beschreibung                                             |
 |------------------|----------------------------------------------------------|
@@ -366,7 +371,7 @@ aktualisieren die Seite.
 | `kickedUser`     | Entferntes Mitglied wird aus der Liste entfernt          |
 | `kick`           | Gekickter Nutzer wird auf die Startseite umgeleitet      |
 | `left`           | Nutzer wird nach Verlassen auf die Startseite umgeleitet |
-| `deleteRoom`     | Alle Mitglieder werden nach Raumloeschung umgeleitet     |
+| `deleteRoom`     | Alle Mitglieder werden nach Raumlöschung umgeleitet      |
 | `invalid`        | Fehlermeldung vom Server wird ausgegeben                 |
 
 ### Owner Funktionen
@@ -505,7 +510,9 @@ auftritt gilt der service als 'healthy'
 
 * Backend: Serverseitige Anwendungen eines Webauftritts (z.B. node)
 * Frontend: Clientseitige Anwendungen eines Webauftritts (html, css, js)
-
+* REST:
+* MVC-Architektur:
+* Websocket:
 
 # Literaturverzeichnis
 
