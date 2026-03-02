@@ -27,7 +27,7 @@
             <script src="/socket.io/socket.io.js"></script>
             <script src="/scripts/room.js" defer></script>
             <div class="red-rounded-box header-box">
-                <h1 id="roomTitle" contenteditable="false">{{room.name}}</h1><!--false for User-->
+                <h1 id="roomTitle" contenteditable="false" maxlength="45">{{room.name}}</h1>
             </div>
             <div class="room-layout">
                 <section class="room-info">
@@ -44,7 +44,7 @@
                     </div>
 
                     <div id="description" class="border-box">
-                        <p id="roomDescription" contenteditable="false">{{room.description}}</p>
+                        <p id="roomDescription" contenteditable="false" maxlength="255">{{room.description}}</p>
                     </div>
 
                     <div class="red-rounded-box members-field">
