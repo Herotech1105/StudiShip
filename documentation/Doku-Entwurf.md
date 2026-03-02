@@ -11,6 +11,28 @@ Dies ist das Projekt StudyShip erstellt durch:
 
 # Idee
 
+Die Intention hinter diesem Projekt ist es, eine Platform bereitzustellen, auf der sich Lerngruppen bilden können.  
+Es soll Räume geben, die einem Fach/Kurs zugeordnet sind, in denen man sich kurz austauschen kann.  
+Die primäre Aufgabe der Plattform ist es Gruppen zu helfen sich zu finden und auf einfachem Weg eine erste Kommunikation
+zu ermöglichen.
+Hier der erste Sketch der Anwendung:  
+<img src="./Doku-Entwurf-md">
+
+## Architekturelle Entscheidungen
+
+Von Beginn des Projekts an stand fest, dass wir eine Datenbank benötigen, um sowohl Nutzer-Daten, als auch die Chaträume
+zu speichern.
+Hier haben wir uns für MySQL entschieden, weil diese einfach zu bedienen ist und manche von uns bereits Vorerfahrung mit
+ihr hatten.
+Durch die Arbeit an den Laboren kamen wir zu dem Schluss, dass wir das Backend mit Node aufsetzen sollten und nahmen
+auch express als middleware.  
+Es war zwischenzeitlich auch geplant eine REST-API zu implementieren, aber wir fanden diese für einen Live-Chat nicht
+optimal. Deswegen haben wir uns dann entschieden einen Websocket-Server mit socket.io zu verwenden, um beidseitige
+Kommunikation zwischen Server und Client nutzen zu können, anstatt dass nur der Client Ressourcen beim Server anfragen
+kann.
+Gegen Ende des Projekts haben wir uns dann noch entschieden den Server mit Docker bzw. Podman zu deployen. Die Idee
+dahinter war, dass aufwändigere Installationsanleitungen dadurch vermieden werden können.
+
 # Umsetzung
 
 ## Backend - (javascript)
@@ -352,7 +374,8 @@ aktualisieren die Seite.
 ## Deployment
 
 Der Server kann mittels Docker oder Podman deployed werden. Hierbei reicht es im Projektverzeichnis `docker-compose up`
-auszuführen, solange eine Internetverbindung besteht.
+auszuführen, solange eine Internetverbindung besteht.  
+Der Server startet dann auf Port 5000.
 
 Dies funktioniert mittels zwei Dateien:
 
@@ -478,7 +501,7 @@ auftritt gilt der service als 'healthy'
 
 * Backend: Serverseitige Anwendungen eines Webauftritts (z.B. node)
 * Frontend: Clientseitige Anwendungen eines Webauftritts (html, css, js)
-*
+
 
 # Literaturverzeichnis
 
