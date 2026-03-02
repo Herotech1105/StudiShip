@@ -1,86 +1,89 @@
 body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif; /*Schrift art festlegen und ersatzschrift arten, falls der Browser sie nicht kennt*/
+    line-height: 1.6; /*Zeilen abstand*/
+    margin: 0; /*äusere entfernung standard mässig auf 0 setzen*/
+    padding: 0;/*innere entfernung standard mässig auf 0 setzen*/
 
-    background: linear-gradient( white, lightgray);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: linear-gradient( white, lightgray); /*standard hintergrund abstufung von weiß nach hellgrau*/
+    background-repeat: no-repeat; /*hintergrund soll sich nicht wiederholen*/
+    background-attachment: fixed; /*hintergrund soll die ganze seite einnehmen*/
 }
 
 /* Box-Modell und Container */
 .container {
-    width: 100%;
-    max-width: 1200px;
+    width: 100%; /*standard container sollen den ganzen platz den sie einnehmen können einnehmen*/
+    max-width: 1200px; /*standard container sollen maximal 1200px groß sein*/
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px; /*standard innenabstand soll 20px sein*/
 }
 
 /* Boxen  */
 .box {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;/*#standard weiße hintergrund farbe für Boxen*/
+    border: 1px solid #e0e0e0; /*standard hellgraue farbe für die Boarder (rand von den box element)*/
+    border-radius: 8px;/*Leicht abgerundete ecken für boxne*/
+    padding: 20px; /*standard innenabstand 20px*/
+    margin-bottom: 20px; /*standard ausenabstand unten 20px*/
 }
 
 /* Rote Boxen */
 .box--red {
-    border-left: 4px solid #e74c3c;
-    background-color: #fff9f9;
+    border-left: 4px solid #ff4c3c;/*standard farbe für die Linke rote box (rötlich)*/
+    background-color: #fff9f9; /*standard Hintergrundfarbe sehr helles weißliches rot*/
 }
 
+/*standard buttons*/
 button {
-    background-color: red;
-    border: 2px solid lightgray;
-    border-radius: 8px;
-    padding: 0.5rem 2rem;
-    color: white;
+    background-color: red; /*Rote hintergrundfarbe*/
+    border: 2px solid lightgray;/*Hellgraue boarder, 2px breit*/
+    border-radius: 8px; /*Abgerundete ecken (8px radius)*/
+    padding: 0.5rem 2rem; /*innenabstand: oben/unten=0.5rem, links/rechts=2rem; rem = Relative to font-size of the root element*/
+    color: white; /*schrift farbe ist weiß*/
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
 
 }
 
+/*standard buttons*/
 button:hover {
-    background-color: darkred;
-    color: darkgray;
+    background-color: darkred; /*hintergrundfarebe dunkelrot*/
+    color: darkgray;    /*schriftfarbe dunkelgrau*/
 }
 
 
-/* Überschriften */
+/*standard Überschriften */
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-weight: 600;
-    color: #2c3e50;
+    margin-top: 0; /*kein (aussen) abstnd nach oben*/
+    margin-bottom: 15px;/*15px (aussen) abstand nach unten */
+    font-weight: 600;/*Zeige den Text in halbfetter Schrift an (dicker als normal, aber dick wie bold)*/
+    color: black; /*schwarze schrift*/
 }
 
-/* Links */
+/*standard Links */
 a {
-    color: #3498db;
-    text-decoration: none;
+    color: #3498db; /*standard farbe für links:hellblau*/
+    text-decoration: none; /*zeigt den text normal an (ohne dekorationen wie untersctrichen)*/
     transition: color 0.3s;
 }
 
+/*standard Links hover*/
 a:hover {
-    color: #2980b9;
+    color: #2980b9; /*ändert die farbe wenn man mit der Maus über dem link ist zu:Dunkelblau*/
 }
 
-/* Listen */
+/*standard Listen */
 ul, ol {
-    padding-left: 20px;
-    margin-bottom: 20px;
+    padding-left: 20px; /*Linker Innenabstand(20px)*/
+    margin-bottom: 20px; /*Aussenabstand unten(20px)*/
 }
 
+/*standard Listen element*/
 li {
-    margin-bottom: 8px;
+    margin-bottom: 8px;/*abstand nach unten (8px)*/
 }
 
-/* Tabellen */
+/*standard Tabellen */
 table {
-    width: 100%;
+    width: 100%; /**/
     border-collapse: collapse;
     margin-bottom: 20px;
 }
