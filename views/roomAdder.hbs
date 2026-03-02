@@ -26,9 +26,9 @@
             <form action="/rooms/create" method="POST">
                 <div class="form-group">
                     <label for="roomName">Gruppenname</label>
-                    <input type="text" class="form-control" id="roomName" name="roomName" required>
+                    <input type="text" class="form-control" id="roomName" name="roomName" maxlength="45" required>
                     <label for="roomDescription">Beschreibung</label>
-                    <input type="text" class="form-control" id="roomDescription" name="roomDescription" required>
+                    <input type="text" class="form-control" id="roomDescription" name="roomDescription" maxlength="255" required>
                     <label for="roomSubject">Kursart</label>
                     <select class="form-control" id="roomSubject" name="roomSubject" required>
                         {{#each subjects}}
