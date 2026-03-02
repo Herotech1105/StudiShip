@@ -57,7 +57,7 @@
         color: white;
         padding: 15px;
         border-radius: 8px;
-        margin: 20px, 0px;
+        margin: 20px 0px;
     }
 
     .red-rounded-box.header-box{ /*Man muss . nach der klasse setzen um das kind element zu bearbeiten*/
