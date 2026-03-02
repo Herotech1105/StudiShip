@@ -6,9 +6,13 @@ async function saveMessage(message, db) {
     const timestamp = message.timestamp
     const user = message.user
     const userId = await getUserId(user, db)
-    db.query('INSERT INTO messages (user_id, room_id, content, timestamp) ' +
-        'VALUES (?, ?, ?, ?) ', [userId, roomId, content, timestamp], async (error, success) => {
-    })
+    if (message.content > 255) {
+        throw Error('Message is too long')
+    } else {
+        db.query('INSERT INTO messages (user_id, room_id, content, timestamp) ' +
+            'VALUES (?, ?, ?, ?) ', [userId, roomId, content, timestamp], async (error, success) => {
+        })
+    }
 
 }
 

@@ -32,6 +32,11 @@ function authenticateLogin(req, res, db) {
 
 function authenticateRegistration(req, res, db) {
     const {name, email, password, password_confirm} = req.body
+    if(name.length > 255 || email.length > 255 || password.length > 255) {
+        res.render('register', {
+            message: 'Inputs were too long'
+        })
+    }
     try {
         if (password !== password_confirm) {
             res.render('register', {
