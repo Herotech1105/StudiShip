@@ -288,7 +288,11 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
 - **Modals (Popups):** Versteckte Warnfenster für kritische Aktionen (Kick, Admin-Wechsel, Löschen), die per JavaScript
   eingeblendet werden.
 
-## Frontend (css)
+## Frontend (CSS)
+
+### CSS Struktur
+Das Design der Webseite wird über mehrere CSS dateien erstellt alle html seiten haben die Allgemeiene `styles.css` datei eingebunden und eine eigene Datei die den gleichen namen hat wie die html datei auf welche sie sich bezieht z.B. `dashboard.html` & `dashboard.css`.
+Dabei ist es wichtig, dass die `styles.css` datei vor den speziellen CSS Dateien im html eingebunden wird, da die untere css datei eine Höhere prioität hat. Desweiteren gibt es für spezielle fälle noch zusätzliche CSS Dateien z.B. `roomConfirmation.css`.
 
 ## Frontend (javascript)
 
