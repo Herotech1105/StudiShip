@@ -16,7 +16,7 @@ Es soll Räume geben, die einem Fach/Kurs zugeordnet sind, in denen man sich kur
 Die primäre Aufgabe der Plattform ist es Gruppen zu helfen sich zu finden und auf einfachem Weg eine erste Kommunikation
 zu ermöglichen.
 Hier der erste Sketch der Anwendung:  
-<img src="./Doku-Entwurf-md">
+<img src="./Fist draft for StudiShip.jpeg">
 
 ## Architekturelle Entscheidungen
 
@@ -217,7 +217,7 @@ und Raum-Id gespeichert.
 
 | Empfangenes Event | Parameter     | Beschreibung                                                                                                                              | Gesendetes Event                     | Parameter           |
 |-------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|---------------------|
-| open              | roomId        | erster Verbindungsaufbau des Clients, der server fügt den client zur broadcasting Grupper für den Raum und einer Nutzerspezifischen hinzu | keine                                | keine               |
+| open              | roomId        | erster Verbindungsaufbau des Clients, der server fügt den client zur broadcasting Grupper für den Raum und einer Nutzerspezifischen hinzu |                                 |                |
 | giveSubjects      | keine         | Client fragt eine Liste aller zulässiger Fächer ab, Server schickt die Liste                                                              | subjects                             | subjectList         |
 | delete            | roomId        | Client bittet um Löschung des Raums, wenn er die Rechte dazu hat wird der Raum gelöscht und alle Raummitglieder erhalten die ent          |                                      |                     |
 | updateRoom        | room          | Client fordert Änderung des Raums an, Raum wird geändert, wenn die Rechte dafür da sind                                                   | updateRoom                           | room                |
