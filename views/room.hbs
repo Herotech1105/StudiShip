@@ -26,12 +26,13 @@
         <main >
             <script src="/socket.io/socket.io.js"></script>
             <script src="/scripts/room.js" defer></script>
+
             <div class="red-rounded-box header-box">
                 <h1 id="roomTitle" contenteditable="false" >{{room.name}}</h1>
             </div>
+
             <div class="room-layout">
                 <section class="room-info">
-
                     <div id="subject" class="border-box sub-header">
                         <span id="roomSubjectText">{{room.subject}}</span>
                         {{#if isOwner}}
@@ -52,7 +53,7 @@
                         <button class="share-btn">🔗 teilen</button>
                         <ul>
                             {{#each members}}
-                                <li>{{this.name}}
+                                <li>
                                     <span>{{this.name}}</span>
                                     {{#if ../isOwner}}
                                         <button class="kickUserButton owner-edit-only hidden" onclick="changeOwner('{{this.name}}')">Zum Admin</button>
