@@ -1,23 +1,22 @@
 
     header{
-        background-color: red;
-        color: white;
-        padding: 16px;
+        background-color: red; /*Hintergrundfarabe Rot*/
+        color: white;           /*Schriftfarbe weiß*/
+        padding: 16px;          /*Innenabstand 16px*/
     }
 
     .hero {
-        background-image: url('../images/background.jpg') !important;
-        background-color: transparent;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        padding: 80px 20px; /* Innenabstand für bessere Lesbarkeit */
-        min-height: 400px; /* Mindesthöhe für den Hero-Bereich */
-        display: flex;
-        flex-direction: column;
+        background-image: url('../images/background.jpg') !important; /*Hintergrundbild in den Hero Bereich eifügen*/
+        background-repeat: no-repeat; /*Hintergrund soll sich nicht widerholen*/
+        background-size: cover;         /*Der Hintergrund soll dem bereich bedecken */
+        background-position: center;    /*Der Hintergrund soll zentriert sein*/
+        padding: 80px 20px; /* Innenabstand für bessere Lesbarkeit oben/unten=80px, links/rechts=20px*/
+        min-height: 400px; /* Mindesthöhe für den Hero-Bereich, 400px */
+        display: flex;      /*Der Hero bereich soll eine flexbox sein*/
+        flex-direction: column; /*Flex richtung ist als reihe definiert*/
         justify-content: center; /* Zentriert den Inhalt vertikal */
         align-items: center; /* Zentriert den Inhalt horizontal */
-        color: white;
+        color: white;       /*Weiße schrift*/
     }
 
     .hero h1{
@@ -32,20 +31,20 @@
         justify-content: center;     /* Zentriert die Karten horizontal */
         gap: 20px;                   /* Abstand zwischen den Karten */
         flex-wrap: wrap;             /* Erlaubt Umbruch auf kleinen Bildschirmen */
-        padding: 20px;              /* Optional: Innenabstand */
-        max-width: 1200px;          /* Optional: Maximale Breite */
-        margin: 0 auto;             /* Optional: Zentriert die Sektion selbst */
+        padding: 20px;              /* Innenabstand 20px */
+        max-width: 1200px;          /*  Maximale Breite 1200px*/
+        margin: 0 auto;             /*  Zentriert die Sektion selbst */
     }
 
     .feature-card {
         flex: 1 1 300px;            /* Flex-Growth, Flex-Shrink, Basisbreite */
         max-width: 300px;           /* Maximale Breite pro Karte */
-        background: white;          /* Optional: Hintergrundfarbe */
-        border: 1px solid #ddd;    /* Optional: Rahmen */
-        border-radius: 8px;        /* Optional: Abgerundete Ecken */
-        padding: 20px;             /* Optional: Innenabstand */
+        background: white;          /* Hintergrundfarbe */
+        border: 1px solid #ddd;    /* Rahmen */
+        border-radius: 8px;        /*Abgerundete Ecken */
+        padding: 20px;             /* Innenabstand */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Schatten */
-        text-align: center;        /* Optional: Text zentrieren */
+        text-align: center;        /*:Text zentrieren */
     }
 
 
@@ -54,15 +53,15 @@
     .cta-button {
         display: block;               /* Macht den Button zu einem Block-Element */
         width: fit-content;           /* Passt die Breite an den Inhalt an */
-        max-width: 300px;             /* Maximale Breite (optional) */
+        max-width: 300px;             /* Maximale Breite */
         margin: 20px auto;            /* Zentriert den Button horizontal */
         padding: 12px 24px;           /* Innenabstand für bessere Klickfläche */
-        background-color: red;    /* Hintergrundfarbe (z. B. Rot) */
-        color: white;                 /* Textfarbe */
+        background-color: red;    /* Hintergrundfarbe (Rot) */
+        color: white;                 /* Textfarbe (Weiß)*/
         text-align: center;           /* Text zentrieren */
         text-decoration: none;        /* Unterstreichung entfernen */
         border: none;                 /* Standard-Rahmen entfernen */
-        border-radius: 4px;           /* Abgerundete Ecken */
+        border-radius: 8px;           /* Abgerundete Ecken */
         font-weight: bold;           /* Fetter Text */
         cursor: pointer;              /* Cursor als Zeiger */
         transition: background-color 0.3s; /* Sanfter Übergang für Hover-Effekt */
@@ -70,7 +69,7 @@
 
     .cta-button:hover {
         background-color: darkred;    /* Dunklerer Ton beim Hovern */
-        color: darkgray;
+        color: darkgray;               /*schriftfarbe ist Dunkelgrau*/
     }
 
 
