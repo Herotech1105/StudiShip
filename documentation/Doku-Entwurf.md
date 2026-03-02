@@ -82,6 +82,33 @@ Der Service stellt zuerst mit Hilfe einer externen Funktion eine Vernindung zur 
 Danach ist der Service ist der Server vom Controller ansprechbar und nutzt dann die Methoden, die in die manager
 unterteilt sind, um eine Antwort zu generieren.
 
+##### Model-Dateien (javascript):
+
+Im Ordner `model` befinden sich folgende JavaScript-Dateien:
+
+* `service.js`  
+  Zentrale Schnittstelle zwischen Controller und Fachlogik. Kapselt die Aufrufe der einzelnen Manager-Dateien und
+  uebergibt die Datenbankverbindung.
+
+* `authentication.js`  
+  Prueft Login- und Registrierungsdaten, setzt bei Erfolg den signierten Login-Cookie und rendert bei Fehlern passende
+  Rueckmeldungen.
+
+* `roomManager.js`  
+  EnthaeLt die komplette Raumlogik: Dashboard-Liste, Raum laden, Raum erstellen, Raumdaten aendern, Owner wechseln,
+  Mitglieder entfernen, Raum verlassen, Raum loeschen sowie Hilfsfunktionen fuer Owner-/Mitgliedspruefungen.
+
+* `messageManager.js`  
+  Speichert Chatnachrichten in der Datenbank und loest den Nutzername -> Nutzer-ID Bezug fuer das Speichern auf.
+
+* `searchManager.js`  
+  Implementiert die Raumsuche mit unterschiedlichen Filterkombinationen (Name, Fach, oeffentlich, nicht bereits
+  beigetreten).
+
+* `subjects.js`  
+  Liefert die gueltige Faecherliste, die in den Frontend-Formularen fuer Erstellung, Bearbeitung und Suche verwendet
+  wird.
+
 #### Views:
 
 Views bezeichnet eine Liste von `.hbs` templates. Aus diesen wird dann die Webseite gerendert, indem Variablen und Werte
@@ -229,6 +256,84 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
 ## Frontend (css)
 
 ## Frontend (javascript)
+
+### Technologien
+
+#### Vanilla JavaScript:
+
+Im Frontend wird bewusst ohne zusaetzliches Framework gearbeitet. Die Interaktionen erfolgen direkt über DOM-APIs.
+
+#### Socket.io Client:
+
+In den Raumseiten wird der Socket.io Client verwendet, um Echtzeitkommunikation mit dem Websocket-Server umzusetzen.
+
+### Struktur
+
+Die clientseitige JavaScript-Logik ist in folgende Dateien aufgeteilt:
+
+* `public/scripts/room.js`
+* `public/scripts/searchBar.js`
+
+#### room.js
+
+`room.js` steuert alle Interaktionen innerhalb eines Raums:
+
+* Aufbau der Websocket-Verbindung (`open` Event)
+* Senden und Anzeigen von Chat-Nachrichten
+* Bearbeiten von Raumdaten (Titel, Beschreibung, Fach)
+* Rollen- und Mitgliederaktionen (Nutzer entfernen, Besitzer wechseln, Raum loeschen)
+* Share-Funktion (Raumlink in Zwischenablage kopieren)
+* Ein-/Ausblenden von Owner-Funktionen im Edit-Modus
+* Anzeige und Verarbeitung von Bestaetigungs-Popups
+
+Die Datei arbeitet stark eventbasiert: Nutzeraktionen in der UI loesen Socketevents aus, eingehende Socketevents aktualisieren die Seite.
+
+#### searchBar.js
+
+`searchBar.js` verarbeitet die Eingabe der Suchleiste:
+
+* Bei Enter wird dynamisch ein Formular erzeugt
+* Das Formular sendet einen POST-Request an `/search`
+* Das gewaehlte Fach wird dabei auf `any` gesetzt, wenn nur über die Suchleiste gesucht wird
+
+### Wichtige Client-Funktionen in room.js
+
+* `sendMessage()`: Sendet Chat-Nachrichten per Socket an den Server
+* `updateRoom()`: Uebermittelt geaenderte Raumdaten an den Server
+* `changeOwner(owner)`: Startet die Besitzeruebertragung (mit Popup-Bestaetigung)
+* `removeUser(user)`: Entfernt ein Mitglied (mit Popup-Bestaetigung)
+* `deleteRoom()`: Loescht den Raum (mit Popup-Bestaetigung)
+* `copyRoomLink()`: Kopiert den Raumlink in die Zwischenablage
+* `setEditMode(enabled)`: Schaltet den Bearbeitungsmodus
+
+### Clientseitige Socketevents
+
+| Event vom Client | Beschreibung |
+|------------------|--------------|
+| `open`           | Nutzer tritt einem Raumchannel bei |
+| `message`        | Nutzer sendet Chat-Nachricht |
+| `updateRoom`     | Nutzer speichert geaenderte Raumdaten |
+| `changeOwner`    | Besitzerrechte werden uebertragen |
+| `removeUser`     | Mitglied wird aus dem Raum entfernt |
+| `delete`         | Raum wird geloescht |
+| `leaveRoom`      | Nutzer verlaesst den Raum |
+
+| Event vom Server | Beschreibung |
+|------------------|--------------|
+| `message`        | Neue Nachricht wird angezeigt |
+| `updateRoom`     | Raumtitel wird clientseitig aktualisiert |
+| `changeOwner`    | Owner-Anzeige wird aktualisiert |
+| `kickedUser`     | Entferntes Mitglied wird aus der Liste entfernt |
+| `kick`           | Gekickter Nutzer wird auf die Startseite umgeleitet |
+| `left`           | Nutzer wird nach Verlassen auf die Startseite umgeleitet |
+| `deleteRoom`     | Alle Mitglieder werden nach Raumloeschung umgeleitet |
+| `invalid`        | Fehlermeldung vom Server wird ausgegeben |
+
+### Owner Funktionen
+
+* Owner-Funktionen werden nur für Besitzer eingeblendet.
+* Der Owner sieht den `Verlassen`-Button nicht. Kann dafür den Raum Löschen.
+* Im Edit-Modus kann der Owner sich selbst nicht als Ziel für `Zum Admin` oder `x` auswählen.
 
 ## Deployment
 
