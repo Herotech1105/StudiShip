@@ -35,7 +35,7 @@ body {
 /*standard buttons*/
 button {
     background-color: red; /*Rote hintergrundfarbe*/
-    border: 2px solid lightgray;/*Hellgraue boarder, 2px breit*/
+    border: none;/*keine sichtbare boarder*/
     border-radius: 8px; /*Abgerundete ecken (8px radius)*/
     padding: 0.5rem 2rem; /*innenabstand: oben/unten=0.5rem, links/rechts=2rem; rem = Relative to font-size of the root element*/
     color: white; /*schrift farbe ist weiß*/

@@ -57,6 +57,7 @@
         color: white;
         padding: 15px;
         border-radius: 8px;
+        margin: 20px, 0px;
     }
 
     .red-rounded-box.header-box{ /*Man muss . nach der klasse setzen um das kind element zu bearbeiten*/
@@ -129,4 +130,12 @@
 
     .send-button{
         padding: 0rem;
+    }
+    .share-btn{
+        background-color: #dddddd;
+        color: black;
+    }
+    .share-btn:hover{
+        background-color: gray;
+        color: black;
     }
