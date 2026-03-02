@@ -8,4 +8,6 @@ const subjects = async () => {
     return list
 }
 
+// Reads all lines from subjectList.txt and returns them as an array of subjects.
+
 module.exports = subjects

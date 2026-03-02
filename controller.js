@@ -36,6 +36,7 @@ require("./model/service")().then((service) => {
         socket.on('open', (roomId) => {
             socket.join(roomId)
             socket.join(socket.request.signedCookies['user'])
+            websocket.to(roomId).emit('joined', socket.request.signedCookies['user'])
         })
 
         socket.on('giveSubjects', async () => {

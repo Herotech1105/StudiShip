@@ -190,11 +190,13 @@ websocket.on("left", () => {
 })
 
 websocket.on("kickedUser", (user) => {
-    const memberList = document.getElementById('memberList')
-    const kickedUser = document.getElementById(user)
-    if(memberList && kickedUser){
-        memberList.removeChild(kickedUser)
-    }
+    const memberList = document.querySelector(".members-field ul")
+    if (!memberList) return
+
+    const entry = [...memberList.querySelectorAll("li")]
+        .find(li => li.querySelector("span")?.textContent?.trim() === user)
+
+    if (entry) entry.remove()
 })
 
 websocket.on("deleteRoom", () => {
@@ -203,9 +205,14 @@ websocket.on("deleteRoom", () => {
 
 websocket.on("updateRoom", (room) => {
     const title = document.getElementById("roomTitle")
-    if(title && room.name){
-        title.textContent = room.name
-    }
+    const description = document.getElementById("roomDescription")
+    const subjectText = document.getElementById("roomSubjectText")
+    const subjectSelect = document.getElementById("roomSubject")
+
+    if (title) title.textContent = room.name || ""
+    if (description) description.textContent = room.description || ""
+    if (subjectText) subjectText.textContent = room.subject || ""
+    if (subjectSelect) subjectSelect.value = room.subject || ""
 })
 
 websocket.on("changeOwner", (owner) => {
@@ -217,6 +224,31 @@ websocket.on("changeOwner", (owner) => {
 
 websocket.on("invalid", (err) => {
     console.log(err)
+})
+
+websocket.on("joined", (user) => {
+    const memberList = document.querySelector(".members-field ul")
+    if (!memberList || !user) return
+
+    if ([...memberList.querySelectorAll("li span")].some(span => span.textContent.trim() === user)) return
+
+    const li = document.createElement("li")
+    li.innerHTML = `<span>${user}</span>`
+    memberList.appendChild(li)
+})
+
+websocket.on("joined", (user) => {
+    const memberList = document.querySelector(".members-field ul")
+    if (!memberList || !user) return
+
+    const alreadyExists = [...memberList.querySelectorAll("li span")]
+        .some(span => span.textContent.trim() === user)
+
+    if (alreadyExists) return
+
+    const li = document.createElement("li")
+    li.innerHTML = `<span>${user}</span>`
+    memberList.appendChild(li)
 })
 
 document.addEventListener("DOMContentLoaded", () => {
