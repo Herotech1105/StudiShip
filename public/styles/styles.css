@@ -83,13 +83,15 @@ li {
 
 /*standard Tabellen */
 table {
-    width: 100%; /**/
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    width: 100%; /*standard tabellen sollen den ganzen platz den sie einnehmen können einnehmen*/
+    border-collapse: collapse; /* Zellenrahmen werden zusammengefasst */
+    margin-bottom: 20px; /*Aussenabstand nach unten 20px, für Trennung von nachfolgenden Inhalten*/
 }
 
+
+/*Standard-Stile für Tabellenzellen*/
 th, td {
-    padding: 12px;
+    padding: 12px;  /* Innenabstand 12px, für bessere Lesbarkeit */
     text-align: left;
     border-bottom: 1px solid #e0e0e0;
 }
