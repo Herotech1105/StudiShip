@@ -132,9 +132,6 @@
             vertical-align: top;          /* Ausrichtung oben */
             overflow: hidden;             /* Text abschneiden */
             position: relative;          /* Für Positionierung der Ellipsis */
-
-
-
         }
 
         .room-btn-name,
