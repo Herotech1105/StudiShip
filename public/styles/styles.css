@@ -92,12 +92,12 @@ table {
 /*Standard-Stile für Tabellenzellen*/
 th, td {
     padding: 12px;  /* Innenabstand 12px, für bessere Lesbarkeit */
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+    text-align: left; /* Linksbündige Ausrichtung des Inhalts */
+    border-bottom: 1px solid #e0e0e0; /*Dünne Rahmenlinie für Trennung, Grau*/
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Heller Hintergrund*/
 }
 
 /* Formulare */
