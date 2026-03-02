@@ -19,11 +19,12 @@ Dies ist das Projekt StudyShip erstellt durch:
 
 #### Node.js:
 
-Node.js wird als Engine verwendet
+Node.js wird als Laufzeitumgebung verwendet, um den Server zu betreiben.
+Es dient als Basis für alle andere Software, die auf den Server betrieben wird.
 
 #### Express:
 
-Express ist ein Webframework für Node.js.
+Express ist ein Webframework für Node.js. Hier wird es für request/response handling verwendet.
 
 #### Handlebars:
 
@@ -34,28 +35,30 @@ Klammern {{}}.
 
 #### Dotenv:
 
-Dotenv wird genutzt, um Code und Laufzeitvariablen zu trennen. In diesem Projekt nutzen wir eine `.env`-Datei um die
+Dotenv wird genutzt, um Code und Laufzeitvariablen zu trennen, in diesem Projekt wird eine `.env`-Datei verwendet, um
+die
 Parameter zur Verbindungsaufnahme für die Datenbank zu hinterlegen.
 
 #### MySQL:
 
-Wir nutzen für dieses Projekt `MySQL` als Datenbank und das npm Modul `mysql2` für die Node MySQL Schnittstelle. Zu
-Nutzung
-und Setup später mehr.
+Für dieses Projekt wird `MySQL` als Datenbank und das npm Modul `mysql2` für die Node MySQL Schnittstelle verwendet. Zu
+Nutzung und Setup später mehr.
 
 #### Cookie-Parser:
 
-Wir nutzen `cookie-parser` um mit Cookies zu arbeiten. Besonders nützlich ist hierbei die Möglichkeit ein signiertes
-Cookie zu erstellen, dass durch einen hash, der im backend gespeichert wird, genügend Sicherheit bietet, sodass wir
-einen Cookie zur Authentifizierung des Nutzers nach der Anmeldung nutzen können.
+`cookie-parser` wird verwendet, um mit Cookies zu arbeiten. Besonders nützlich ist hierbei die Möglichkeit ein
+signiertes
+Cookie zu erstellen, dass durch einen hash, der im backend gespeichert wird, genügend Sicherheit bietet, sodass
+ein Cookie zur Authentifizierung des Nutzers nach der Anmeldung genutzt werden kann.
 
 #### Socket.io:
 
-Wir nuzen `socket.io` um unseren Server um Websockets zu ergänzen. Websockets können vom Client angesprochen werden,
+`socket.io` wird verwendet, um den Server um Websockets zu ergänzen. Websockets können vom Client angesprochen werden,
 wodurch es zu einem Handshake kommt, in dem die Daten für einen beidseitigen Verbindungsaufbau übergeben werden. Nach
 dem Handshake können Client und Server dann über das Senden von Events miteinander kommunizieren. Socket.io bietet auch
 die
-Möglichkeit, dass der Server Clients in Gruppen einteilen kann und dann Events gleich an ganze Gruppen schicken kann.
+Möglichkeit, dass der Server Clients in Gruppen einteilen kann und dann Events gleich an ganze Gruppen schicken kann (
+broadcasting).
 
 #### socket.io-cookie-parser:
 
@@ -65,7 +68,7 @@ Clients zugreifen kann.
 #### Nodemon:
 
 Nodemon ist ein Entwicklungstool, das Dateiänderungen automatisch in das laufende Programm geladen werden. Es dient nur
-dem Komfort bei der Entwicklung
+dem Komfort bei der Entwicklung.
 
 ### Struktur
 
@@ -130,7 +133,7 @@ von Events kommunizieren können.
 
 Die Datenbank ist auf folgende Weise definiert:
 
-`CREATE SCHEMA webapp;`
+`CREATE DATABASE IF NOT EXISTS webapp;`
 
 `USE webapp;`
 
@@ -202,48 +205,57 @@ und Raum-Id gespeichert.
 | message           | message       | Nutzer schickt Nachricht in den Chat, der Server speichert sie und schickt sie dann an alle in dem Raum zum Anzeigen                      | message                              | messageObject       |
 | disconnecting     | keine         | Nutzer trennt Verbindung zum Socket und Socket gibt Information an Raum weiter                                                            | disconnection                        | user                |
 
-
-
 ## Frontend - (html)
 
 ### 1. Öffentliche Seiten
 
 #### `index.hbs` (Landing Page)
+
 Die Startseite für nicht eingeloggte Nutzer.
+
 - **Funktion:** Begrüßung und Vorstellung der Features (Kostenlos, Zielorientiert, Schnell).
 - **Navigation:** Links zu Login und Registrierung.
 
 #### `login.hbs` & `register.hbs` (Authentifizierung)
+
 Formulare für den Zugang zur Plattform.
-- **Login:** Fragt `Name` und `Password` ab. Zeigt Fehlermeldungen (z. B. "Falsches Passwort") dynamisch an, wenn die Variable `{{message}}` übergeben wird.
+
+- **Login:** Fragt `Name` und `Password` ab. Zeigt Fehlermeldungen (z. B. "Falsches Passwort") dynamisch an, wenn die
+  Variable `{{message}}` übergeben wird.
 - **Register:** Erfordert Name, E-Mail und doppelte Passworteingabe zur Bestätigung.
-
-
 
 ### 2. Internerbereich (Eingeloggt)
 
 #### `dashboard.hbs` (Startseite)
+
 Die zentrale Anlaufstelle nach dem Login.
+
 - **Header:** Zeigt "Willkommen, {{user}}!".
-- **Suche:** Ermöglicht Eingabe des Namen der gesuchten Gruppe oder das Öffnen der Suche mit Filter 
-- **Lerngruppen-Liste:** Iteriert mit `{{#each rooms}}` über alle Gruppen, in denen der Nutzer Mitglied ist, und zeigt diese als Karten an.
+- **Suche:** Ermöglicht Eingabe des Namen der gesuchten Gruppe oder das Öffnen der Suche mit Filter
+- **Lerngruppen-Liste:** Iteriert mit `{{#each rooms}}` über alle Gruppen, in denen der Nutzer Mitglied ist, und zeigt
+  diese als Karten an.
 - **Fallback:** Zeigt "Du bist in keiner Gruppe", falls die Liste leer ist.
 
 #### `search.hbs` & `searchResult.hbs` (Suche)
+
 Ermöglicht das Finden von Lerngruppen.
+
 - **Filter:** Suche nach Text (Name) und Dropdown-Filter für die "Kursart" (Subjects).
 - **Ergebnisse:** `searchResult.hbs` zeigt die Trefferliste an oder die Meldung "Keine passende Lerngruppe gefunden".
 
 #### `roomAdder.hbs` (Erstellung)
+
 Formular zum Anlegen einer neuen Gruppe.
+
 - **Felder:** Name, Beschreibung, Kursart (Dropdown) und Privatsphäre (Public/Invitation only).
 
-
-
 ### 3. Kerndienstleistung: `room.hbs` (Lerngruppen-Raum)
-Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **Owner** (Ersteller) und normalem **Mitglied**.
+
+Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **Owner** (Ersteller) und normalem *
+*Mitglied**.
 
 **Features:**
+
 - **Rechte-Management (`isOwner`):**
     - Nur der Owner sieht Buttons zum Bearbeiten, Speichern und Löschen des Raums.
     - Nur der Owner kann Mitglieder kicken (`x`) oder zum Admin befördern (`Zum Admin`).
@@ -251,7 +263,8 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
 - **Chat-System:**
     - Linke Seite: Chat-Verlauf (`{{#each messages}}`) und Eingabefeld.
 - **Mitglieder-Liste:** Links (Desktop) oder unten (Mobile) werden alle Teilnehmer angezeigt.
-- **Modals (Popups):** Versteckte Warnfenster für kritische Aktionen (Kick, Admin-Wechsel, Löschen), die per JavaScript eingeblendet werden.
+- **Modals (Popups):** Versteckte Warnfenster für kritische Aktionen (Kick, Admin-Wechsel, Löschen), die per JavaScript
+  eingeblendet werden.
 
 ## Frontend (css)
 
@@ -286,7 +299,8 @@ Die clientseitige JavaScript-Logik ist in folgende Dateien aufgeteilt:
 * Ein-/Ausblenden von Owner-Funktionen im Edit-Modus
 * Anzeige und Verarbeitung von Bestaetigungs-Popups
 
-Die Datei arbeitet stark eventbasiert: Nutzeraktionen in der UI loesen Socketevents aus, eingehende Socketevents aktualisieren die Seite.
+Die Datei arbeitet stark eventbasiert: Nutzeraktionen in der UI loesen Socketevents aus, eingehende Socketevents
+aktualisieren die Seite.
 
 #### searchBar.js
 
@@ -308,26 +322,26 @@ Die Datei arbeitet stark eventbasiert: Nutzeraktionen in der UI loesen Socketeve
 
 ### Clientseitige Socketevents
 
-| Event vom Client | Beschreibung |
-|------------------|--------------|
-| `open`           | Nutzer tritt einem Raumchannel bei |
-| `message`        | Nutzer sendet Chat-Nachricht |
+| Event vom Client | Beschreibung                          |
+|------------------|---------------------------------------|
+| `open`           | Nutzer tritt einem Raumchannel bei    |
+| `message`        | Nutzer sendet Chat-Nachricht          |
 | `updateRoom`     | Nutzer speichert geaenderte Raumdaten |
-| `changeOwner`    | Besitzerrechte werden uebertragen |
-| `removeUser`     | Mitglied wird aus dem Raum entfernt |
-| `delete`         | Raum wird geloescht |
-| `leaveRoom`      | Nutzer verlaesst den Raum |
+| `changeOwner`    | Besitzerrechte werden uebertragen     |
+| `removeUser`     | Mitglied wird aus dem Raum entfernt   |
+| `delete`         | Raum wird geloescht                   |
+| `leaveRoom`      | Nutzer verlaesst den Raum             |
 
-| Event vom Server | Beschreibung |
-|------------------|--------------|
-| `message`        | Neue Nachricht wird angezeigt |
-| `updateRoom`     | Raumtitel wird clientseitig aktualisiert |
-| `changeOwner`    | Owner-Anzeige wird aktualisiert |
-| `kickedUser`     | Entferntes Mitglied wird aus der Liste entfernt |
-| `kick`           | Gekickter Nutzer wird auf die Startseite umgeleitet |
+| Event vom Server | Beschreibung                                             |
+|------------------|----------------------------------------------------------|
+| `message`        | Neue Nachricht wird angezeigt                            |
+| `updateRoom`     | Raumtitel wird clientseitig aktualisiert                 |
+| `changeOwner`    | Owner-Anzeige wird aktualisiert                          |
+| `kickedUser`     | Entferntes Mitglied wird aus der Liste entfernt          |
+| `kick`           | Gekickter Nutzer wird auf die Startseite umgeleitet      |
 | `left`           | Nutzer wird nach Verlassen auf die Startseite umgeleitet |
-| `deleteRoom`     | Alle Mitglieder werden nach Raumloeschung umgeleitet |
-| `invalid`        | Fehlermeldung vom Server wird ausgegeben |
+| `deleteRoom`     | Alle Mitglieder werden nach Raumloeschung umgeleitet     |
+| `invalid`        | Fehlermeldung vom Server wird ausgegeben                 |
 
 ### Owner Funktionen
 
