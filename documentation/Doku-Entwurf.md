@@ -236,7 +236,7 @@ und Raum-Id gespeichert.
 | disconnecting     | keine         | Nutzer trennt Verbindung zum Socket und Socket gibt Information an Raum weiter                                                            | disconnection                        | user                |
 
 ## Frontend - (html)
-<img src="./images/HtmlWebsiteStructure.svg">
+
 
 ### 1. Öffentliche Seiten
 
@@ -563,7 +563,11 @@ Für alle aufgeführten Webseiten gilt der letzte Zugriff am 02.03.2026 18:00 Uh
 * [SelfHTML Turoial](https://wiki.selfhtml.org/wiki/CSS/Tutorials/Ausrichtung/position)
 * [Sidemust Tuorial](https://sitemust.com/blog/padding-vs-border-vs-margin-difference-css/)
 * [CSS Reference](https://developer.mozilla.org/de/docs/Web/CSS)
-
+### Java Script
+* [Socket.io](https://socket.io/docs/v4/emitting-events/)
+* [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+* [Co-Pilot](https://copilot.microsoft.com/)
+* [Chat-GPT](https://chatgpt.com/)
 # Abbildungen
 
 Sofern nicht anders angegeben sind alle Abbildungen selbst erstellt.
