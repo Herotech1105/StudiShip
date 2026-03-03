@@ -325,14 +325,22 @@ z.B.:
 #### Allgemeines
 
 - Die Schriftart die wir verwenden ist `Segoe UI` falls der browser diese nicht kennt haben wir follgende schriftarten als ersatz definiert: `Tahoma` & `sans-seri`.
-- Standardmäßig ist der zeilenabstand `1.6`
+- Standardmäßig ist der zeilenabstand `1.6` = 
+``` css 
+    line-height: 1.6;
+```
 - Die Hauptfarben von StudyShip sind Rot & Weiß sowie Weiß-Grau und schwarz.
 - Der Hintergrund von StudyShip ist Grau-Weiß, es wird oft ein Hintergrundbild verwendet.
+``` css
+    background: linear-gradient(white, lightgray);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+```
 - Die Buttons von unserer Webseit sind Rot mit Weißer schrift, die Ecken sind standardmäßig abgerundet mit einem Radius
   von 8px
 
 Standard Buttons:
-```css
+``` css
 button {
     background-color: red; 
     border: none;
@@ -591,6 +599,7 @@ Für alle aufgeführten Webseiten gilt der letzte Zugriff am 02.03.2026 18:00 Uh
 * [Handelbars Tuorial](https://guides.emberjs.com/v2.6.0/templates/)
 * 
 ### CSS
+* [w3schools CSS](https://www.w3schools.com/css/)
 * [SelfHTML Turoial](https://wiki.selfhtml.org/wiki/CSS/Tutorials/Ausrichtung/position)
 * [Sidemust Tuorial](https://sitemust.com/blog/padding-vs-border-vs-margin-difference-css/)
 * [CSS Reference](https://developer.mozilla.org/de/docs/Web/CSS)
