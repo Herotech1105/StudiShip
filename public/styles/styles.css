@@ -53,6 +53,7 @@ nav{
 }
 .mobile-menu button:hover{
     background: none;       /*Verhindert das man eineun unterschied zwischen den Links und dem abmelde button in der Nav. -bar sieht.*/
+    color: white; /*Verhindert das man eineun unterschied zwischen den Links und dem abmelde button in der Nav. -bar sieht.*/
 }
 
 .logo{

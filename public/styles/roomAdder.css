@@ -1,0 +1,20 @@
+h1{
+    text-align: center; /*Zentrierte überschrift*/
+}
+
+.form-group{
+    display: flex; /*.form-group zu einer Flexbox machen*/
+    flex-direction: column; /*in spalten andordnen*/
+    margin: 1rem auto;  /*Aussenabstand oben/unten=1rem,links/rechts=automatisch (zentriert)*/
+    padding: 1rem 5rem; /*Innenabstand oben/unten=1rem,links/rechts=5rem (zentriert)*/
+}
+
+
+#roomDescription,#roomName{
+    max-width: 98%; /*passt die Größe der Input Felder den unteren "selections" an*/
+}
+
+.btn{
+    max-width: 15rem; /*maximale Breite 15rem*/
+    margin: auto;       /*automatische aussenabstand*/
+}
