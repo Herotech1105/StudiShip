@@ -236,7 +236,7 @@ und Raum-Id gespeichert.
 | disconnecting     | keine         | Nutzer trennt Verbindung zum Socket und Socket gibt Information an Raum weiter                                                            | disconnection                        | user                |
 
 ## Frontend - (html)
-
+<img src="./images/HtmlWebsiteStructure.svg">
 ### 1. Öffentliche Seiten
 
 #### `index.hbs` (Landing Page)
