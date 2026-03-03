@@ -26,7 +26,7 @@ nav{
         display: flex;          /*container soll eine flexbox sein*/
         justify-content: center; /* Zentriert horizontal */
         align-items: center;     /* Zentriert vertikal  */
-        min-height: 70vh;       /*Gibt dem Container eine Mindesthöhe */
+        min-height: 70vh;       /*Gibt dem Container eine Mindesthöhe (min 70% der Viewport-Höhe )*/
         margin-top: 1em;        /*Abstände anpassen */
     }
 
@@ -36,8 +36,8 @@ nav{
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   /*Schatten für Kasten-Effekt */
         border: 1px solid #ddd;                      /* Rahmen für Kasten-Effekt */
         border-radius: 8px;                         /* Abgerundete Ecken */
-        background-color: white;
-        padding: 1rem;
+        background-color: white;                    /*Hintergrundfarbe weiß*/
+        padding: 1rem;                              /*Innenabstand 1rem*/
     }
 
     .card-body {
