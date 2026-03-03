@@ -286,7 +286,7 @@ Formular zum Anlegen einer neuen Gruppe.
 Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **Owner** (Ersteller) und normalem **Mitglied**.
 
 **Features:**
-
+- **Gruppen-Name**, **Kursart**, **Gruppen-Beschreibung** kann nur der Admin ändern
 - **Mitglieder-Liste:** werden alle Teilnehmer angezeigt.
 - **Rechte-Management (`isOwner`):**
     - Nur der Owner sieht Buttons zum Bearbeiten, Speichern und Löschen des Raums.
