@@ -298,7 +298,7 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
   eingeblendet werden.
 
 ## Frontend (CSS)
-Die Design elemente der Webseite wurden mit CSS (Cascading Style Sheets) Designed
+Die Design elemente der Webseite wurden mit CSS (Cascading Style Sheets) gestaltet.
 ### CSS Struktur
 
 Das Design der Webseite wird über mehrere CSS dateien erstellt alle html/hbs seiten haben die Allgemeiene `styles.css` datei
@@ -309,7 +309,7 @@ css datei eine Höhere prioität hat. Desweiteren gibt es für spezielle fälle 
 `roomConfirmation.css`.
 
 ### Dynamisches Design / Responsive Design
-Die Webseite ist grudsätzlich so Designed, dass sie sowohl auf den Desktop im Querformat so wie im Hochformat bzw. auf Mobielen Endgeräten funktioniet dies wird durch das Dynamische Design der webseit erreicht unteranderem mit folgendem Hilfsmitteln:
+Die Website ist responsiv gestaltet und funktioniert sowohl auf Desktop (Quer- und Hochformat) als auch auf mobilen Endgeräten. Dies wird durch folgende Techniken erreicht:
 #### Media Queries
 Media Queries sind CSS-Regeln, die nur unter bestimmten Bedingungen wie der Bildschirmbreite angewendet werden. Sie ermöglichen es, das Design für verschiedene Geräte anzupassen.
 
