@@ -3,7 +3,6 @@ body {
     line-height: 1.6; /*Zeilen abstand*/
     margin: 0; /*äusere entfernung standard mässig auf 0 setzen*/
     padding: 0;/*innere entfernung standard mässig auf 0 setzen*/
-
     background: linear-gradient( white, lightgray); /*standard hintergrund abstufung von weiß nach hellgrau*/
     background-repeat: no-repeat; /*hintergrund soll sich nicht wiederholen*/
     background-attachment: fixed; /*hintergrund soll die ganze seite einnehmen*/

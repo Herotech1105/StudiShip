@@ -301,21 +301,52 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
 
 ### CSS Struktur
 
-Das Design der Webseite wird über mehrere CSS dateien erstellt alle html seiten haben die Allgemeiene `styles.css` datei
+Das Design der Webseite wird über mehrere CSS dateien erstellt alle html/hbs seiten haben die Allgemeiene `styles.css` datei
 eingebunden und eine eigene Datei die den gleichen namen hat wie die html datei auf welche sie sich bezieht z.B.
-`dashboard.html` & `dashboard.css`.
+`dashboard.hbs` & `dashboard.css`.
 Dabei ist es wichtig, dass die `styles.css` datei vor den speziellen CSS Dateien im html eingebunden wird, da die untere
 css datei eine Höhere prioität hat. Desweiteren gibt es für spezielle fälle noch zusätzliche CSS Dateien z.B.
 `roomConfirmation.css`.
+
+### Dynamisches Design
+#### Responsive Design / Media Queries
+z.B.:
+``` css
+@media (max-width: 768px) {
+            ul {
+                flex-direction: column; 
+              }
+        }
+```
+#### Flexboxen
 
 ### StudyShip "Corporate Design"
 
 #### Allgemeines
 
+- Die Schriftart die wir verwenden ist `Segoe UI` falls der browser diese nicht kennt haben wir follgende schriftarten als ersatz definiert: `Tahoma` & `sans-seri`.
+- Standardmäßig ist der zeilenabstand `1.6`
 - Die Hauptfarben von StudyShip sind Rot & Weiß sowie Weiß-Grau und schwarz.
 - Der Hintergrund von StudyShip ist Grau-Weiß, es wird oft ein Hintergrundbild verwendet.
 - Die Buttons von unserer Webseit sind Rot mit Weißer schrift, die Ecken sind standardmäßig abgerundet mit einem Radius
   von 8px
+
+Standard Buttons:
+```css
+button {
+    background-color: red; 
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 2rem; 
+    color: white; 
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkred;
+    color: darkgray;
+}
+```
 
 ## Frontend (javascript)
 
