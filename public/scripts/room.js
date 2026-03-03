@@ -232,16 +232,6 @@ websocket.on("invalid", (err) => {
     console.log(err)
 })
 
-websocket.on("joined", (user) => {
-    const memberList = document.querySelector(".members-field ul")
-    if (!memberList || !user) return
-
-    if ([...memberList.querySelectorAll("li span")].some(span => span.textContent.trim() === user)) return
-
-    const li = document.createElement("li")
-    li.innerHTML = `<span>${user}</span>`
-    memberList.appendChild(li)
-})
 
 websocket.on("joined", (user) => {
     const memberList = document.querySelector(".members-field ul")
