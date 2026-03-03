@@ -237,6 +237,7 @@ und Raum-Id gespeichert.
 
 ## Frontend - (html)
 
+<img src="./images/HtmlWebsiteStructure.svg)">
 
 ### 1. Öffentliche Seiten
 
@@ -287,13 +288,14 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
 
 **Features:**
 
+- **Mitglieder-Liste:** werden alle Teilnehmer angezeigt.
 - **Rechte-Management (`isOwner`):**
     - Nur der Owner sieht Buttons zum Bearbeiten, Speichern und Löschen des Raums.
     - Nur der Owner kann Mitglieder kicken (`x`) oder zum Admin befördern (`Zum Admin`).
     - Mitglieder sehen nur den "Verlassen"-Button.
+- **Bearbeiter-Modus** Gruppen-Name, -Beschreibung, und Kursart kann bearbeitet werden.
 - **Chat-System:**
-    - Linke Seite: Chat-Verlauf (`{{#each messages}}`) und Eingabefeld.
-- **Mitglieder-Liste:** Links (Desktop) oder unten (Mobile) werden alle Teilnehmer angezeigt.
+    - Chat-Verlauf (`{{#each messages}}`) und Eingabefeld.
 - **Modals (Popups):** Versteckte Warnfenster für kritische Aktionen (Kick, Admin-Wechsel, Löschen), die per JavaScript
   eingeblendet werden.
 
