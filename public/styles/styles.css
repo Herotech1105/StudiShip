@@ -16,7 +16,7 @@ body {
     font-size: 25px;        /* Schriftgröße auf 25px */
 }
 .logo:hover{
-    color: lightgray;
+    color: lightgray; /*Graue Schrift*/
 }
 
 

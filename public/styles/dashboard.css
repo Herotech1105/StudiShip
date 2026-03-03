@@ -11,79 +11,75 @@
         }
 
         .mobile-menu a{
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
+            color: white;   /* Textfarbe Weiß */
+            text-decoration: none; /* Keine Unterstreichung für Links */
+            margin-left: 20px;       /* Abstand links für bessere Lesbarkeit */
         }
         .mobile-menu a:hover{
-            color: white;
-            text-decoration: underline;
-            margin-left: 20px;
+            color: white;       /* Textfarbe bleibt Weiß beim Hovern */
+            text-decoration: underline; /* Unterstreichung beim Hovern */
+            margin-left: 20px;    /* Abstand links bleibt erhalten */
         }
         .mobile-menu button{
-            background: none;
-            border: none;
-            padding: 0;
-            color: white;
-            font: inherit;
-            cursor: pointer;
-            margin-left: 20px;
-            text-decoration: none;
+            background: none;   /* Kein Hintergrund für den Button */
+            border: none;   /* Kein Rahmen für den Button */
+            padding: 0; /* Kein Innenabstand */
+            color: white;    /* Schriftfarbe Weiß */
+            font: inherit;  /* Schriftart von Eltern-Element erben */
+            cursor: pointer;      /* Cursor als Zeiger */
+            margin-left: 20px;    /*Abstand Links 20px*/
+            text-decoration: none;  /* Keine Unterstreichung */
         }
         .mobile-menu button:hover{
-            text-decoration: underline;
+            text-decoration: underline; /* Unterstreichung beim Hovern */
         }
         .mobile-menu form{
-            display: inline;
-            margin: 0;
-            padding: 0;
+            display: inline;    /* Als inline anzeigen */
+            margin: 0;  /* Kein Außenabstand */
+            padding: 0; /* Kein Innenabstand */
         }
 
 
-        .search-btn{
-            text-align: center;
-        }
-
-        .room-btn{
-            text-align: center ;
+        .search-btn, .room-btn {
+            text-align: center; /* Text im Button zentrieren */
         }
 
         .hero{
-            background-image: url('../images/background.jpg') !important;
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            padding: 80px 20px; /* Innenabstand für bessere Lesbarkeit */
+            background-image: url('../images/background.jpg') !important; /* Hintergrundbild festlegen im Hero Bereich*/
+            background-color: transparent; /* Hintergrundfarbe transparent */
+            background-repeat: no-repeat; /* Hintergrundbild nicht wiederholen */
+            background-size: cover; /* Hintergrundbild soll den Bereich füllen */
+            background-position: center; /* Hintergrundbild zentrieren */
+            padding: 80px 20px; /* Innenabstand oben/unten=80px, links/rechts=20px */
             min-height: 400px; /* Mindesthöhe für den Hero-Bereich */
-            display: flex;
-            flex-direction: column;
+            display: flex;  /* Flexbox-Layout für den Hero-Bereich */
+            flex-direction: column; /* Elemente untereinander anordnen */
             justify-content: center; /* Zentriert den Inhalt vertikal */
             align-items: center; /* Zentriert den Inhalt horizontal */
-            color: white;
+            color: white; /*Schrift farbe weiß*/
         }
 
         .hero h3{
-            text-align: center;
-            color: white;
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;  /* Text zentrieren */
+            color: white; /*Schrift farbe weiß*/
+            font-size: 3em; /* Schriftgröße auf 3em */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Textschatten */
         }
 
         .hero h4{
-            text-align: center;
-            color: white;
-            font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center; /* Text zentrieren */
+            color: white; /*Schrift farbe weiß*/
+            font-size: 2em; /* Schriftgröße auf 2em */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Textschatten */
         }
 
         h3{
-            text-align: center ;
+            text-align: center ;  /* Text zentrieren */
         }
 
         h4{
-            text-align: center;
-            font-size: 1 em;
+            text-align: center; /* Text zentrieren */
+            font-size: 1 em;  /* Schriftgröße auf 1em */
         }
 
 
@@ -92,8 +88,8 @@
             width: fit-content;           /* Passt die Breite an den Inhalt an */
             max-width: 300px;             /* Maximale Breite  auf 300px beschränken */
             margin: 20px auto;            /* Zentriert den Button horizontal */
-            padding: 12px 24px;           /* Innenabstand für bessere Klickfläche */
-            background-color: red;    /* Hintergrundfarbe (z. B. Rot) */
+            padding: 12px 24px;           /* Innenabstand oben/unten=12px, links/rechts=24px */
+            background-color: red;    /* Hintergrundfarbe Rot */
             color: white;                 /* Textfarbe */
             text-align: center;           /* Text zentrieren */
             text-decoration: none;        /* Unterstreichung entfernen */
@@ -106,7 +102,7 @@
 
         .add-group-btn:hover, .search-btn:hover {
             background-color: darkred;    /* Dunklerer Ton beim Hovern */
-            color: darkgray;
+            color: darkgray; /*schriftfarbe dunkelgrau*/
         }
 
 
@@ -131,15 +127,18 @@
             white-space: nowrap;          /* Verhindert Zeilenumbrüche */
             overflow: hidden;             /* Text abschneiden */
             text-overflow: ellipsis;      /* "..." einfügen */
-
-            color: black;
+            color: black;       /*Schriftfarbe schwarz*/
         }
 
-        .room-btn-name{ font:bold;
-        font-size: large;}
+        /*Name des Raumes*/
+        .room-btn-name{
+            font:bold;   /*fette schrift*/
+        font-size: large; /*Große schrifz*/
+        }
 
+        /*Liste der Räume*/
         ul{
-            display: flex;
+            display: flex;      /* Flexbox-Layout für Listen */
             justify-content: center; /* Zentriert horizontal */
             align-items: center;     /* Zentriert vertikal */
 
