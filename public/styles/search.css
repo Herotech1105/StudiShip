@@ -1,88 +1,79 @@
-
 header{
-    background-color: red;
-    color: white;
-    padding: 16px;
+    background-color: red; /* Hintergrundfarbe des Headers auf Rot */
+    color: white;           /* Schriftfarbe auf Weiß */
+    padding: 16px;          /* Innenabstand 16px*/
 
 }
+/*Navigationsbar*/
 nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;          /* Flexbox-Layout für Navigation */
+    justify-content: space-between;/* Flexbox-Layout für Navigation */
+    align-items: center;   /* Elemente zentrieren */
 }
-
+/*Menu in der Navigationsbar*/
 .mobile-menu a{
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+    color: white;   /* Textfarbe Weiß */
+    text-decoration: none; /* Keine Unterstreichung für Links */
+    margin-left: 20px;       /* Abstand links 20px*/
 }
 .mobile-menu a:hover{
-    color: white;
-    text-decoration: underline;
-    margin-left: 20px;
+    color: white;       /* Textfarbe bleibt Weiß beim Hovern */
+    text-decoration: underline; /* Unterstreichung beim Hovern */
+    margin-left: 20px;    /* Abstand links bleibt erhalten */
 }
+
+
 .mobile-menu button{
-    background: none;
-    border: none;
-    padding: 0;
-    color: white;
-    font: inherit;
-    cursor: pointer;
-    margin-left: 20px;
-    text-decoration: none;
+    background: none;   /* Kein Hintergrund für den Button */
+    border: none;   /* Kein Rahmen für den Button */
+    padding: 0; /* Kein Innenabstand */
+    color: white;    /* Schriftfarbe Weiß */
+    font: inherit;  /* Schriftart von Eltern-Element erben */
+    cursor: pointer;      /* Cursor als Zeiger */
+    margin-left: 20px;    /*Abstand Links 20px*/
+    text-decoration: none;  /* Keine Unterstreichung */
 }
 .mobile-menu button:hover{
-    text-decoration: underline;
+    text-decoration: underline; /* Unterstreichung beim Hovern */
 }
 .mobile-menu form{
-    display: inline;
-    margin: 0;
-    padding: 0;
+    display: inline;    /* Als inline anzeigen => nimmt nur so viel Platz ein wie sein Inhalt, beginnt nicht in einer neuen Zeile. */
+    margin: 0;  /* Kein Außenabstand */
+    padding: 0; /* Kein Innenabstand */
 }
-
 
 .form-container {
-    display: flex;
+    display: flex;          /*form-container ist eine felexbox*/
     align-items: center;     /* Zentriert die .form-group-Elemente horizontal */
-    justify-content: center;
+    justify-content: center; /* Zentriert die .form-group-Elemente vertikal */
     gap: 1rem;               /* Abstand zwischen den Elementen */
-    width: 100%;
+    width: 100%;        /*soll den ganezen platz den es nutzen kann nutzen*/
 
 }
 
 .form-group {
-    margin-top: 5rem;
-    background-color: white;
-    min-width: 15rem;
-    width: 30rem;            /* Festgelegte Breite */
-    height: 23rem;
+    margin-top: 5rem;           /*Aussenabstand oben*/
+    background-color: white;    /*Weißer hintergrund*/
+    min-width: 15rem;       /*Minimale größe 15rem*/
+    width: 30rem;            /* Festgelegte Breite 30rem*/
+    height: 23rem;          /*Festgelegte Höhe 23rem*/
     box-sizing: border-box;  /* Padding in die Breite einbeziehen */
     padding: 1rem;           /* Innenabstand */
-    border-radius: 8px;
-    padding: 1rem;
+    border-radius: 8px;     /*Border radius ist 8 px*/
+    padding: 1rem;          /*Innenabstand 1 rem*/
 }
-
-.form-group {
-    margin-top: 5rem;
-    background-color: white;
-    min-width: 15rem;
-    width: 30rem;
-    box-sizing: border-box;
-    padding: 1rem;
-    border-radius: 8px;
-    overflow: visible; /* Standard, aber explizit gesetzt */
-}
-
 
 body{
-    background-image: url('../images/background.jpg');
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url('../images/background.jpg'); /*Hintergrundbild für den Body*/
+    background-color: transparent;                      /*Hintergrund transparent*/
+    background-repeat: no-repeat;                        /* Hintergrundbild nicht wiederholen */
+    background-size: cover;                              /* Hintergrundbild soll den Bereich füllen */
+    background-position: center;                         /* Hintergrundbild zentrieren */
 }
 
+
 .container {
-    display: flex;
+    display: flex;          /*container ist eine felexbox*/
     flex-direction: column; /* Elemente untereinander anordnen */
     justify-content: flex-start; /* Zentriert horizontal */
     align-items: center;     /* Zentriert vertikal */
@@ -95,7 +86,7 @@ body{
 }
 
 h1{
-    color: white;
+    color: white; /*Überschriftfareb weiß*/
 }
 
 .form-group input,
