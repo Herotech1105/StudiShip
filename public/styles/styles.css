@@ -13,7 +13,7 @@ body {
 .container {
     width: 100%; /*standard container sollen den ganzen platz den sie einnehmen können einnehmen*/
     max-width: 1200px; /*standard container sollen maximal 1200px groß sein*/
-    margin: 0 auto;
+    margin: 0 auto; /*abstand ausssen (obn/unten=0,rechts/links=auto)*/
     padding: 20px; /*standard innenabstand soll 20px sein*/
 }
 
@@ -134,9 +134,11 @@ main {
     flex: 1;                      /* Main füllt den verfügbaren Platz zwischen Header und Footer */
 }
 
-/* Responsive Design */
+/* Responsive Design / Media Queries
+* wird verwende damit die Webseite in verschieden Ansichten gut aussieht z.B.:
+* wenn man die Größe des Browserfenster verändert (z.B:Horizontaltarbildschirm) oder auf Mobilen Geräten z.B.: Handys  */
 @media (max-width: 768px) {
     .container {
-        padding: 10px;
+        padding: 10px; /*Reduziert den innenabstand im container von 20px auf 10px*/
     }
 }

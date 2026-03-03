@@ -44,4 +44,24 @@
         margin: 0;
         padding: 0;
     }
-    
+
+    /*Link als button anzeigen*/
+    .add-group-btn{
+        display: block;
+        width: fit-content;
+        margin: 50px 0;
+        padding: 12px 24px;
+        background-color: red;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 8px;
+        font-weight: 1;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .add-group-btn:hover{
+        background-color: darkred;
+        color: gray;
+    }
