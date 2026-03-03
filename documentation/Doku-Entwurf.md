@@ -308,9 +308,12 @@ Dabei ist es wichtig, dass die `styles.css` datei vor den speziellen CSS Dateien
 css datei eine Höhere prioität hat. Desweiteren gibt es für spezielle fälle noch zusätzliche CSS Dateien z.B.
 `roomConfirmation.css`.
 
-### Dynamisches Design
-#### Responsive Design / Media Queries
-z.B.:
+### Dynamisches Design / Responsive Design 
+Die Webseite ist grudsätzlich so Designed, dass sie sowohl auf den Desktop im Querformat so wie im Hochformat bzw. auf Mobielen Endgeräten funktioniet dies wird durch das Dynamische Design der webseit erreicht unteranderem mit folgendem Hilfsmitteln: 
+#### Media Queries
+Media Queries sind CSS-Regeln, die nur unter bestimmten Bedingungen wie der Bildschirmbreite angewendet werden. Sie ermöglichen es, das Design für verschiedene Geräte anzupassen.
+
+z.B.: Werden Media Queries benutzt um auf unserer `room.hbs` seite die anordnung der Lerhrngruppen von Nebeneinander im Querformat zu Untereinander Im Hochvormat bzw. wenn die breite kleiner als `768px` ist.: 
 ``` css
 @media (max-width: 768px) {
             ul {
@@ -319,17 +322,24 @@ z.B.:
         }
 ```
 #### Flexboxen
+Flexboxen werden fast in der gesamten Anwendung verwendet, um flexible und responsive Layouts zu erstellen. Hier ist ein Beispiel für die Verwendung von Flexbox:
+```css
+.search-container {
+  display: flex;               
+  justify-content: center;    
+  align-items: center;
+} 
+```
 
 ### StudyShip "Corporate Design"
 
 #### Allgemeines
-
+- Die Hauptfarben von StudyShip sind Rot & Weiß sowie Weiß-Grau und schwarz Beispielsweise: Buttons sind in der Regel rot mit weißer Schrift
 - Die Schriftart die wir verwenden ist `Segoe UI` falls der browser diese nicht kennt haben wir follgende schriftarten als ersatz definiert: `Tahoma` & `sans-seri`.
-- Standardmäßig ist der zeilenabstand `1.6` = 
+- Standardmäßig ist der zeilenabstand `1.6`:
 ``` css 
     line-height: 1.6;
 ```
-- Die Hauptfarben von StudyShip sind Rot & Weiß sowie Weiß-Grau und schwarz.
 - Der Hintergrund von StudyShip ist Grau-Weiß, es wird oft ein Hintergrundbild verwendet.
 ``` css
     background: linear-gradient(white, lightgray);
