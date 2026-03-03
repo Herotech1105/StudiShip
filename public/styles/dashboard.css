@@ -162,6 +162,7 @@
         }
 
 
+        /*Suchbar*/
         .search-container {
             display: flex;               /* Aktiviert Flexbox (für die Kinder-Elemente) */
             justify-content: center;    /* Zentriert die Elemente horizontal */
@@ -169,7 +170,6 @@
             margin: 20px auto;           /* 20px Abstand oben/unten, automatisch links/rechts (zentriert den Container) */
             max-width: 700px;            /* Maximale Breite des Containers auf 700px begrenzt */
         }
-
         .searchBar {
             width: 100%;                 /* Suchleiste nimmt die volle Breite des Containers ein */
             padding: 10px;               /* Innenabstand von 10px für*/
@@ -178,7 +178,6 @@
             font-size: 16px;             /* Schriftgröße auf 16px gesetzt */
             margin: 0;                   /* Entfernt äußere Abstände */
         }
-
         .send-button {
             padding: 10px 15px;          /* Innenabstand: 10px oben/unten, 15px links/rechts */
             border: 3px solid red;        /* 3px dicker, roter Rahmen */
@@ -187,7 +186,6 @@
             border-radius: 0 8px 8px 0;   /* Abgerundete Ecken: links 0, rechts 8px (für nahtlosen Übergang zur Suchleiste) */
             cursor: pointer;              /* Zeigt an, dass der Button klickbar ist */
         }
-
         .send-button:hover {
             background-color: darkred;   /* Hintergrundfarbe wird zu Dunkelrot beim Hovern */
             border-color: darkred;       /* Rahmenfarbe wird zu Dunkelrot beim Hovern */

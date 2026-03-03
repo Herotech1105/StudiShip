@@ -1,63 +1,57 @@
+header{
+    background-color: red; /* Hintergrundfarbe des Headers auf Rot */
+    color: white;           /* Schriftfarbe auf Weiß */
+    padding: 16px;          /* Innenabstand 16px*/
 
-    header{
-        background-color: red;
-        color: white;
-        padding: 16px;
-
-    }
-    nav{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .mobile-menu a{
-        color: white;
-        text-decoration: none;
-        margin-left: 20px;
-    }
-    .mobile-menu a:hover{
-        color: white;
-        text-decoration: underline;
-        margin-left: 20px;
-    }
+}
+/*Navigationsbar*/
+nav{
+    display: flex;          /* Flexbox-Layout für Navigation */
+    justify-content: space-between;/* Flexbox-Layout für Navigation */
+    align-items: center;   /* Elemente zentrieren */
+}
+/*Menu in der Navigationsbar*/
+.mobile-menu a{
+    color: white;           /* Textfarbe Weiß */
+    text-decoration: none; /* Keine Unterstreichung für Links */
+    margin-left: 20px;       /* Abstand links 20px*/
+}
+.mobile-menu a:hover{
+    color: white;           /* Textfarbe bleibt Weiß beim Hovern */
+    text-decoration: underline; /* Unterstreichung beim Hovern */
+    margin-left: 20px;    /* Abstand links bleibt erhalten */
+}
 
     .container {
-        display: flex;
+        display: flex;          /*container soll eine flexbox sein*/
         justify-content: center; /* Zentriert horizontal */
-        align-items: center;     /* Zentriert vertikal (falls nötig) */
-        min-height: 70vh;       /* Optional: Gibt dem Container eine Mindesthöhe */
-        margin-top: 1em;        /* Optional: Abstände anpassen */
-       /* background-color: white;
-        max-width: 400px;
-
-        */
+        align-items: center;     /* Zentriert vertikal  */
+        min-height: 70vh;       /*Gibt dem Container eine Mindesthöhe */
+        margin-top: 1em;        /*Abstände anpassen */
     }
 
     .card {
-        width: 25rem;
-        height: 28rem;
-       /* margin: 0 auto; /* Zentriert die Karte im Container */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Schatten für "Kasten"-Effekt */
-        border: 1px solid #ddd; /* Rahmen für Kasten-Effekt */
-        border-radius: 8px; /* Abgerundete Ecken */
+        width: 25rem;                               /*card Breite 25rem,rem = Relative zur schrift größe des root element*/
+        height: 28rem;                              /*card Höhe 28 rem*/
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   /*Schatten für Kasten-Effekt */
+        border: 1px solid #ddd;                      /* Rahmen für Kasten-Effekt */
+        border-radius: 8px;                         /* Abgerundete Ecken */
         background-color: white;
         padding: 1rem;
     }
 
     .card-body {
         padding: 1.5rem; /* Abstand zum Rand der Karte */
-        /*text-align: center; /*Zentriert den Text*/
     }
 
     button{
-        width: 100%; /* Optional: Button füllt das Div aus */
+        width: 100%; /*Button füllt das Div aus */
     }
 
     body{
-        background-image: url('../images/background.jpg');
-        background-color: transparent;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
+        background-image: url('../images/background.jpg'); /*Hintergrundbild für den Body*/
+        background-color: transparent;                      /*Hintergrund transparent*/
+        background-repeat: no-repeat;                         /* Hintergrundbild nicht wiederholen */
+        background-size: cover;                              /* Hintergrundbild soll den Bereich füllen */
+        background-position: center;                            /* Hintergrundbild zentrieren */
     }
