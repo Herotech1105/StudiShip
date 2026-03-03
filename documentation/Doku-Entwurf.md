@@ -616,10 +616,13 @@ Für alle aufgeführten Webseiten gilt der letzte Zugriff am 02.03.2026 18:00 Uh
 * [Handelbars Tuorial](https://guides.emberjs.com/v2.6.0/templates/)
 * 
 ### CSS
+* [CSS Vorlesung](https://elearning.dhbw-ravensburg.de/mod/resource/view.php?id=389834)
 * [w3schools CSS](https://www.w3schools.com/css/)
 * [SelfHTML Turoial](https://wiki.selfhtml.org/wiki/CSS/Tutorials/Ausrichtung/position)
 * [Sidemust Tuorial](https://sitemust.com/blog/padding-vs-border-vs-margin-difference-css/)
 * [CSS Reference](https://developer.mozilla.org/de/docs/Web/CSS)
+* [Mistral](https://chat.mistral.ai/chat)
+* [Google Suche mit Features](https://www.google.com/)
 ### Java Script
 * [Socket.io](https://socket.io/docs/v4/emitting-events/)
 * [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
