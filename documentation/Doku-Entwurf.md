@@ -298,7 +298,7 @@ Dies ist die komplexeste View der Anwendung. Sie unterscheidet stark zwischen **
   eingeblendet werden.
 
 ## Frontend (CSS)
-
+Die Design elemente der Webseite wurden mit CSS (Cascading Style Sheets) Designed
 ### CSS Struktur
 
 Das Design der Webseite wird über mehrere CSS dateien erstellt alle html/hbs seiten haben die Allgemeiene `styles.css` datei
@@ -308,12 +308,12 @@ Dabei ist es wichtig, dass die `styles.css` datei vor den speziellen CSS Dateien
 css datei eine Höhere prioität hat. Desweiteren gibt es für spezielle fälle noch zusätzliche CSS Dateien z.B.
 `roomConfirmation.css`.
 
-### Dynamisches Design / Responsive Design 
-Die Webseite ist grudsätzlich so Designed, dass sie sowohl auf den Desktop im Querformat so wie im Hochformat bzw. auf Mobielen Endgeräten funktioniet dies wird durch das Dynamische Design der webseit erreicht unteranderem mit folgendem Hilfsmitteln: 
+### Dynamisches Design / Responsive Design
+Die Webseite ist grudsätzlich so Designed, dass sie sowohl auf den Desktop im Querformat so wie im Hochformat bzw. auf Mobielen Endgeräten funktioniet dies wird durch das Dynamische Design der webseit erreicht unteranderem mit folgendem Hilfsmitteln:
 #### Media Queries
 Media Queries sind CSS-Regeln, die nur unter bestimmten Bedingungen wie der Bildschirmbreite angewendet werden. Sie ermöglichen es, das Design für verschiedene Geräte anzupassen.
 
-z.B.: Werden Media Queries benutzt um auf unserer `room.hbs` seite die anordnung der Lerhrngruppen von Nebeneinander im Querformat zu Untereinander Im Hochvormat bzw. wenn die breite kleiner als `768px` ist.: 
+z.B.: Werden Media Queries benutzt um auf unserer `room.hbs` seite die anordnung der Lerhrngruppen von Nebeneinander im Querformat zu Untereinander Im Hochvormat bzw. wenn die breite kleiner als `768px` ist.:
 ``` css
 @media (max-width: 768px) {
             ul {
@@ -336,11 +336,14 @@ Flexboxen werden fast in der gesamten Anwendung verwendet, um flexible und respo
 #### Allgemeines
 - Die Hauptfarben von StudyShip sind Rot & Weiß sowie Weiß-Grau und schwarz Beispielsweise: Buttons sind in der Regel rot mit weißer Schrift
 - Die Schriftart die wir verwenden ist `Segoe UI` falls der browser diese nicht kennt haben wir follgende schriftarten als ersatz definiert: `Tahoma` & `sans-seri`.
+``` css
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+```
 - Standardmäßig ist der zeilenabstand `1.6`:
 ``` css 
     line-height: 1.6;
 ```
-- Der Hintergrund von StudyShip ist Grau-Weiß, es wird oft ein Hintergrundbild verwendet.
+- Der Hintergrund von StudyShip ist Grau-Weiß, es wird allerdings oft ein Hintergrundbild verwendet.
 ``` css
     background: linear-gradient(white, lightgray);
     background-repeat: no-repeat;
@@ -365,6 +368,10 @@ button:hover {
     color: darkgray;
 }
 ```
+
+- Die Website nutzt auf allen Seiten zwei durchgängige UI-Elemente: die Navigationsleiste (oben) und den Footer (unten). Beide Elemente folgen einem einheitlichen Design: ein roter Balken mit weißer Schrift, der sich horizontal über die gesamte Breite der Website erstreckt. In der Navigationsleiste sind Links und Buttons einheitlich gestaltet, sodass der Benutzer keine visuellen Unterschiede erkennt.
+#### Spezielles Design
+Wie Oben berereits erwähnt haben alle Infividuellen Seiten eine Eigene CSS-Datei um das Design der Spezifischen seite Anzupassen und um die Übersicht zu bewaren, trozdem orientert sich das spezielle design and dem Algemmeinen.
 
 ## Frontend (javascript)
 
