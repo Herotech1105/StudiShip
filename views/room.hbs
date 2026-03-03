@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>StudyShip</title>
-    <link rel="icon" href="./icons/import_contacts_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/room.css">
-    <link rel="stylesheet" href="/styles/roomConfirmation.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>StudyShip</title>
+        <link rel="icon" href="./icons/import_contacts_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" type="image/svg+xml">
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="stylesheet" href="/styles/room.css">
+        <link rel="stylesheet" href="/styles/roomConfirmation.css">
 
-</head>
+    </head>
     <body data-is-owner="{{isOwner}}" data-room-owner="{{room.owner}}">
         <header>
             <nav>
@@ -26,13 +26,15 @@
         <main >
             <script src="/socket.io/socket.io.js"></script>
             <script src="/scripts/room.js" defer></script>
-
+            <!-- room heading -->
             <div class="red-rounded-box header-box">
                 <h1 id="roomTitle" contenteditable="false" >{{room.name}}</h1>
             </div>
-
+            <!-- room content-->
             <div class="room-layout">
+                <!--information about the room-->
                 <section class="room-info">
+                    <!--subject with subject selection option-->
                     <div id="subject" class="border-box sub-header">
                         <span id="roomSubjectText">{{room.subject}}</span>
                         {{#if isOwner}}
@@ -43,11 +45,11 @@
                             </select>
                         {{/if}}
                     </div>
-
+                    <!--description box-->
                     <div id="description" class="border-box">
                         <p id="roomDescription" contenteditable="false" >{{room.description}}</p>
                     </div>
-
+                    <!--box with all member-->
                     <div class="red-rounded-box members-field">
                         <h3>Mitglieder:</h3>
                         <button class="share-btn">🔗 teilen</button>
@@ -63,6 +65,7 @@
                             {{/each}}
                         </ul>
                     </div>
+                    <!--administrative btn-->
                     {{#if isOwner}}
                         <button id="editButton" onclick="editRoom()">Bearbeiten</button>
                         <button id="saveButton" class="hidden" onclick="updateRoom()">Speichern</button>
@@ -72,7 +75,7 @@
                         <button onclick="leaveRoom()">Verlassen</button>
                     {{/unless}}
                 </section>
-
+                <!--chat-->
                 <aside class="chat-area">
                     <h4>Nachrichten:</h4>
                     <ul id="messages" class="chat-window">
@@ -93,6 +96,7 @@
             <p>Die Icons sind von fonts.google.com/icons und stehen unter der Alpha 2.0 License</p>
             <p class="attribution">"<a rel="noopener noreferrer" href="https://www.flickr.com/photos/20245378@N03/8596552756">Wendt WisCEL: group work</a>" by <a rel="noopener noreferrer" href="https://www.flickr.com/photos/20245378@N03">college.library</a> is licensed under <a rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/2.0/?ref=openverse">CC BY 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /></a>.</p>
         </footer>
+        <!--hidden windows-->
         <div class="user-kick-confirmation-window overlay">
             <div class="confirmation-window">
                 <h2>Warnung!</h2>
@@ -101,8 +105,6 @@
                 <button id="kick-rejected" class="no-btn">Nein</button>
             </div>
         </div>
-
-
         <div class="new-admin-confirmation-window overlay">
             <div class="confirmation-window">
                 <h2>Warnung!</h2>
@@ -111,8 +113,6 @@
                 <button id="new-admin-rejected" class="no-btn">Nein</button>
             </div>
         </div>
-
-
         <div class="delition-confirmation-window overlay">
             <div class="confirmation-window">
                 <h2>Warnung!</h2>
