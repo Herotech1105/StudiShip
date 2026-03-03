@@ -1,46 +1,46 @@
 /* Gemeinsame Stile für alle Overlays */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+    position: fixed;             /* Positionierung relativ zum Viewport fixieren */
+    top: 0;                      /* Position oben am Viewport-Rand */
+    left: 0;                     /* Position links am Viewport-Rand */
+    width: 100%;                 /* Breite auf 100% des Viewports setzen */
+    height: 100%;                /* Höhe auf 100% des Viewports setzen */
+    background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter schwarzer Hintergrund (70% Deckkraft) */
+    display: flex;               /* Flexbox-Layout aktivieren */
+    justify-content: center;     /* Inhalt horizontal zentrieren */
+    align-items: center;         /* Inhalt vertikal zentrieren */
+    z-index: 9999;               /* Hohe Stapelreihenfolge, um Overlay über allen anderen Elementen anzuzeigen */
 }
 
 /* Stile für das Bestätigungsfenster */
 .confirmation-window {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: white;    /* Weißer Hintergrund */
+    padding: 20px;              /* Innenabstand 20px*/
+    border-radius: 8px;         /* Abgerundete Ecken mit Radius 8px */
+    text-align: center;         /* Text innerhalb des Fensters zentrieren */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Leichter Schatten*/
 }
 
 /* Stile für die Buttons */
 .yes-btn, .no-btn {
-    padding: 8px 16px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 8px 16px;          /* Innenabstand: 8px oben/unten, 16px links/rechts */
+    margin: 0 10px;             /* Außenabstand: 0px oben/unten, 10px links/rechts */
+    border: none;               /* Kein Rahmen */
+    border-radius: 4px;         /* Abgerundete Ecken mit Radius 4px */
+    cursor: pointer;            /* Cursor als Zeiger anzeigen */
 }
 
 .yes-btn {
-    background-color: red;
-    color: white;
+    background-color: red;      /* Hintergrundfarbe Rot */
+    color: white;               /* Schriftfarbe Weiß */
 }
 
 .no-btn {
-    background-color: green;
-    color: white;
+    background-color: green;    /* Hintergrundfarbe Grün */
+    color: white;               /* Schriftfarbe Weiß */
 }
 
 .no-btn:hover {
-    background-color: darkgreen;
-    color: gray;
+    background-color: darkgreen; /* Hintergrundfarbe Dunkelgrün beim Hovern */
+    color: gray;                /* Schriftfarbe Grau beim Hovern */
 }
