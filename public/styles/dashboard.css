@@ -4,22 +4,25 @@
             padding: 16px;          /* Innenabstand 16px*/
 
         }
+        /*Navigationsbar*/
         nav{
             display: flex;          /* Flexbox-Layout für Navigation */
-            justify-content: space-between; /* Elemente gleichmäßig verteilen */
+            justify-content: space-between;/* Flexbox-Layout für Navigation */
             align-items: center;   /* Elemente zentrieren */
         }
-
+        /*Menu in der Navigationsbar*/
         .mobile-menu a{
             color: white;   /* Textfarbe Weiß */
             text-decoration: none; /* Keine Unterstreichung für Links */
-            margin-left: 20px;       /* Abstand links für bessere Lesbarkeit */
+            margin-left: 20px;       /* Abstand links 20px*/
         }
         .mobile-menu a:hover{
             color: white;       /* Textfarbe bleibt Weiß beim Hovern */
             text-decoration: underline; /* Unterstreichung beim Hovern */
             margin-left: 20px;    /* Abstand links bleibt erhalten */
         }
+
+
         .mobile-menu button{
             background: none;   /* Kein Hintergrund für den Button */
             border: none;   /* Kein Rahmen für den Button */
@@ -34,7 +37,7 @@
             text-decoration: underline; /* Unterstreichung beim Hovern */
         }
         .mobile-menu form{
-            display: inline;    /* Als inline anzeigen */
+            display: inline;    /* Als inline anzeigen => nimmt nur so viel Platz ein wie sein Inhalt, beginnt nicht in einer neuen Zeile. */
             margin: 0;  /* Kein Außenabstand */
             padding: 0; /* Kein Innenabstand */
         }
@@ -62,7 +65,7 @@
         .hero h3{
             text-align: center;  /* Text zentrieren */
             color: white; /*Schrift farbe weiß*/
-            font-size: 3em; /* Schriftgröße auf 3em */
+            font-size: 3em; /* Schriftgröße auf 3em (3-fache der Schriftgröße des Eltern-Elements)*/
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Textschatten */
         }
 

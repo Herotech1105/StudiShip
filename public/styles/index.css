@@ -20,10 +20,10 @@
     }
 
     .hero h1{
-        text-align: center;
-        color: white;
-        font-size: 3em;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-align: center; /* Text zentrieren */
+        color: white; /*Schrift farbe weiß*/
+        font-size: 3em; /* Schriftgröße auf 3em (3-fache der Schriftgröße des Eltern-Elements)*/
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Textschatten */
     }
 
     .features {
@@ -73,19 +73,20 @@
     }
 
 
+    /*Navigationsbar*/
     nav{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: flex;          /* Flexbox-Layout für Navigation */
+        justify-content: space-between;/* Flexbox-Layout für Navigation */
+        align-items: center;   /* Elemente zentrieren */
     }
-
+    /*Menu in der Navigationsbar*/
     .mobile-menu a{
-        color: white;
-        text-decoration: none;
-        margin-left: 20px;
+        color: white;   /* Textfarbe Weiß */
+        text-decoration: none; /* Keine Unterstreichung für Links */
+        margin-left: 20px;       /* Abstand links 20px*/
     }
     .mobile-menu a:hover{
-        color: white;
-        text-decoration: underline;
-        margin-left: 20px;
+        color: white;       /* Textfarbe bleibt Weiß beim Hovern */
+        text-decoration: underline; /* Unterstreichung beim Hovern */
+        margin-left: 20px;    /* Abstand links bleibt erhalten */
     }
