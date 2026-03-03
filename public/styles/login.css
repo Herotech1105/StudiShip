@@ -1,28 +1,4 @@
-header{
-    background-color: red; /* Hintergrundfarbe des Headers auf Rot */
-    color: white;           /* Schriftfarbe auf Weiß */
-    padding: 16px;          /* Innenabstand 16px*/
-
-}
-/*Navigationsbar*/
-nav{
-    display: flex;          /* Flexbox-Layout für Navigation */
-    justify-content: space-between;/* Flexbox-Layout für Navigation */
-    align-items: center;   /* Elemente zentrieren */
-}
-/*Menu in der Navigationsbar*/
-.mobile-menu a{
-    color: white;           /* Textfarbe Weiß */
-    text-decoration: none; /* Keine Unterstreichung für Links */
-    margin-left: 20px;       /* Abstand links 20px*/
-}
-.mobile-menu a:hover{
-    color: white;           /* Textfarbe bleibt Weiß beim Hovern */
-    text-decoration: underline; /* Unterstreichung beim Hovern */
-    margin-left: 20px;    /* Abstand links bleibt erhalten */
-}
-
-    .container {
+ .container {
         display: flex;          /*container soll eine flexbox sein*/
         justify-content: center; /* Zentriert horizontal */
         align-items: center;     /* Zentriert vertikal  */
