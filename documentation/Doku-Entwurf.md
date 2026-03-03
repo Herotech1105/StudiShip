@@ -549,6 +549,20 @@ Für alle aufgeführten Webseiten gilt der letzte Zugriff am 02.03.2026 18:00 Uh
 * [Dotenv für Node - Modul und Guide](https://www.npmjs.com/package/dotenv)
 * [Socket.io Tutorial](https://socket.io/docs/v4/tutorial/introduction)
 
+## View
+
+### HTML
+* [Markdownguide](https://www.markdownguide.org/basic-syntax/)
+* [HTML Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
+* [Google Suche mit Features](https://www.google.com/)
+* [Kulturbanause Tutorial](https://kulturbanause.de/blog/svg-grafiken-in-websiteshtml-seiten-einbinden/)
+* [Handelbars Tuorial](https://guides.emberjs.com/v2.6.0/templates/)
+* 
+### CSS
+* [SelfHTML Turoial](https://wiki.selfhtml.org/wiki/CSS/Tutorials/Ausrichtung/position)
+* [Sidemust Tuorial](https://sitemust.com/blog/padding-vs-border-vs-margin-difference-css/)
+* [CSS Reference](https://developer.mozilla.org/de/docs/Web/CSS)
+
 # Abbildungen
 
 Sofern nicht anders angegeben sind alle Abbildungen selbst erstellt.
