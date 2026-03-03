@@ -39,3 +39,8 @@
     background-color: green;
     color: white;
 }
+
+.no-btn:hover {
+    background-color: darkgreen;
+    color: gray;
+}
