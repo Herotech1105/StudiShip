@@ -25,16 +25,20 @@
             <h1>Lerngruppe Erstellen</h1>
             <form action="/rooms/create" method="POST">
                 <div class="form-group">
+                    <!-- group titel -->
                     <label for="roomName">Gruppenname</label>
                     <input type="text" class="form-control" id="roomName" name="roomName" maxlength="45" required>
+                    <!--discription-->
                     <label for="roomDescription">Beschreibung</label>
                     <input type="text" class="form-control" id="roomDescription" name="roomDescription" maxlength="255" required>
+                    <!--subject option-->
                     <label for="roomSubject">Kursart</label>
                     <select class="form-control" id="roomSubject" name="roomSubject" required>
                         {{#each subjects}}
                             <option value="{{this}}">{{this}}</option>
                         {{/each}}
                     </select>
+                    <!--privacy settings-->
                     <label for="roomPrivacy">Room Privacy</label>
                     <select class="form-control" id="roomPrivacy" name="roomPrivacy">
                         <option value="public">Public</option>

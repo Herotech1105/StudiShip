@@ -22,17 +22,21 @@
             <div class="container mt-4">
                 <div class="card">
                     <div class="card-header">Anmelde Feld</div>
+                    <!--wrong input message-->
                     <div class="error-alert">
                         {{#if message }}
                             <h3>{{message}}</h3>
                         {{/if}}
                     </div>
+                    <!--input area-->
                     <div class="card-body">
                         <form action="/login" method="POST">
+                            <!--user name-->
                             <div class="mb-3">
                                 <label for="name-login" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name-login" name="name" required value="{{name}}">
                             </div>
+                            <!--user password-->
                             <div class="mb-3">
                                 <label for="password-login" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password-login" name="password" required>

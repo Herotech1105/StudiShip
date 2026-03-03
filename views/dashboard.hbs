@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>StudyShip</title>
-    <link rel="icon" href="./icons/import_contacts_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/dashboard.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>StudyShip</title>
+        <link rel="icon" href="./icons/import_contacts_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" type="image/svg+xml">
+        <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet" href="./styles/dashboard.css">
 
-</head>
+    </head>
     <body>
         <header>
             <nav>
@@ -22,9 +22,8 @@
             </nav>
         </header>
         <main>
-
+            <!--greeting-->
             <section class="hero">
-
                 {{#if user }}
                     <h3>Dashboard: </h3>
                     <h4>Wilkommen, {{user}}!</h4>
@@ -32,6 +31,7 @@
                     <h3>Dashboard</h3>
                 {{/if}}
             </section>
+            <!--search bar-->
             <div>
                 <div class="search-container">
                     <input id="searchBar" type="search" name="roomName" class="searchBar" placeholder=" Suchen..." maxlength="45">
@@ -39,12 +39,13 @@
                     <script src="../scripts/searchBar.js"></script>
                 </div>
                 <a href="/search" class="search-btn">Erweiterte Suche</a>
-
             </div>
+            <!--room list head -->
             <div>
                 <h4>Deine Lerngruppen: </h4>
                 <a href="/createRoom" class="add-group-btn">Gruppe Erstellen</a>
             </div>
+            <!--room list-->
             <div>
                 <ul>
                     {{#each rooms}}

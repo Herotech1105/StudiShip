@@ -24,10 +24,13 @@
         </header>
         <main class="container">
             <h1>Suchen</h1>
+            <!--search bar with filter-->
             <form action="/search" method="POST">
                 <div class="form-group">
+                    <!--group name search bar-->
                     <label for="roomName">Lerngruppen Name</label>
                     <input type="text" class="form-control" id="roomName" name="roomName" placeholder="{{searchName}}" maxlength="45">
+                    <!--subject option-->
                     <label for="roomSubject">Kursart</label>
                     <select class="form-control" id="roomSubject" name="roomSubject">
                         <option value="any">any</option>
@@ -40,6 +43,7 @@
             </form>
             <a href="/createRoom" class="add-group-btn">Gruppe Erstellen</a>
             <h4>Suchergebnisse:</h4>
+            <!--list of rooms from search-->
             <ul>
                 {{#each rooms}}
                     <div class="room-btn">
