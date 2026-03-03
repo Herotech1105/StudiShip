@@ -10,12 +10,7 @@
         justify-content: space-between;
         align-items: center;
     }
-    .logo{
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        font-size: 25px;
-    }
+
     .mobile-menu a{
         color: white;
         text-decoration: none;
@@ -54,8 +49,6 @@
         padding: 1.5rem; /* Abstand zum Rand der Karte */
         /*text-align: center; /*Zentriert den Text*/
     }
-
-
 
     button{
         width: 100%; /* Optional: Button füllt das Div aus */

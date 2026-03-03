@@ -10,12 +10,7 @@
         justify-content: space-between;
         align-items: center;
     }
-    .logo{
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        font-size: 25px;
-    }
+
     .mobile-menu a{
         color: white;
         text-decoration: none;

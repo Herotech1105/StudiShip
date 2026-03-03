@@ -10,12 +10,7 @@ nav{
     justify-content: space-between;
     align-items: center;
 }
-.logo{
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
-}
+
 .mobile-menu a{
     color: white;
     text-decoration: none;
@@ -95,12 +90,6 @@ body{
     margin-top: 1em;        /* Abstände anpassen */
 }
 
-
-#searchBar{
-    display: none; /*Versteckt sie searchBar Vorerst*/
-}
-
-
 .btn{
     width: 100%; /*Such-button benutzt die gange breite*/
 }
@@ -108,7 +97,6 @@ body{
 h1{
     color: white;
 }
-
 
 .form-group input,
 .form-group select {

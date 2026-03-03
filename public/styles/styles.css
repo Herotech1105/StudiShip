@@ -9,6 +9,17 @@ body {
     background-attachment: fixed; /*hintergrund soll die ganze seite einnehmen*/
 }
 
+.logo{
+    text-decoration: none; /* Keine Unterstreichung für den Logo-Link */
+    color: white;           /* Textfarbe auf Weiß */
+    font-weight: bold;      /* Fetter Text */
+    font-size: 25px;        /* Schriftgröße auf 25px */
+}
+.logo:hover{
+    color: lightgray;
+}
+
+
 /* Box-Modell und Container */
 .container {
     width: 100%; /*standard container sollen den ganzen platz den sie einnehmen können einnehmen*/
@@ -56,6 +67,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 15px;/*15px (aussen) abstand nach unten */
     font-weight: 600;/*Zeige den Text in halbfetter Schrift an (dicker als normal, aber dick wie bold)*/
     color: black; /*schwarze schrift*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /*standard Links */

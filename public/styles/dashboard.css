@@ -1,21 +1,15 @@
-
         header{
-            background-color: red;
-            color: white;
-            padding: 16px;
+            background-color: red; /* Hintergrundfarbe des Headers auf Rot */
+            color: white;           /* Schriftfarbe auf Weiß */
+            padding: 16px;          /* Innenabstand 16px*/
 
         }
         nav{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex;          /* Flexbox-Layout für Navigation */
+            justify-content: space-between; /* Elemente gleichmäßig verteilen */
+            align-items: center;   /* Elemente zentrieren */
         }
-        .logo{
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 25px;
-        }
+
         .mobile-menu a{
             color: white;
             text-decoration: none;
@@ -45,9 +39,6 @@
             padding: 0;
         }
 
-        h3{
-            text-align: center ;
-        }
 
         .search-btn{
             text-align: center;
@@ -86,21 +77,20 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
+        h3{
+            text-align: center ;
+        }
+
         h4{
             text-align: center;
             font-size: 1 em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        body{
-            background-color: #f2f2f2;
-
-        }
 
         .add-group-btn, .search-btn {
             display: block;               /* Macht den Button zu einem Block-Element */
             width: fit-content;           /* Passt die Breite an den Inhalt an */
-            max-width: 300px;             /* Maximale Breite (optional) */
+            max-width: 300px;             /* Maximale Breite  auf 300px beschränken */
             margin: 20px auto;            /* Zentriert den Button horizontal */
             padding: 12px 24px;           /* Innenabstand für bessere Klickfläche */
             background-color: red;    /* Hintergrundfarbe (z. B. Rot) */
@@ -204,11 +194,12 @@
 
 
 
-
-        /*Media Querries für Mobile ansicht*/
+        /* Responsive Design / Media Queries
+        * wird verwende damit die Webseite in verschieden Ansichten gut aussieht z.B.:
+        * wenn man die Größe des Browserfenster verändert (z.B:Horizontaltarbildschirm) oder auf Mobilen Geräten z.B.: Handys  */
         @media (max-width: 768px) {
             ul {
-                flex-direction: column;
+                flex-direction: column; /*Ändert die Flexbox liste von Zeilen zu Spalten => Untereinander*/
             }
         }
 
