@@ -237,6 +237,7 @@ und Raum-Id gespeichert.
 
 ## Frontend - (html)
 <img src="./images/HtmlWebsiteStructure.svg">
+
 ### 1. Öffentliche Seiten
 
 #### `index.hbs` (Landing Page)
