@@ -66,14 +66,14 @@
                     {{#if isOwner}}
                         <button id="editButton" onclick="editRoom()">Bearbeiten</button>
                         <button id="saveButton" class="hidden" onclick="updateRoom()">Speichern</button>
-                        <button id="deleteButton" class="owner-edit-only hidden" onclick="deleteRoom()">Raum löschen</button>
+                        <button id="deleteButton" class="owner-edit-only hidden" onclick="deleteRoom()">Gruppe löschen</button>
                     {{/if}}
                     {{#unless isOwner}}
                         <button onclick="leaveRoom()">Verlassen</button>
                     {{/unless}}
                 </section>
 
-                <aside class="chat-area"><!--CSS:move the chat a bit up so you don't need to scroll down evertime you open the window-->
+                <aside class="chat-area">
                     <h4>Nachrichten:</h4>
                     <ul id="messages" class="chat-window">
                         {{#each messages}}
